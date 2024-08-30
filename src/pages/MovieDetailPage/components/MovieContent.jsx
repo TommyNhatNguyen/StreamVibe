@@ -4,12 +4,11 @@ import { MovieContentWrapper } from "../../../components/StyledComponents/MovieC
 import moment from "moment";
 import { ENV } from "../../../constants/environments";
 import OwlCarousel from "react-owl-carousel";
-import { breakpoints } from "../../../constants/media";
 import { formatDate } from "../../../utils/format";
 import { IMAGE_NOTFOUND_PATH } from "../../../constants/paths";
 import ComponentLoading from "../../../components/ComponentLoading";
 import { Empty } from "antd";
-import { AntdWrapper } from "../../../components/StyledComponents/AntDWrapper";
+import { AntdWrapper } from "../../../components/StyledComponents/AntdWrapper";
 const NUM_BASE = 5;
 const MovieContent = ({
   translations,
