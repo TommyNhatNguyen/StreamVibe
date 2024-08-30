@@ -1,0 +1,65 @@
+html {
+    font-size: 62.5%;
+    background-color: var(--black-cl);
+    scroll-behavior: smooth;
+    @include customscroll(5px, var(--black-cl), var(--black-cl-2));
+    body {
+        width: 100%;
+        scroll-behavior: smooth;
+        max-width: var(--max-width-page);
+        font-size: var(--fs-body);
+        font-family: var(--ff-regular);
+        color: var(--gray-cl);
+        line-height: var(--lh-body);
+        background-color: var(--black-cl);
+        margin: auto;
+        // Progress bar
+        .progress-bar {
+            height: 5px;
+            width: 0%;
+            background-color: var(--white-cl);
+            max-width: var(--max-width-page);
+            position: fixed;
+            z-index: 1000;
+            @include visible;
+            @include transition(var(--transition-duration));
+            // Hide progress bar
+            &.--hide {
+                @include visible(false);
+            }
+        }
+        section {
+            &.--pd-tb {
+                padding-bottom: var(--pd-section);
+                padding-top: var(--pd-section);
+            }
+            &.--pd-b {
+                padding-bottom: var(--pd-section);
+            }
+            &.--pd-t {
+                padding-top: var(--pd-section);
+            }
+        }
+        // Disable scroll
+        &.--disable-scroll {
+            height: 100vh;
+            overflow: hidden;
+        }
+        // Container
+        .container {
+            width: 100%;
+            max-width: var(--max-width-container);
+            padding-left: var(--pd-container);
+            padding-right: var(--pd-container);
+            margin-left: auto;
+            margin-right: auto;
+            position: relative;
+        }
+
+        // Main
+        .main {
+            position: relative;
+        }
+    }
+    // Responsive
+}

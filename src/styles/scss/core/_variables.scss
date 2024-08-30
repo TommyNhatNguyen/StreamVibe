@@ -1,0 +1,85 @@
+:root {
+    /* --- PAGE SETTINGS ---*/
+    --max-width-page: 1920px;
+    --max-width-container: calc(1600px + var(--pd-container) * 2);
+    --pd-container: 160px;
+    --header-height: 150px;
+    --pd-section: 150px;
+    --gutter: 30px;
+    /* --- FONTS ---*/
+    --ff-bold: "mb";
+    --ff-regular: "mr";
+    --ff-medium: "md";
+    --ff-semibold: "msb";
+    --lh-body: 1.5;
+    --fs-h1: 5.8rem;
+    --fs-h1-md: 4.8rem;
+    --fs-h1-sm: 3.8rem;
+    --fs-h2: 3.8rem;
+    --fs-h3: 2.4rem;
+    --fs-h4: 2.2rem;
+    --fs-h5: 2rem;
+    --fs-body: 1.8rem;
+    --fs-btn: 1.8rem;
+    --fs-btn-md: 2rem;
+    --fs-tag: 1.8rem;
+    --fs-tag-md: 1.6rem;
+    --fs-tag-big: 2rem;
+    --fs-pt: 4rem;
+    --fs-rate: 2rem;
+    --fs-ep: 3rem;
+    /* --- COlOR ---*/
+    --black-cl: #141414;
+    --black-cl-2: #1a1a1a;
+    --black-cl-3: #262626;
+    --black-cl-4: #0f0f0f;
+    --black-cl-5: #1f1f1f;
+    --black-cl-6: #333333;
+    --red-cl: #e50000;
+    --dark-red-cl: #220e0e;
+    --gray-cl: #999999;
+    --white-cl: #ffffff;
+    /* --- OTHERS ---*/
+    --transition-duration: 0.3s;
+    --opacity-hover: 0.8;
+    /* --- RESPONSIVE ---*/
+    @include lg {
+        --max-width-container: calc(1280px + var(--pd-container) * 2);
+        --pd-container: 80px;
+        --pd-section: 150px;
+        --header-height: 128px;
+        --fs-h1: 4.8rem;
+        --fs-h1-md: 2.8rem;
+        --fs-h1-sm: 3rem;
+        --fs-h2: 2.8rem;
+        --fs-h3: 2rem;
+        --fs-h4: 2rem;
+        --fs-h5: 1.8rem;
+        --fs-body: 1.6rem;
+        --fs-btn: 1.4rem;
+        --fs-btn-md: 1.6rem;
+        --fs-tag: 1.4rem;
+        --fs-tag-md: 1.2rem;
+        --fs-tag-big: 1.6rem;
+        --fs-pt: 3rem;
+        --fs-rate: 1.4rem;
+        --fs-ep: 2.4rem;
+    }
+
+    @include sm {
+        --max-width-container: initial;
+        --pd-container: 14px;
+        --pd-section: 100px;
+        --header-height: 110px;
+        --fs-h1: 2.8rem;
+        --fs-h1-md: 2.4rem;
+        --fs-h1-sm: 2.4rem;
+        --fs-h2: 2.4rem;
+        --fs-h3: 1.8rem;
+        --fs-h4: 1.8rem;
+        --fs-h5: 1.6rem;
+        --fs-body: 1.4rem;
+        --fs-btn-md: 1.4rem;
+        --fs-pt: 2.4rem;
+    }
+}

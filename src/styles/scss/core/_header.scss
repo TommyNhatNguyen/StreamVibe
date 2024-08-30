@@ -1,0 +1,181 @@
+.header {
+    top: 0;
+    position: absolute;
+    z-index: 1000;
+    width: 100%;
+    max-width: var(--max-width-page);
+    height: var(--header-height);
+    // Header top
+    .header-top {
+        height: 37.5%;
+        padding: 15px 0;
+        border-bottom: 1px solid var(--gray-cl);
+        .header__cta {
+            &-auth {
+                margin-left: auto;
+            }
+        }
+    }
+    // Header middle
+    .header-middle {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 62.5%;
+        padding: 15px 0;
+        gap: var(--gutter);
+        border-bottom: 1px solid var(--gray-cl);
+        .container {
+            @include flex-mid-between;
+            height: 100%;
+        }
+    }
+    // Active
+    &.active {
+        background: linear-gradient(to bottom, var(--black-cl-3), var(--black-cl));
+        // background-color: var(--black-cl);
+    }
+    // --- LOGO ---
+    &__logo {
+        max-width: 199px;
+        flex-shrink: 0;
+    }
+    // --- NAV ---
+    &__nav {
+        @include flex-mid-between;
+        height: 75px;
+        padding: 10px;
+        background-color: var(--black-cl-4);
+        border-radius: 12px;
+        border: 3px solid var(--black-cl-5);
+        &-item {
+            height: 100%;
+            cursor: pointer;
+            a {
+                height: 100%;
+                display: flex;
+                align-items: center;
+                padding: 0 24px;
+                text-wrap: nowrap;
+                text-align: center;
+                color: var(--white-cl);
+                font-family: var(--ff-medium);
+                border-radius: 8px;
+                @include transition(var(--transition-duration));
+                &.active {
+                    background-color: var(--black-cl-2);
+                }
+            }
+            &:not(:last-child) {
+                padding-right: 30px;
+            }
+
+            &:hover {
+                a {
+                    background-color: var(--black-cl-2);
+                }
+            }
+        }
+    }
+    // --- CTA --
+    &__cta {
+        @include flex-mid-between;
+        gap: 30px;
+        height: 34px;
+        &-group {
+            @include flex-mid-between;
+            gap: 30px;
+            a {
+                @include transition(var(--transition-duration));
+                &:hover {
+                    opacity: var(--opacity-hover);
+                }
+            }
+        }
+        &-auth {
+            text-wrap: nowrap;
+            a {
+                color: var(--white-cl);
+                @include transition(var(--transition-duration));
+                &:hover {
+                    opacity: var(--opacity-hover);
+                }
+            }
+        }
+    }
+    // -- HAMBURGER --
+    &__hamburg {
+        display: none;
+        background-color: var(--black-cl-2);
+        border: 3px solid var(--black-cl-3);
+        height: 48px;
+        padding: 0 12px;
+        border-radius: 6px;
+
+        align-items: end;
+        justify-content: center;
+        flex-direction: column;
+        gap: 4px;
+        cursor: pointer;
+        @include transition(var(--transition-duration));
+        &:hover {
+            opacity: var(--opacity-hover);
+        }
+        &.active {
+            span {
+                &:last-child {
+                    width: 18px;
+                }
+            }
+        }
+        span {
+            display: block;
+            background-color: var(--white-cl);
+            width: 18px;
+            height: 1px;
+            &:last-child {
+                width: 9px;
+            }
+        }
+    }
+    // --- RESPONSIVE ---
+    @include lg {
+        &__logo {
+            max-width: 165px;
+        }
+        &__nav {
+            height: 61px;
+            &-item {
+                &:not(:last-child) {
+                    padding-right: 16px;
+                }
+            }
+        }
+        &__cta {
+            height: 24px;
+            gap: 14px;
+            &-group {
+                gap: 14px;
+            }
+        }
+    }
+    @include sm {
+        .header-middle {
+            padding: 10px 0;
+        }
+        .header-top {
+            padding: 10px 0;
+        }
+        &__nav {
+            display: none;
+        }
+        &__cta {
+            &-group {
+                display: none;
+            }
+        }
+        &__hamburg {
+            display: flex;
+        }
+    }
+}

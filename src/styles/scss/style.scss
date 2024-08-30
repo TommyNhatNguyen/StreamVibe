@@ -1,0 +1,21 @@
+// reset, mixins, variables
+@import "core/reset";
+@import "core/mixins";
+@import "core/variables";
+
+// layouts, components, libs
+@import "core/layouts";
+@import "core/components";
+@import "core/libs";
+
+// header, nav, footer
+@import "core/header";
+@import "core/nav";
+@import "core/footer";
+
+// pages
+@import "pages/home";
+@import "pages/movie";
+@import "pages/support";
+@import "pages/subscription";
+@import "pages/moviedetail";

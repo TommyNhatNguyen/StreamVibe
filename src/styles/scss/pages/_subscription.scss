@@ -1,0 +1,128 @@
+.subscription {
+    .pricing {
+        margin-top: calc(100px + var(--header-height));
+    }
+    .plantable {
+        &__table {
+            margin-top: 80px;
+            border: 1px solid var(--black-cl-3);
+            border-collapse: collapse;
+            th,
+            td {
+                border: 1px solid rgb(160 160 160);
+                padding: 30px;
+                vertical-align: middle;
+                text-align: left;
+                text-transform: capitalize;
+                width: calc(100% / 4);
+            }
+            td {
+                font-family: var(--ff-medium);
+            }
+            th {
+                background-color: var(--black-cl-4);
+                color: var(--white-cl);
+                font-family: var(--ff-semibold);
+                font-size: var(--fs-h5);
+                .tag {
+                    font-size: 1.4rem;
+                    font-family: var(--ff-medium);
+                    background-color: var(--red-cl);
+                    border-radius: 2px;
+                    margin-left: 8px;
+                    height: 22px;
+                    padding: 0 10px;
+                }
+            }
+        }
+        &__mobile {
+            display: none;
+            margin-top: 40px;
+            &-tab {
+                height: 61px;
+                padding: 0 8px;
+                border: 8px;
+                background-color: var(--black-cl-4);
+                border: 1px solid var(--black-cl-3);
+                width: 100%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                width: fit-content;
+                margin: auto;
+                li {
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    height: 73%;
+                    a {
+                        cursor: pointer;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        text-transform: capitalize;
+                        padding: 0 20px;
+                        height: 100%;
+                        border-radius: 6px;
+                        font-size: 1.4rem;
+                        font-family: var(--ff-medium);
+                        color: var(--white-cl);
+                        @include transition(var(--transition-duration));
+                        &:hover,
+                        &.active {
+                            background-color: var(--black-cl-5);
+                        }
+                    }
+                }
+            }
+            &-content {
+                padding: 24px;
+                background-color: var(--black-cl-4);
+                border: 1px solid var(--black-cl-3);
+                border-radius: 12px;
+                margin-top: 20px;
+                .row {
+                    display: flex;
+                    align-items: center;
+                    gap: 20px;
+                    &:not(:last-child) {
+                        margin-bottom: 20px;
+                    }
+                    .col {
+                        &__title {
+                            font-family: var(--ff-medium);
+                            font-size: 1.4rem;
+                        }
+                        &__data {
+                            font-family: var(--ff-medium);
+                            color: #f1f1f3;
+                            margin-top: 4px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    @include lg {
+        .plantable {
+            &__table {
+                margin-top: 60px;
+                th,
+                td {
+                    padding: 24px;
+                }
+            }
+        }
+    }
+    @include sm {
+        .plantable {
+            &__table {
+                display: none;
+                margin-top: 40px;
+            }
+            &__mobile {
+                display: block;
+            }
+        }
+    }
+}
