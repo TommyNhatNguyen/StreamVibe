@@ -50,7 +50,7 @@ export const AuthContextWrapper = ({ children }) => {
       if (res?.data) {
         const requestToken = res?.data?.request_token;
         window.location.replace(
-          `https://www.themoviedb.org/authenticate/${requestToken}?redirect_to=http://localhost:5173`
+          `https://www.themoviedb.org/authenticate/${requestToken}?redirect_to=${window.location.href}`
         );
       }
     } catch (error) {
@@ -71,8 +71,6 @@ export const AuthContextWrapper = ({ children }) => {
       console.log(error);
       sessionMethod.delete();
       handleLogout();
-    } finally {
-      window.location.replace("http://localhost:5173");
     }
   };
   const handleRegister = ({ username, password }) => {
