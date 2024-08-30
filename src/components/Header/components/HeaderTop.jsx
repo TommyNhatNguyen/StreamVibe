@@ -56,10 +56,12 @@ const StyledDropdownWrapper = styled.div`
         aspect-ratio: 1 / 1;
         border-radius: 100%;
         overflow: hidden;
+        flex-shrink: 0;
       }
       &__info {
         .--h5 {
           color: var(--black-cl);
+          overflow-wrap: anywhere;
         }
       }
     }

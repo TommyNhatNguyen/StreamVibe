@@ -107,8 +107,7 @@ export const AuthContextWrapper = ({ children }) => {
         session_id: DEMO_ACCOUNT.session_id,
       });
     }
-    if (requestToken) {
-      console.log("Session create");
+    if (requestToken && !isLogin) {
       _onHandleCreateSession((sessionId) => {
         const { username, password } = tempCredentialsMethod.get();
         credentialsMethod.set({
