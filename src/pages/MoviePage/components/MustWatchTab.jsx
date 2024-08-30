@@ -3,7 +3,7 @@ import CategoryGroup from "../../../components/CategoryGroup";
 import useFlickity from "../../../utils/useFlickity";
 import ComponentLoading from "../../../components/ComponentLoading";
 import { Empty } from "antd";
-import { AntdWrapper } from "../../../components/StyledComponents/AntDWrapper";
+import { AntdWrapper } from "../../../components/StyledComponents/AntdWrapper";
 
 const MustWatchTab = ({ moviesTopRated, loading, title = "" }) => {
   useEffect(() => {

@@ -1,9 +1,9 @@
 import React, { useEffect } from "react";
 import CategoryGroup from "../../../components/CategoryGroup";
 import useFlickity from "../../../utils/useFlickity";
-import { AntdWrapper } from "../../../components/StyledComponents/AntDWrapper";
 import { Empty, Skeleton } from "antd";
 import ComponentLoading from "../../../components/ComponentLoading";
+import { AntdWrapper } from "../../../components/StyledComponents/AntdWrapper";
 
 const GenresTab = ({ moviesByGenres, loading }) => {
   useEffect(() => {

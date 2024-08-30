@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import useFlickity from "../../../utils/useFlickity";
 import CategoryGroup from "../../../components/CategoryGroup";
 import { formatDate } from "../../../utils/format";
-import { AntdWrapper } from "../../../components/StyledComponents/AntDWrapper";
+import { AntdWrapper } from "../../../components/StyledComponents/AntdWrapper";
 import ComponentLoading from "../../../components/ComponentLoading";
 import { Empty } from "antd";
 

@@ -3,7 +3,7 @@ import React, { useEffect, useMemo, useRef, useState } from "react";
 import CategoryGroup from "../../../components/CategoryGroup";
 import useFlickity from "../../../utils/useFlickity";
 import styled from "styled-components";
-import { AntdWrapper } from "../../../components/StyledComponents/AntDWrapper";
+import { AntdWrapper } from "../../../components/StyledComponents/AntdWrapper";
 import ComponentLoading from "../../../components/ComponentLoading";
 import { Empty } from "antd";
 
