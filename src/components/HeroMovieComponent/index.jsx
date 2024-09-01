@@ -101,113 +101,209 @@ const HeroMovieComponent = ({
   videosByMovie,
   sectionClassname,
   loading,
+  scrolling = true,
   ...props
 }) => {
   return (
-    <section className={`heromovie ${sectionClassname}`}>
-      {videosByMovie?.length > 0 && (
-        <OwlCarousel
-          className="owl-carousel"
-          dots={false}
-          nav={false}
-          items={1}
-          video={true}
-          lazyLoad={true}
-          loop={true}
-        >
-          {videosByMovie?.map((item, index) => {
-            const { movieBackdrop, movieOverview, movieTitle, videos } =
-              item || {};
-            const { key, id } = videos?.[0] || {};
-            const trailerPath = youtubePath(key);
-            const imgPath =
-              (movieBackdrop && ENV.IMAGE_URL + movieBackdrop) || "";
-            return (
-              <StyledTrailer
-                className="trailer"
-                key={id + index}
-                style={{ width: "100%" }}
-              >
-                <div className="heromovie__trailer">
-                  {loading ? (
-                    <ComponentLoading />
-                  ) : (
-                    <>
-                      <div className="heromovie__trailer-img">
-                        <img
-                          src={imgPath || ""}
-                          data-src={imgPath || ""}
-                          alt="movie banner"
-                        />
-                      </div>
-                      <TrailerVideoWrapper className="heromovie__trailer-video">
-                        <LazyLoad>
-                          <iframe
-                            src={trailerPath}
-                            data-src={trailerPath}
-                          ></iframe>
-                        </LazyLoad>
-                      </TrailerVideoWrapper>
-                      <StyledTextbox
-                        variant="center"
-                        className="heromovie__trailer-textbox textbox"
-                      >
-                        <Textbox.Content className="textbox__content --center">
-                          <h2 className="textbox__content-heading --h2 --heading">
-                            {movieTitle || ""}
-                          </h2>
-                          <p className="textbox__content-paragraph paragraph">
-                            {movieOverview || ""}
-                          </p>
-                        </Textbox.Content>
-                        <Textbox.ButtonControlGroup className="textbox__btngroup">
-                          <Button className="textbox__button btn btnmain">
-                            <div className="textbox__button-icon icon">
-                              <img srcSet="/assets/images/start-btn-icon.png 2x" />
-                            </div>
-                            <span className="textbox__button-text">
-                              Play Now
-                            </span>
-                          </Button>
-                          <Textbox.ButtonControlGroup className="textbox__btngroup textbox__btngroup-inner">
-                            <Button
-                              variant="control"
-                              className="textbox__button btn --btncontrol"
-                            >
-                              <img
-                                srcSet="/assets/images/plus-icon.png 2x"
-                                alt="start button"
-                              />
+    <section className={`heromovie ${sectionClassname && ""}`}>
+      {videosByMovie?.length > 0 &&
+        (scrolling ? (
+          <OwlCarousel
+            className="owl-carousel"
+            dots={false}
+            nav={false}
+            items={1}
+            video={true}
+            lazyLoad={true}
+            loop={true}
+          >
+            {videosByMovie?.map((item, index) => {
+              const { movieBackdrop, movieOverview, movieTitle, videos } =
+                item || {};
+              const { key, id } = videos?.[0] || {};
+              const trailerPath = youtubePath(key);
+              const imgPath =
+                (movieBackdrop && ENV.IMAGE_URL + movieBackdrop) || "";
+              return (
+                <StyledTrailer
+                  className="trailer"
+                  key={id + index}
+                  style={{ width: "100%" }}
+                >
+                  <div className="heromovie__trailer">
+                    {loading ? (
+                      <ComponentLoading />
+                    ) : (
+                      <>
+                        <div className="heromovie__trailer-img">
+                          <img
+                            src={imgPath || ""}
+                            data-src={imgPath || ""}
+                            alt="movie banner"
+                          />
+                        </div>
+                        <TrailerVideoWrapper className="heromovie__trailer-video">
+                          <LazyLoad>
+                            <iframe
+                              src={trailerPath}
+                              data-src={trailerPath}
+                            ></iframe>
+                          </LazyLoad>
+                        </TrailerVideoWrapper>
+                        <StyledTextbox
+                          variant="center"
+                          className="heromovie__trailer-textbox textbox"
+                        >
+                          <Textbox.Content className="textbox__content --center">
+                            <h2 className="textbox__content-heading --h2 --heading">
+                              {movieTitle || ""}
+                            </h2>
+                            <p className="textbox__content-paragraph paragraph">
+                              {movieOverview || ""}
+                            </p>
+                          </Textbox.Content>
+                          <Textbox.ButtonControlGroup className="textbox__btngroup">
+                            <Button className="textbox__button btn btnmain">
+                              <div className="textbox__button-icon icon">
+                                <img srcSet="/assets/images/start-btn-icon.png 2x" />
+                              </div>
+                              <span className="textbox__button-text">
+                                Play Now
+                              </span>
                             </Button>
-                            <Button
-                              variant="control"
-                              className="textbox__button btn --btncontrol"
-                            >
-                              <img
-                                srcSet="/assets/images/like-icon.png 2x"
-                                alt="start button"
-                              />
-                            </Button>
-                            <Button
-                              variant="control"
-                              className="textbox__button btn --btncontrol"
-                            >
-                              <img
-                                srcSet="/assets/images/volume-icon.png 2x"
-                                alt="start button"
-                              />
-                            </Button>
+                            <Textbox.ButtonControlGroup className="textbox__btngroup textbox__btngroup-inner">
+                              <Button
+                                variant="control"
+                                className="textbox__button btn --btncontrol"
+                              >
+                                <img
+                                  srcSet="/assets/images/plus-icon.png 2x"
+                                  alt="start button"
+                                />
+                              </Button>
+                              <Button
+                                variant="control"
+                                className="textbox__button btn --btncontrol"
+                              >
+                                <img
+                                  srcSet="/assets/images/like-icon.png 2x"
+                                  alt="start button"
+                                />
+                              </Button>
+                              <Button
+                                variant="control"
+                                className="textbox__button btn --btncontrol"
+                              >
+                                <img
+                                  srcSet="/assets/images/volume-icon.png 2x"
+                                  alt="start button"
+                                />
+                              </Button>
+                            </Textbox.ButtonControlGroup>
                           </Textbox.ButtonControlGroup>
-                        </Textbox.ButtonControlGroup>
-                      </StyledTextbox>
-                    </>
-                  )}
-                </div>
-              </StyledTrailer>
-            );
-          })}
-        </OwlCarousel>
-      )}
+                        </StyledTextbox>
+                      </>
+                    )}
+                  </div>
+                </StyledTrailer>
+              );
+            })}
+          </OwlCarousel>
+        ) : (
+          <div>
+            {videosByMovie?.map((item, index) => {
+              const { movieBackdrop, movieOverview, movieTitle, videos } =
+                item || {};
+              const { key, id } = videos?.[0] || {};
+              const trailerPath = youtubePath(key);
+              const imgPath =
+                (movieBackdrop && ENV.IMAGE_URL + movieBackdrop) || "";
+              return (
+                <StyledTrailer
+                  className="trailer"
+                  key={id + index}
+                  style={{ width: "100%" }}
+                >
+                  <div className="heromovie__trailer">
+                    {loading ? (
+                      <ComponentLoading />
+                    ) : (
+                      <>
+                        <div className="heromovie__trailer-img">
+                          <img
+                            src={imgPath || ""}
+                            data-src={imgPath || ""}
+                            alt="movie banner"
+                          />
+                        </div>
+                        <TrailerVideoWrapper className="heromovie__trailer-video">
+                          <LazyLoad>
+                            <iframe
+                              src={trailerPath}
+                              data-src={trailerPath}
+                            ></iframe>
+                          </LazyLoad>
+                        </TrailerVideoWrapper>
+                        <StyledTextbox
+                          variant="center"
+                          className="heromovie__trailer-textbox textbox"
+                        >
+                          <Textbox.Content className="textbox__content --center">
+                            <h2 className="textbox__content-heading --h2 --heading">
+                              {movieTitle || ""}
+                            </h2>
+                            <p className="textbox__content-paragraph paragraph">
+                              {movieOverview || ""}
+                            </p>
+                          </Textbox.Content>
+                          <Textbox.ButtonControlGroup className="textbox__btngroup">
+                            <Button className="textbox__button btn btnmain">
+                              <div className="textbox__button-icon icon">
+                                <img srcSet="/assets/images/start-btn-icon.png 2x" />
+                              </div>
+                              <span className="textbox__button-text">
+                                Play Now
+                              </span>
+                            </Button>
+                            <Textbox.ButtonControlGroup className="textbox__btngroup textbox__btngroup-inner">
+                              <Button
+                                variant="control"
+                                className="textbox__button btn --btncontrol"
+                              >
+                                <img
+                                  srcSet="/assets/images/plus-icon.png 2x"
+                                  alt="start button"
+                                />
+                              </Button>
+                              <Button
+                                variant="control"
+                                className="textbox__button btn --btncontrol"
+                              >
+                                <img
+                                  srcSet="/assets/images/like-icon.png 2x"
+                                  alt="start button"
+                                />
+                              </Button>
+                              <Button
+                                variant="control"
+                                className="textbox__button btn --btncontrol"
+                              >
+                                <img
+                                  srcSet="/assets/images/volume-icon.png 2x"
+                                  alt="start button"
+                                />
+                              </Button>
+                            </Textbox.ButtonControlGroup>
+                          </Textbox.ButtonControlGroup>
+                        </StyledTextbox>
+                      </>
+                    )}
+                  </div>
+                </StyledTrailer>
+              );
+            })}
+          </div>
+        ))}
     </section>
   );
 };

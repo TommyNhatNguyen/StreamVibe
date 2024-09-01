@@ -44,9 +44,9 @@ const MovieDetailPage = () => {
   return (
     <main className="moviedetail">
       <HeroMovieComponent
-        sectionClassname="--pd-t"
         videosByMovie={modifiedMovieHeroProps}
         loading={loading}
+        scrolling={false}
       />
       <MovieContent {...movieContentProps} />
       <MovieRecommendation

@@ -3,9 +3,10 @@ import { breakpoints } from "../../constants/media";
 export const InputWrapper = styled.div`
   width: 100%;
   .formgroup__label {
-    /* color: var(--white-cl); */
+    color: var(--white-cl);
     font-family: var(--ff-semibold);
     margin-bottom: 16px;
+    display: flex;
   }
   .formgroup__input {
     width: 100%;
@@ -16,6 +17,12 @@ export const InputWrapper = styled.div`
     padding: 0 20px;
     color: var(--white-cl);
     caret-color: var(--white-cl);
+    font-size: var(--fs-body);
+    transition: var(--transition-duration);
+    outline: 1px solid transparent;
+    &:focus {
+      outline: 1px solid var(--white-cl);
+    }
     &::placeholder {
       text-transform: capitalize;
       font-size: var(--fs-body);
@@ -40,10 +47,13 @@ export const InputWrapper = styled.div`
     align-items: center;
     gap: 8px;
     .checkbox__group {
+      cursor: pointer;
       position: relative;
       height: 15px;
       width: 15px;
       input {
+        height: 100%;
+        width: 100%;
         margin: initial;
         position: absolute;
         top: 50%;
@@ -67,7 +77,7 @@ export const InputWrapper = styled.div`
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
-        border-radius: 3px;
+        border-radius: 4px;
       }
       &-icon {
         display: flex;

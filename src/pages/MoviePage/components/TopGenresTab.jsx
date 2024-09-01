@@ -11,6 +11,55 @@ import MovieItem from "../../../components/MovieItem";
 import Textbox from "../../../components/Textbox";
 import Button from "../../../components/Button";
 
+const StyledTabs = styled.ul`
+  display: flex;
+  align-items: center;
+  margin-top: 25px;
+  width: 100%;
+  overflow-x: scroll;
+  overflow-y: hidden;
+  flex-wrap: nowrap;
+  height: 60px;
+  padding-bottom: 10px;
+  &.tabs {
+    &::-webkit-scrollbar {
+      height: 5px;
+    }
+    &::-webkit-scrollbar-track {
+      background: var(--black-cl);
+    }
+    &::-webkit-scrollbar-thumb {
+      background: var(--white-cl);
+    }
+  }
+  .tabs__item {
+    height: 100%;
+    &:not(:last-child) {
+      margin-right: 12px;
+    }
+    a {
+      height: 100%;
+      width: 100%;
+      padding: 0 12px;
+      border: 1px solid var(--black-cl-3);
+      text-wrap: nowrap;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: var(--black-cl-3);
+      border-radius: 8px;
+      transition: var(--transition-duration);
+    }
+    &.active,
+    &:hover {
+      a {
+        background-color: var(--red-cl);
+        color: var(--white-cl);
+      }
+    }
+  }
+`;
+
 const TopGenresTab = ({ moviesByGenres, genres, loading }) => {
   const [selectedGenre, setSelectedGenre] = useState(genres?.[0]?.id);
   const [genreLoading, setGenreLoading] = useState(false);
@@ -62,6 +111,29 @@ const TopGenresTab = ({ moviesByGenres, genres, loading }) => {
           </Button>
         </Textbox.ButtonControlGroup>
       </Textbox>
+      <StyledTabs className="tabs" style={{ position: "relative" }}>
+        {loading || (genreLoading && <ComponentLoading />)}
+        {genres?.length > 0 && !loading && !genreLoading ? (
+          genres?.map((item, index) => {
+            const { id, name } = item || {};
+            return (
+              <li
+                key={id + index + name}
+                className={classNames("tabs__item", {
+                  active: selectedGenre === id,
+                })}
+                onClick={(e) => _onSelectGenres(e, id)}
+              >
+                <a href="#">{name || ""}</a>
+              </li>
+            );
+          })
+        ) : (
+          <AntdWrapper>
+            <Empty description="Genres not found" />
+          </AntdWrapper>
+        )}
+      </StyledTabs>
       {/* Category group*/}
       {loading && <ComponentLoading />}
       {renderMovies?.length > 0 && !loading && (

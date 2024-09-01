@@ -68,6 +68,9 @@ const StyledModalWrapper = styled.div`
         form {
           .formgroup {
             margin-bottom: 20px;
+            &__label {
+              color: var(--black-cl);
+            }
           }
           .btnsubmit {
             background-color: transparent;

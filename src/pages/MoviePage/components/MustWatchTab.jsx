@@ -9,7 +9,7 @@ import Button from "../../../components/Button";
 import { StyledMovieGroupWrapper } from "../../../components/StyledComponents/StyledMovieGroupWrapper";
 import MovieItem from "../../../components/MovieItem";
 
-const MustWatchTab = ({ moviesTopRated, loading }) => {
+const MustWatchTab = ({ moviesTopRated, loading, title = "" }) => {
   useEffect(() => {
     if (moviesTopRated?.length > 0 && !loading) {
       const explores = document.querySelectorAll(".explore.--mustwatch");
@@ -31,7 +31,7 @@ const MustWatchTab = ({ moviesTopRated, loading }) => {
       <Textbox className="textbox">
         <Textbox.Content className="textbox__content">
           <h2 className="textbox__content-heading --h2 --heading">
-            Must - Watch Movies 🤌
+            {title || "Must - Watch Movies 🤌"}
           </h2>
         </Textbox.Content>
         <Textbox.ButtonControlGroup className="textbox__btngroup">
@@ -39,13 +39,13 @@ const MustWatchTab = ({ moviesTopRated, loading }) => {
             variant="control"
             className="textbox__btngroup-btncontrol btn --btncontrol --arrow-left"
           >
-            <img srcSet="./assets/images/arrow-left-icon.png 2x" />
+            <img srcSet="/assets/images/arrow-left-icon.png 2x" />
           </Button>
           <Button
             variant="control"
             className="textbox__btngroup-btncontrol btn --btncontrol  --arrow-right"
           >
-            <img srcSet="./assets/images/arrow-left-icon.png 2x" />
+            <img srcSet="/assets/images/arrow-left-icon.png 2x" />
           </Button>
         </Textbox.ButtonControlGroup>
       </Textbox>
@@ -65,7 +65,7 @@ const MustWatchTab = ({ moviesTopRated, loading }) => {
 
             return (
               <MovieItem
-                key={id + index}
+                key={id + index + image}
                 voteAverage={voteAverage}
                 voteCount={voteCount}
                 image={image}

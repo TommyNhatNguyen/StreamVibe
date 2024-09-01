@@ -5,6 +5,113 @@ import { Controller, useForm } from "react-hook-form";
 import { MESSAGE } from "../../../utils/message";
 import { REGEX } from "../../../utils/validate";
 import { message } from "antd";
+import styled from "styled-components";
+import Textbox from "../../../components/Textbox";
+import { breakpoints } from "../../../constants/media";
+import Button from "../../../components/Button";
+
+const StyledContactWrapper = styled.div`
+  display: grid;
+  grid-template-columns: 1fr 1.83fr;
+  justify-content: space-between;
+  gap: 80px;
+  padding-top: 110px;
+  @media (max-width: ${breakpoints.desktop}) {
+    gap: 50px;
+    padding-top: 100px;
+  }
+  @media (max-width: ${breakpoints.mobile}) {
+    grid-template-columns: 1fr;
+    padding-top: 40px;
+  }
+`;
+
+const StyledContactContent = styled.div`
+  flex-shrink: 0;
+  .textbox {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 50px;
+    &__content {
+      max-width: initial;
+    }
+    &__img {
+      height: 100%;
+      width: 100%;
+      aspect-ratio: 533 / 477;
+      max-height: 477px;
+      overflow: hidden;
+      border: 6px solid var(--black-cl-3);
+      border-radius: 6px;
+      background-image: url("/assets/images/support/thumnail-1.jpg");
+      background-repeat: no-repeat;
+      background-attachment: local;
+      background-size: cover;
+      background-position: center;
+    }
+  }
+`;
+
+const StyledContactForm = styled.div`
+  height: 100%;
+  width: 100%;
+  background-color: var(--black-cl-4);
+  border: 1px solid var(--black-cl-3);
+  border-radius: 12px;
+  padding: 50px;
+  .form {
+    height: 100%;
+    width: 100%;
+    .form__row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 50px;
+      &:not(:first-child) {
+        margin-top: 50px;
+      }
+      .btnmain {
+        text-wrap: nowrap;
+      }
+      .formgroup.--checkbox {
+        cursor: pointer;
+        .checkbox__group {
+          height: 24px;
+          width: 24px;
+          &::after {
+            border: 1px solid var(--black-cl-3);
+          }
+        }
+      }
+    }
+  }
+  @media (max-width: ${breakpoints.desktop}) {
+    padding: 40px;
+    .form {
+      .form__row {
+        &:not(:first-child) {
+          margin-top: 40px;
+        }
+      }
+    }
+  }
+  @media (max-width: ${breakpoints.mobile}) {
+    padding: 24px;
+    .form {
+      .form__row {
+        flex-direction: column;
+        gap: 20px;
+        &:not(:first-child) {
+          margin-top: 20px;
+        }
+        .btnmain {
+          max-width: initial;
+          width: 100%;
+        }
+      }
+    }
+  }
+`;
 
 const ContactSection = () => {
   const {
@@ -25,27 +132,23 @@ const ContactSection = () => {
   return (
     <section className="contact --pd-b">
       <div className="container">
-        <div className="contact-wrapper">
-          <div className="contact__content">
-            <div className="contact__content-textbox textbox">
-              <div className="textbox__content">
-                <h2 className="textbox__content-heading --h2">
+        <StyledContactWrapper className="contact-wrapper">
+          <StyledContactContent className="contact__content">
+            <Textbox className="contact__content-textbox"></Textbox>
+            <Textbox className="textbox">
+              <Textbox.Content className="textbox__content">
+                <h2 className="textbox__content-heading --h2 --heading">
                   Welcome to our support page!
                 </h2>
                 <p className="textbox__content-paragraph">
                   We're here to help you with any problems you may be having
                   with our product.
                 </p>
-              </div>
-              <div className="textbox__img">
-                <img
-                  src="/assets/images/support/thumnail-1.jpg"
-                  alt="thumbnail"
-                />
-              </div>
-            </div>
-          </div>
-          <div className="contact__form">
+              </Textbox.Content>
+              <div className="textbox__img"></div>
+            </Textbox>
+          </StyledContactContent>
+          <StyledContactForm className="contact__form">
             <div className="contact__form-wrapper">
               <form className="form" onSubmit={handleSubmit(_onSubmit)}>
                 <div className="form__row">
@@ -133,14 +236,14 @@ const ContactSection = () => {
                     }}
                   />
 
-                  <button type="submit" className="btnmain">
+                  <Button as="button" type="submit" className="btn btnmain">
                     Send Message
-                  </button>
+                  </Button>
                 </div>
               </form>
             </div>
-          </div>
-        </div>
+          </StyledContactForm>
+        </StyledContactWrapper>
       </div>
     </section>
   );

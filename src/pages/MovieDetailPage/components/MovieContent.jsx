@@ -1,6 +1,5 @@
 import classNames from "classnames";
 import React from "react";
-import { MovieContentWrapper } from "../../../components/StyledComponents/MovieContentWrapper";
 import moment from "moment";
 import { ENV } from "../../../constants/environments";
 import OwlCarousel from "react-owl-carousel";
@@ -9,6 +8,124 @@ import { IMAGE_NOTFOUND_PATH } from "../../../constants/paths";
 import ComponentLoading from "../../../components/ComponentLoading";
 import { Empty } from "antd";
 import { AntdWrapper } from "../../../components/StyledComponents/AntdWrapper";
+import { breakpoints } from "../../../constants/media";
+import styled from "styled-components";
+
+export const MovieContentWrapper = styled.div`
+  display: grid;
+  grid-template-columns: 2.03fr 1fr;
+  gap: 20px;
+  .moviecontent__content {
+  }
+  .moviecontent__info {
+    flex-shrink: 0;
+    padding: 50px;
+    border-radius: 12px;
+    background-color: var(--black-cl-2);
+    border: 1px solid var(--black-cl-3);
+    &-row {
+      &:not(:last-child) {
+        margin-bottom: 30px;
+      }
+      .title-wrapper {
+        display: flex;
+        align-items: center;
+        gap: 4px;
+        .icon {
+          height: 18px;
+          aspect-ratio: 18 / 18;
+          img {
+            object-fit: cover;
+          }
+        }
+        .title {
+          font-family: var(--ff-medium);
+          color: var(--gray-cl);
+        }
+      }
+      .content-wrapper {
+        margin-top: 14px;
+        .taglist {
+          display: flex;
+          align-items: flex-start;
+          flex-wrap: wrap;
+          gap: 10px;
+          max-height: 250px;
+          overflow-y: scroll;
+          &::-webkit-scrollbar {
+            width: 3px;
+          }
+          &::-webkit-scrollbar-track {
+            background: var(--black-cl);
+          }
+          &::-webkit-scrollbar-thumb {
+            background: var(--black-cl-3);
+          }
+          &__tag {
+            height: 43px;
+            padding: 8px 14px;
+            font-family: var(--ff-medium);
+            color: var(--white-cl);
+            border-radius: 8px;
+            background-color: var(--black-cl);
+            border: 1px solid var(--black-cl-3);
+          }
+        }
+        .paragraph {
+          font-family: var(--ff-medium);
+          color: var(--white-cl);
+        }
+        .rating-wrapper {
+          display: flex;
+          align-items: center;
+          gap: 20px;
+          max-height: 96px;
+          &__item {
+            aspect-ratio: 199.5 / 96;
+            height: 100%;
+            border-radius: 8px;
+            padding: 16px;
+            border: 1px solid var(--black-cl-3);
+            background-color: var(--black-cl);
+          }
+        }
+        .avatar-wrapper {
+          height: 88px;
+          padding: 14px;
+          background-color: var(--black-cl);
+          border: 1px solid var(--black-cl-3);
+          border-radius: 8px;
+          display: flex;
+          align-items: center;
+          gap: 10px;
+          &__img {
+            aspect-ratio: 56.56 / 60;
+            height: 60px;
+            border-radius: 8px;
+            overflow: hidden;
+            img {
+              object-fit: cover;
+            }
+          }
+          &__content {
+            .title {
+              font-family: var(--ff-medium);
+              color: var(--white-cl);
+            }
+            .paragraph {
+              color: var(--gray-cl);
+            }
+          }
+        }
+      }
+    }
+  }
+  @media (max-width: ${breakpoints.desktop}px) {
+  }
+  @media (max-width: ${breakpoints.mobile}px) {
+  }
+`;
+
 const NUM_BASE = 5;
 const MovieContent = ({
   translations,
