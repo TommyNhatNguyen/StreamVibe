@@ -32,6 +32,63 @@ const StyledMovieItem = styled.li`
   }
 `;
 
+const StyledMovieItemSmall = styled(StyledMovieItem)`
+  height: 377px;
+  aspect-ratio: 283.6 / 377;
+  @media (max-width: ${breakpoints.desktop}) {
+    height: 308px;
+    aspect-ratio: 224 / 308;
+  }
+  @media (max-width: ${breakpoints.mobile}) {
+    height: 259px;
+    aspect-ratio: 181.6 / 259;
+  }
+`;
+
+const StyledMovieItemLink = styled(Link)`
+  display: flex;
+  align-items: stretch;
+  transition: var(--transition-duration);
+  border-radius: 12px;
+  overflow: hidden;
+  .moviesgroup__item-img {
+    flex-shrink: 0;
+    border-radius: initial;
+    margin-bottom: initial !important;
+  }
+  .moviesgroup__item-content {
+    background-color: var(--black-cl);
+    width: 100%;
+    padding: 16px;
+    .info {
+      display: initial;
+      background-color: initial;
+      border: initial;
+      padding: initial;
+      &__title {
+        display: -webkit-inline-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        text-overflow: ellipsis;
+        overflow: hidden;
+      }
+      &__para {
+        display: -webkit-inline-box;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
+        text-overflow: ellipsis;
+        overflow: hidden;
+      }
+    }
+  }
+  &:hover {
+    transform: scale(0.98, 0.98);
+    box-shadow: 0px 4px 10px 2px rgba(0, 0, 0, 0.36);
+    -webkit-box-shadow: 0px 4px 10px 2px rgba(0, 0, 0, 0.36);
+    -moz-box-shadow: 0px 4px 10px 2px rgba(0, 0, 0, 0.36);
+  }
+`;
+
 const StyledMovieItemImageWrapper = styled(Link)`
   display: flex;
   height: 404px;
@@ -52,6 +109,19 @@ const StyledMovieItemImageWrapper = styled(Link)`
   }
 `;
 
+const StyleMovieItemImageWrapperSmall = styled(StyledMovieItemImageWrapper)`
+  height: 281px;
+  aspect-ratio: 243.6 / 281;
+  @media (max-width: ${breakpoints.desktop}) {
+    height: 232px;
+    aspect-ratio: 192 / 232;
+  }
+  @media (max-width: ${breakpoints.mobile}) {
+    height: 195px;
+    aspect-ratio: 157.6 / 195;
+  }
+`;
+
 const StyledMovieItemContentWrapper = styled.div`
   &.--rating {
     display: flex;
@@ -60,33 +130,6 @@ const StyledMovieItemContentWrapper = styled.div`
     gap: 5px;
     height: 36px;
     margin-top: 20px;
-    .rating {
-      height: 100%;
-      width: fit-content;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 4px;
-      background-color: var(--black-cl);
-      border-radius: 51px;
-      border: 1px solid var(--black-cl-3);
-      padding: 6px 10px;
-      &__val {
-        margin-bottom: 5px;
-        display: flex;
-        align-items: center;
-        gap: 2px;
-        i {
-          &.active {
-            color: var(--red-cl);
-          }
-        }
-      }
-      &__content {
-        font-family: var(--ff-medium);
-        font-size: var(--fs-tag-md);
-      }
-    }
   }
   &.--trending {
     display: flex;
@@ -99,7 +142,6 @@ const StyledMovieItemContentWrapper = styled.div`
   .info {
     display: flex;
     align-items: center;
-    justify-content: space-between;
     height: 100%;
     width: fit-content;
     padding: 6px 10px 6px 6px;
@@ -107,11 +149,12 @@ const StyledMovieItemContentWrapper = styled.div`
     border: 1px solid var(--black-cl-3);
     border-radius: 51px;
     gap: 2px;
-    width: 100%;
     &.--center {
       justify-content: center;
+      width: 100%;
     }
     &__content {
+      margin-top: 3px;
       font-family: var(--ff-medium);
       font-size: var(--fs-tag-md);
       text-wrap: nowrap;
@@ -127,32 +170,6 @@ const StyledMovieItemContentWrapper = styled.div`
     &.--trending {
       height: 28px;
     }
-  }
-`;
-
-const StyledMovieItemSmall = styled(StyledMovieItem)`
-  height: 377px;
-  aspect-ratio: 283.6 / 377;
-  @media (max-width: ${breakpoints.desktop}) {
-    height: 308px;
-    aspect-ratio: 224 / 308;
-  }
-  @media (max-width: ${breakpoints.mobile}) {
-    height: 259px;
-    aspect-ratio: 181.6 / 259;
-  }
-`;
-
-const StyleMovieItemImageWrapperSmall = styled(StyledMovieItemImageWrapper)`
-  height: 281px;
-  aspect-ratio: 243.6 / 281;
-  @media (max-width: ${breakpoints.desktop}) {
-    height: 232px;
-    aspect-ratio: 192 / 232;
-  }
-  @media (max-width: ${breakpoints.mobile}) {
-    height: 195px;
-    aspect-ratio: 157.6 / 195;
   }
 `;
 
@@ -257,4 +274,40 @@ export const MovieItemSmall = ({
     </StyledMovieItemSmall>
   );
 };
+
+export const MovieItemSearch = ({
+  id,
+  image,
+  releaseDate,
+  title,
+  overview,
+  ...props
+}) => {
+  const imgPath = image
+    ? ENV.IMAGE_URL + image || ""
+    : IMAGE_NOTFOUND_PATH.poster;
+  const moviePath = PATHS.MOVIE.INDEX + "/" + id;
+  return (
+    <StyledMovieItemLink
+      to={moviePath}
+      className={classNames("moviesgroup__item --horizontal", props?.classes)}
+      {...props}
+    >
+      <StyleMovieItemImageWrapperSmall
+        className="moviesgroup__item-img"
+        to={moviePath}
+      >
+        <img src={imgPath} />
+      </StyleMovieItemImageWrapperSmall>
+      <StyledMovieItemContentWrapper className="moviesgroup__item-content">
+        <div className="info">
+          <h5 className="--h5 info__title">{title || ""}</h5>
+          <p className="info__para">{overview || ""}</p>
+          <p className="info__date">{releaseDate || ""}</p>
+        </div>
+      </StyledMovieItemContentWrapper>
+    </StyledMovieItemLink>
+  );
+};
+
 export default MovieItem;

@@ -17,6 +17,10 @@ img {
     }
 }
 
+i {
+    display: flex;
+}
+
 a {
     text-decoration: none;
     outline: 0;
@@ -171,5 +175,33 @@ textarea {
                 }
             }
         }
+    }
+}
+
+.rating {
+    height: 100%;
+    width: fit-content;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    background-color: var(--black-cl);
+    border-radius: 51px;
+    border: 1px solid var(--black-cl-3);
+    padding: 6px 10px;
+    &__val {
+        margin-bottom: 8px;
+        display: flex;
+        align-items: center;
+        gap: 2px;
+        i {
+            &.active {
+                color: var(--red-cl);
+            }
+        }
+    }
+    &__content {
+        font-family: var(--ff-medium);
+        font-size: var(--fs-tag-md);
     }
 }

@@ -28,10 +28,11 @@ const StyledDropdownWrapper = styled.div`
   height: 100%;
   width: 100%;
   position: relative;
+  padding: 5px;
   .header__dropdown-img {
     display: flex;
     align-items: center;
-    width: 25px;
+    height: 100%;
     aspect-ratio: 1 /1;
     margin-left: auto;
     border-radius: 100%;
@@ -48,7 +49,7 @@ const StyledDropdownWrapper = styled.div`
   }
   .header__dropdown-list {
     position: absolute;
-    top: 30px;
+    top: 88%;
     right: 0;
     max-width: 300px;
     visibility: 0;
@@ -106,6 +107,9 @@ const StyledDropdownWrapper = styled.div`
           gap: 5px;
           color: var(--black-cl);
           transition: var(--transition-duration);
+          i {
+            margin-top: 2px;
+          }
         }
       }
     }

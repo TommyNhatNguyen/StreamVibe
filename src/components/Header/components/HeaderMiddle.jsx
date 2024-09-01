@@ -12,6 +12,7 @@ import useDebounce from "../../../hooks/useDebounce";
 import ComponentLoading from "../../ComponentLoading";
 import { formatDate } from "../../../utils/format";
 import { breakpoints } from "../../../constants/media";
+import { MovieItemSearch } from "../../MovieItem";
 
 const StyledHeaderMiddleWrapper = styled.div`
   height: 70%;
@@ -60,10 +61,8 @@ const StyledHeaderMiddleWrapper = styled.div`
           transition: var(--transition-duration);
           text-align: center;
           text-wrap: nowrap;
-        }
-        &.active,
-        &:hover {
-          a {
+          &.active,
+          &:hover {
             background-color: var(--black-cl);
             color: var(--white-cl);
           }
@@ -168,6 +167,15 @@ const StyledHeaderSearchWrapper = styled.div`
     border-radius: 12px;
     margin-top: 12px;
     padding: 12px;
+    &::-webkit-scrollbar {
+      width: 5px;
+    }
+    &::-webkit-scrollbar-track {
+      background: var(--white-cl);
+    }
+    &::-webkit-scrollbar-thumb {
+      background: var(--black-cl);
+    }
     a {
       &:not(:last-child) {
         margin-bottom: 12px;
@@ -256,7 +264,7 @@ const HeaderMiddle = () => {
             </picture>
           </Link>
           <ul className="nav">
-            <li className="nav__item active">
+            <li className="nav__item">
               <NavLink end to={PATHS.HOME}>
                 Home
               </NavLink>
@@ -315,7 +323,7 @@ const HeaderMiddle = () => {
                     } = movie || {};
                     const formatReleaseDate = formatDate(releaseDate || 0);
                     return (
-                      <CategoryGroup.ItemSearch
+                      <MovieItemSearch
                         key={id || index}
                         id={id}
                         image={image}

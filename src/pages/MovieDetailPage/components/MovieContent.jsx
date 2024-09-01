@@ -10,20 +10,118 @@ import { Empty } from "antd";
 import { AntdWrapper } from "../../../components/StyledComponents/AntdWrapper";
 import { breakpoints } from "../../../constants/media";
 import styled from "styled-components";
+import Button from "../../../components/Button";
+import Textbox from "../../../components/Textbox";
 
 export const MovieContentWrapper = styled.div`
   display: grid;
   grid-template-columns: 2.03fr 1fr;
   gap: 20px;
   .moviecontent__content {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    .moviecontent__content-row {
+      width: 100%;
+      background-color: var(--black-cl-2);
+      border: 1px solid var(--black-cl-3);
+      border-radius: 12px;
+      padding: 50px;
+      &:not(:last-child) {
+        margin-bottom: 30px;
+      }
+      .title-wrapper {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        .title {
+          font-family: var(--ff-medium);
+        }
+        .btnsecond {
+          gap: 4px;
+          .icon {
+            height: 15px;
+            aspect-ratio: 1/1;
+          }
+        }
+      }
+      .paragraph {
+        font-family: var(--ff-medium);
+        color: var(--white-cl);
+      }
+      .castlist {
+        width: 100%;
+        margin-top: 30px;
+        overflow: hidden;
+        &__img {
+          height: 109px;
+          aspect-ratio: 102.13 / 109;
+          list-style-type: none;
+          border-radius: 12px;
+          overflow: hidden;
+          a {
+            height: 100%;
+            width: 100%;
+            img {
+              object-fit: cover;
+            }
+          }
+        }
+      }
+      .reviews-wrapper {
+        margin-top: 40px;
+        .review {
+          height: 265px;
+          aspect-ratio: 468/265;
+          padding: 40px;
+          border-radius: 12px;
+          background-color: var(--black-cl-4);
+          border: 1px solid var(--black-cl-3);
+          list-style-type: none;
+          overflow-y: scroll;
+          &::-webkit-scrollbar {
+            width: 5px;
+          }
+          &::-webkit-scrollbar-track {
+            background: var(--black-cl-3);
+          }
+          &::-webkit-scrollbar-thumb {
+            background: var(--black-cl-2);
+          }
+          &__title {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 10px;
+            .title-wrapper {
+              display: block;
+              .title {
+                font-family: var(--ff-medium);
+              }
+              .paragraph {
+                font-family: var(--ff-medium);
+                color: var(--gray-cl);
+                margin-top: initial;
+              }
+            }
+            .rating {
+              max-height: 39px;
+            }
+          }
+          &__paragaph {
+            margin-top: 20px;
+          }
+        }
+      }
+    }
   }
   .moviecontent__info {
-    flex-shrink: 0;
     padding: 50px;
     border-radius: 12px;
     background-color: var(--black-cl-2);
     border: 1px solid var(--black-cl-3);
-    &-row {
+    overflow: hidden;
+    .moviecontent__info-row {
       &:not(:last-child) {
         margin-bottom: 30px;
       }
@@ -31,76 +129,51 @@ export const MovieContentWrapper = styled.div`
         display: flex;
         align-items: center;
         gap: 4px;
+        margin-bottom: 14px;
         .icon {
-          height: 18px;
-          aspect-ratio: 18 / 18;
-          img {
-            object-fit: cover;
-          }
-        }
-        .title {
-          font-family: var(--ff-medium);
-          color: var(--gray-cl);
+          height: 24px;
+          aspect-ratio: 1/ 1;
+          margin-bottom: 4px;
         }
       }
       .content-wrapper {
-        margin-top: 14px;
         .taglist {
           display: flex;
-          align-items: flex-start;
+          align-items: center;
           flex-wrap: wrap;
           gap: 10px;
-          max-height: 250px;
+          max-height: 300px;
           overflow-y: scroll;
           &::-webkit-scrollbar {
-            width: 3px;
+            width: 5px;
           }
           &::-webkit-scrollbar-track {
-            background: var(--black-cl);
+            background: var(--black-cl-2);
           }
           &::-webkit-scrollbar-thumb {
             background: var(--black-cl-3);
           }
           &__tag {
-            height: 43px;
+            background-color: var(--black-cl);
+            border: 1px solid var(--black-cl-3);
+            border-radius: 8px;
             padding: 8px 14px;
             font-family: var(--ff-medium);
             color: var(--white-cl);
-            border-radius: 8px;
-            background-color: var(--black-cl);
-            border: 1px solid var(--black-cl-3);
-          }
-        }
-        .paragraph {
-          font-family: var(--ff-medium);
-          color: var(--white-cl);
-        }
-        .rating-wrapper {
-          display: flex;
-          align-items: center;
-          gap: 20px;
-          max-height: 96px;
-          &__item {
-            aspect-ratio: 199.5 / 96;
-            height: 100%;
-            border-radius: 8px;
-            padding: 16px;
-            border: 1px solid var(--black-cl-3);
-            background-color: var(--black-cl);
           }
         }
         .avatar-wrapper {
+          display: flex;
+          align-items: center;
+          gap: 5px;
           height: 88px;
           padding: 14px;
           background-color: var(--black-cl);
           border: 1px solid var(--black-cl-3);
           border-radius: 8px;
-          display: flex;
-          align-items: center;
-          gap: 10px;
           &__img {
-            aspect-ratio: 56.56 / 60;
             height: 60px;
+            aspect-ratio: 56.56 / 60;
             border-radius: 8px;
             overflow: hidden;
             img {
@@ -108,21 +181,168 @@ export const MovieContentWrapper = styled.div`
             }
           }
           &__content {
+            font-family: var(--ff-medium);
             .title {
-              font-family: var(--ff-medium);
               color: var(--white-cl);
+              font-size: var(--fs-body);
             }
             .paragraph {
-              color: var(--gray-cl);
+              margin-top: initial;
+            }
+          }
+        }
+        .rating-wrapper {
+          display: flex;
+          align-items: center;
+          gap: 20px;
+          flex-wrap: wrap;
+          &__item {
+            height: 96px;
+            aspect-ratio: 199.5 / 96;
+            border-radius: 8px;
+            background-color: var(--black-cl);
+            border: 1px solid var(--black-cl-3);
+            padding: 16px;
+            .rating {
+              height: initial;
+              background-color: initial;
+              border: initial;
+              border-radius: initial;
+              padding: initial;
             }
           }
         }
       }
     }
   }
-  @media (max-width: ${breakpoints.desktop}px) {
+  @media (max-width: ${breakpoints.desktop}) {
+    .moviecontent__content {
+      .moviecontent__content-row {
+        padding: 40px;
+        &:not(:last-child) {
+          margin-bottom: 20px;
+        }
+        .title-wrapper {
+          .btnsecond {
+            .icon {
+              height: 12px;
+            }
+          }
+        }
+        .castlist {
+          margin-top: 20px;
+          &__img {
+            height: 89px;
+            aspect-ratio: 87.5 / 89;
+          }
+        }
+        .reviews-wrapper {
+          margin-top: 30px;
+          .review {
+            height: 233;
+            aspect-ratio: 377 / 233;
+            padding: 30px;
+            &__title {
+              .rating {
+                max-height: 29px;
+              }
+            }
+            &__paragaph {
+              margin-top: 16px;
+            }
+          }
+        }
+      }
+    }
+    .moviecontent__info {
+      padding: 40px;
+      .moviecontent__info-row {
+        &:not(:last-child) {
+          margin-bottom: 24px;
+        }
+        .title-wrapper {
+          margin-bottom: 10px;
+          .icon {
+            height: 20px;
+          }
+        }
+        .content-wrapper {
+          .taglist {
+            &__tag {
+              padding: 6px 12px;
+            }
+          }
+          .avatar-wrapper {
+            display: flex;
+            align-items: center;
+            gap: 3px;
+            height: 74px;
+            padding: 12px;
+            &__img {
+              height: 50px;
+              aspect-ratio: 47 / 50;
+              border-radius: 8px;
+            }
+          }
+        }
+        .rating-wrapper {
+          gap: 16px;
+          &__item {
+            height: 77px;
+            aspect-ratio: 160 / 77;
+            padding: 15px;
+          }
+        }
+      }
+    }
   }
-  @media (max-width: ${breakpoints.mobile}px) {
+  @media (max-width: ${breakpoints.mobile}) {
+    grid-template-columns: 1fr;
+    .moviecontent__content {
+      .moviecontent__content-row {
+        padding: 24px;
+        &:not(:last-child) {
+          margin-bottom: 20px;
+        }
+        .castlist {
+          margin-top: 16px;
+          &__img {
+            height: 75px;
+            aspect-ratio: 70 / 75;
+          }
+        }
+        .reviews-wrapper {
+          margin-top: 24px;
+          .review {
+            height: 214;
+            aspect-ratio: 310 / 214;
+            padding: 24px;
+          }
+        }
+      }
+    }
+    .moviecontent__info {
+      padding: 24px;
+      .moviecontent__info-row {
+        &:not(:last-child) {
+          margin-bottom: 20px;
+        }
+        .content-wrapper {
+          .avatar-wrapper {
+            gap: 8px;
+            height: 70px;
+            padding: 10px;
+          }
+        }
+        .rating-wrapper {
+          &__item {
+            height: 68px;
+            aspect-ratio: 147 / 68;
+            padding: 12px;
+          }
+        }
+      }
+    }
   }
 `;
 
@@ -230,7 +450,7 @@ const MovieContent = ({
                 <div className="moviecontent__content-row">
                   <div className="title-wrapper">
                     <p className="title">Reviews</p>
-                    <a href="#" className="btnsecond">
+                    <Button variant="second" href="#" className="btn btnsecond">
                       <div className="icon">
                         <img
                           src="/assets/images/plus-icon.png"
@@ -238,11 +458,11 @@ const MovieContent = ({
                         />
                       </div>
                       Add Your Review
-                    </a>
+                    </Button>
                   </div>
                   {movieReviews?.length > 0 && !apiLoading ? (
                     <OwlCarousel
-                      className="castlist owl-carousel reviews-wrapper"
+                      className="owl-carousel reviews-wrapper"
                       autoWidth={true}
                       nav={false}
                       margin={20}
@@ -295,7 +515,7 @@ const MovieContent = ({
                                 </span>
                               </div>
                             </div>
-                            <p className="paragaph">{content}</p>
+                            <p className="review__paragaph">{content}</p>
                           </li>
                         );
                       })}
@@ -316,7 +536,7 @@ const MovieContent = ({
                         alt="language"
                       />
                     </div>
-                    <h5 className="title --h5">Available Languages</h5>
+                    <span className="title">Available Languages</span>
                   </div>
                   <div className="content-wrapper">
                     {translations?.length > 0 && !apiLoading ? (

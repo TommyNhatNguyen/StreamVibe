@@ -141,7 +141,7 @@ const StyledModalWrapper = styled.div`
 const StyledCloseButton = styled.a`
   position: absolute;
   right: 10px;
-  top: -11px;
+  top: 10px;
   display: flex;
   cursor: pointer;
   i {
