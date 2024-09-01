@@ -3,7 +3,7 @@ import { breakpoints } from "../../constants/media";
 export const InputWrapper = styled.div`
   width: 100%;
   .formgroup__label {
-    color: var(--white-cl);
+    /* color: var(--white-cl); */
     font-family: var(--ff-semibold);
     margin-bottom: 16px;
   }
@@ -34,11 +34,50 @@ export const InputWrapper = styled.div`
     margin-top: 5px;
     color: var(--red-cl);
   }
+
   &.--checkbox {
-    gap: 14px;
-    .checkbox-input {
-      width: 28px;
-      height: 28px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    .checkbox__group {
+      position: relative;
+      height: 15px;
+      width: 15px;
+      input {
+        margin: initial;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        z-index: 10;
+        opacity: 0;
+        visibility: 0;
+        &:checked {
+          + .checkbox__group-icon {
+            transform: translate(-50%, -50%) scale(1);
+          }
+        }
+      }
+      &::after {
+        content: "";
+        height: 100%;
+        width: 100%;
+        border: 1px solid var(--black-cl);
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        border-radius: 3px;
+      }
+      &-icon {
+        display: flex;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%) scale(0);
+        pointer-events: none;
+        transition: var(--transition-duration);
+      }
     }
     .checkbox-label {
       border-color: var(--white-cl);

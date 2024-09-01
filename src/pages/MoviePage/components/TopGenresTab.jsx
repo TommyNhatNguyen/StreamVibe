@@ -6,14 +6,10 @@ import styled from "styled-components";
 import { AntdWrapper } from "../../../components/StyledComponents/AntdWrapper";
 import ComponentLoading from "../../../components/ComponentLoading";
 import { Empty } from "antd";
-
-const CategoryGroupWrapper = styled.div`
-  min-height: 404px;
-  overflow: hidden;
-  @media (max-width: 991.98px) {
-    min-height: 330px;
-  }
-`;
+import { StyledMovieGroupWrapper } from "../../../components/StyledComponents/StyledMovieGroupWrapper";
+import MovieItem from "../../../components/MovieItem";
+import Textbox from "../../../components/Textbox";
+import Button from "../../../components/Button";
 
 const TopGenresTab = ({ moviesByGenres, genres, loading }) => {
   const [selectedGenre, setSelectedGenre] = useState(genres?.[0]?.id);
@@ -35,82 +31,64 @@ const TopGenresTab = ({ moviesByGenres, genres, loading }) => {
   useEffect(() => {
     setSelectedGenre(genres?.[0]?.id);
   }, [genres]);
-  const flik = useRef();
   useEffect(() => {
-    let item = document?.querySelector(".categroup__item.--mustwatch");
-    const explore = document.querySelector(".explore.--mustwatch");
+    let item = document?.querySelector(".moviesgroup__item");
+    const explore = document?.querySelector(".explore.--toprated");
     if (item && moviesByGenres?.length > 0 && explore && !loading) {
-      flik.current = useFlickity(explore);
+      useFlickity(explore);
     }
-    return () => {
-      if (flik.current) {
-        flik.current.destroy();
-      }
-    };
   }, [moviesByGenres, selectedGenre, loading]);
   return (
-    <div className="explore --mustwatch">
+    <div className="explore --toprated">
       {/* Textbox group */}
-      <div className="explore__textboxgroup textbox --left">
-        <div className="textbox__content --tabs">
+      <Textbox className="textbox">
+        <Textbox.Content className="textbox__content">
           <h2 className="textbox__content-heading --h2 --heading">
             Popular Top 20 In Genres 🔥
           </h2>
-          <ul className="textbox__tabs" style={{ position: "relative" }}>
-            {loading || (genreLoading && <ComponentLoading />)}
-            {genres?.length > 0 && !loading && !genreLoading ? (
-              genres?.map((item, index) => {
-                const { id, name } = item || {};
-                return (
-                  <li
-                    key={id + index + name}
-                    className={classNames("textbox__tabs-item", {
-                      active: selectedGenre === id,
-                    })}
-                    onClick={(e) => _onSelectGenres(e, id)}
-                  >
-                    <a href="#">{name || ""}</a>
-                  </li>
-                );
-              })
-            ) : (
-              <AntdWrapper>
-                <Empty description="Genres not found" />
-              </AntdWrapper>
-            )}
-          </ul>
-        </div>
-      </div>
+        </Textbox.Content>
+        <Textbox.ButtonControlGroup className="textbox__btngroup">
+          <Button
+            variant="control"
+            className="textbox__btngroup-btncontrol btn --btncontrol --arrow-left"
+          >
+            <img srcSet="./assets/images/arrow-left-icon.png 2x" />
+          </Button>
+          <Button
+            variant="control"
+            className="textbox__btngroup-btncontrol btn --btncontrol  --arrow-right"
+          >
+            <img srcSet="./assets/images/arrow-left-icon.png 2x" />
+          </Button>
+        </Textbox.ButtonControlGroup>
+      </Textbox>
       {/* Category group*/}
-      <CategoryGroupWrapper style={{ position: "relative" }}>
-        {loading && <ComponentLoading />}
-        {renderMovies?.length > 0 && !loading && (
-          <CategoryGroup classes="--mustwatch">
-            {renderMovies?.map((movie, index) => {
-              const {
-                id,
-                vote_average: voteAverage,
-                vote_count: voteCount,
-                poster_path: image,
-              } = movie || {};
+      {loading && <ComponentLoading />}
+      {renderMovies?.length > 0 && !loading && (
+        <StyledMovieGroupWrapper className="explore__moviesgroup moviesgroup">
+          {renderMovies?.map((movie, index) => {
+            const {
+              id,
+              vote_average: voteAverage,
+              vote_count: voteCount,
+              poster_path: image,
+            } = movie || {};
 
-              return (
-                <CategoryGroup.ItemMustWatch
-                  key={id + index}
-                  voteAverage={voteAverage}
-                  voteCount={voteCount}
-                  image={image}
-                  id={id}
-                />
-              );
-            })}
-          </CategoryGroup>
-        )}
-      </CategoryGroupWrapper>
-
+            return (
+              <MovieItem
+                key={id + index}
+                voteAverage={voteAverage}
+                voteCount={voteCount}
+                image={image}
+                id={id}
+              />
+            );
+          })}
+        </StyledMovieGroupWrapper>
+      )}
       {/* Progress bar */}
       {renderMovies?.length > 0 && !loading && (
-        <div className="explore__progressbar">
+        <div className="explore__progressbar progressbar">
           <span></span>
         </div>
       )}

@@ -10,6 +10,7 @@ import {
 } from "../../../utils/validate";
 import { message } from "antd";
 import { useAuthContext } from "../../../context/AuthContext";
+import Button from "../../Button";
 
 const RegisterForm = () => {
   const {
@@ -72,9 +73,14 @@ const RegisterForm = () => {
               );
             }}
           />
-          <button type="submit" className="btnsubmit">
+          <Button
+            as="button"
+            variant="second"
+            type="submit"
+            className="btnsubmit"
+          >
             Register
-          </button>
+          </Button>
         </form>
       </div>
       <div className="modal__wrapper-break">

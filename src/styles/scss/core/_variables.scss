@@ -3,7 +3,7 @@
     --max-width-page: 1920px;
     --max-width-container: calc(1600px + var(--pd-container) * 2);
     --pd-container: 160px;
-    --header-height: 150px;
+    --header-height: 170px;
     --pd-section: 150px;
     --gutter: 30px;
     /* --- FONTS ---*/
@@ -47,7 +47,7 @@
         --max-width-container: calc(1280px + var(--pd-container) * 2);
         --pd-container: 80px;
         --pd-section: 150px;
-        --header-height: 128px;
+        --header-height: 139px;
         --fs-h1: 4.8rem;
         --fs-h1-md: 2.8rem;
         --fs-h1-sm: 3rem;
@@ -66,11 +66,11 @@
         --fs-ep: 2.4rem;
     }
 
-    @include sm {
+    @include xs {
         --max-width-container: initial;
         --pd-container: 14px;
         --pd-section: 100px;
-        --header-height: 110px;
+        --header-height: 143px;
         --fs-h1: 2.8rem;
         --fs-h1-md: 2.4rem;
         --fs-h1-sm: 2.4rem;

@@ -6,6 +6,7 @@ import { REGEX, loginValidate } from "../../../utils/validate";
 import { useAuthContext } from "../../../context/AuthContext";
 import { message } from "antd";
 import { sessionMethod } from "../../../utils/sessionMethod";
+import Button from "../../Button";
 
 const LoginForm = () => {
   const {
@@ -51,9 +52,14 @@ const LoginForm = () => {
             })}
             error={errors.password?.message}
           />
-          <button type="submit" className="btnsubmit">
+          <Button
+            as="button"
+            variant="second"
+            type="submit"
+            className="btn btnsubmit"
+          >
             Login
-          </button>
+          </Button>
         </form>
       </div>
       <div className="modal__wrapper-break">

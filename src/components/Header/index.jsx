@@ -8,13 +8,20 @@ import { PATHS } from "../../constants/paths";
 import { useAuthContext } from "../../context/AuthContext";
 import HeaderTop from "./components/HeaderTop";
 import HeaderMiddle from "./components/HeaderMiddle";
+import styled from "styled-components";
+import { breakpoints } from "../../constants/media";
+
+const StyledHeaderWrapper = styled.header`
+  height: var(--header-height);
+  border-bottom: 1px solid var(--black-cl-3);
+`;
 
 const Header = () => {
   return (
-    <header className="header active">
+    <StyledHeaderWrapper className="header active">
       <HeaderTop />
       <HeaderMiddle />
-    </header>
+    </StyledHeaderWrapper>
   );
 };
 

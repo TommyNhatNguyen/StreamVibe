@@ -5,53 +5,60 @@ import { formatDate } from "../../../utils/format";
 import { AntdWrapper } from "../../../components/StyledComponents/AntdWrapper";
 import ComponentLoading from "../../../components/ComponentLoading";
 import { Empty } from "antd";
+import Textbox from "../../../components/Textbox";
+import Button from "../../../components/Button";
+import { MovieItemSmall } from "../../../components/MovieItem";
+import { StyledMovieGroupWrapper } from "../../../components/StyledComponents/StyledMovieGroupWrapper";
 
 const NewTab = ({ moviesNowPlaying, loading }) => {
   useEffect(() => {
-    if (moviesNowPlaying?.length > 0 && !loading) {
-      const explores = document.querySelector(".explore.--trending.--new");
-      useFlickity(explores);
+    let item = document?.querySelector(".moviesgroup__item");
+    const explore = document?.querySelector(".explore.--new");
+    if (item && moviesNowPlaying?.length > 0 && explore && !loading) {
+      useFlickity(explore);
     }
   }, [moviesNowPlaying, loading]);
   return (
-    <div className="explore --trending --new" style={{ position: "relative" }}>
+    <div className="explore --new">
       {/* Textbox group */}
-      <div className="explore__textboxgroup textbox --left">
-        <div className="textbox__content">
+      {/* Textbox group */}
+      <Textbox className="textbox">
+        <Textbox.Content className="textbox__content">
           <h2 className="textbox__content-heading --h2 --heading">
             New Releases 📣
           </h2>
-        </div>
-        <ul className="textbox__btngroup">
-          <li className="textbox__btngroup-btncontrol btncontrol --arrow-left">
+        </Textbox.Content>
+        <Textbox.ButtonControlGroup className="textbox__btngroup">
+          <Button
+            variant="control"
+            className="textbox__btngroup-btncontrol btn --btncontrol --arrow-left"
+          >
             <img srcSet="./assets/images/arrow-left-icon.png 2x" />
-          </li>
-          <li className="textbox__btngroup-btncontrol btncontrol --arrow-right">
+          </Button>
+          <Button
+            variant="control"
+            className="textbox__btngroup-btncontrol btn --btncontrol  --arrow-right"
+          >
             <img srcSet="./assets/images/arrow-left-icon.png 2x" />
-          </li>
-        </ul>
-      </div>
+          </Button>
+        </Textbox.ButtonControlGroup>
+      </Textbox>
       {/* Category group*/}
       {loading && <ComponentLoading />}
       {moviesNowPlaying?.length > 0 && !loading ? (
-        <CategoryGroup classes="--trending">
+        <StyledMovieGroupWrapper className="explore__moviesgroup moviesgroup">
           {moviesNowPlaying?.map((movie, index) => {
-            const {
-              id,
-              poster_path: image,
-              release_date: releaseDate,
-            } = movie || {};
-            const formatReleaseDate = formatDate(releaseDate);
+            const { id, poster_path: image, release_date } = movie || {};
             return (
-              <CategoryGroup.ItemNewRelease
+              <MovieItemSmall
                 key={id + index}
                 image={image}
-                releaseDate={formatReleaseDate}
                 id={id}
+                releaseDate={release_date}
               />
             );
           })}
-        </CategoryGroup>
+        </StyledMovieGroupWrapper>
       ) : (
         <AntdWrapper>
           <Empty description="Movies not found" />
@@ -59,7 +66,7 @@ const NewTab = ({ moviesNowPlaying, loading }) => {
       )}
       {/* Progress bar */}
       {moviesNowPlaying?.length > 0 && !loading && (
-        <div className="explore__progressbar">
+        <div className="explore__progressbar progressbar">
           <span></span>
         </div>
       )}

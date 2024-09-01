@@ -3,6 +3,27 @@ import { useAuthContext } from "../../../context/AuthContext";
 import { MODAL_TYPES } from "../../../constants/modal";
 import styled from "styled-components";
 
+const StyledHeaderTopWrapper = styled.div`
+  height: 30%;
+  border-bottom: 1px solid var(--black-cl-3);
+  .container {
+    height: 100%;
+  }
+  .header__top-wrapper {
+    height: 100%;
+    .header__cta {
+      height: 100%;
+
+      &-auth {
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+      }
+    }
+  }
+`;
+
 const StyledDropdownWrapper = styled.div`
   height: 100%;
   width: 100%;
@@ -106,9 +127,9 @@ const HeaderTop = () => {
     handleShowModal(modalType);
   };
   return (
-    <div className="header-top">
+    <StyledHeaderTopWrapper className="header__top">
       <div className="container">
-        <div className="header-top__wrapper">
+        <div className="header__top-wrapper">
           {/* CTA Group */}
           {!isLogin && (
             <div className="header__cta">
@@ -160,25 +181,25 @@ const HeaderTop = () => {
                 <ul className="dropdown-menu">
                   <li>
                     <a href="#" className="item">
-                      <i class="bi bi-bookmark-star"></i>
+                      <i className="bi bi-bookmark-star"></i>
                       <span>My favorites</span>
                     </a>
                   </li>
                   <li>
                     <a href="#" className="item">
-                      <i class="bi bi-list"></i>
+                      <i className="bi bi-list"></i>
                       <span>My watchlist</span>
                     </a>
                   </li>
                   <li>
                     <a href="#" className="item">
-                      <i class="bi bi-star"></i>
+                      <i className="bi bi-star"></i>
                       <span>My ratings</span>
                     </a>
                   </li>
                   <li>
                     <a href="#" className="item logout" onClick={handleLogout}>
-                      <i class="bi bi-box-arrow-right"></i>
+                      <i className="bi bi-box-arrow-right"></i>
                       <span>Logout</span>
                     </a>
                   </li>
@@ -188,7 +209,7 @@ const HeaderTop = () => {
           )}
         </div>
       </div>
-    </div>
+    </StyledHeaderTopWrapper>
   );
 };
 

@@ -1,13 +1,65 @@
 import React from "react";
+import Textbox from "../../../components/Textbox";
+import Button from "../../../components/Button";
+import styled from "styled-components";
+import { breakpoints } from "../../../constants/media";
+
+const StyledBackDrop = styled.div`
+  height: 100%;
+  width: 100%;
+  position: relative;
+  &:after {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: linear-gradient(to top, var(--black-cl), transparent);
+    width: 100%;
+    height: 100%;
+  }
+  &::before {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: linear-gradient(to bottom, var(--black-cl), transparent);
+    width: 100%;
+    height: 100%;
+  }
+  .hero__backdrop-img {
+    display: flex;
+    opacity: 0.4;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  @media (max-width: ${breakpoints.desktop}) {
+    .hero__backdrop-img {
+      top: 31%;
+      svg {
+        height: 300px;
+        width: 300px;
+      }
+    }
+  }
+`;
+
+const StyledButton = styled(Button)`
+  gap: 4px;
+`;
 
 const HeroSection = () => {
   return (
     <section className="hero" id="hero">
       {/* Backdrop */}
-      <div
+      <StyledBackDrop
         className="hero__backdrop"
         style={{
           backgroundImage: "url(./assets/images/home/hero-banner.jpg)",
+          backgroundAttachment: "fixed",
         }}
       >
         <div className="hero__backdrop-img">
@@ -90,10 +142,10 @@ const HeroSection = () => {
             </defs>
           </svg>
         </div>
-      </div>
+      </StyledBackDrop>
       {/* Textbox */}
-      <div className="textbox --center">
-        <div className="textbox__content">
+      <Textbox variant="center" className="textbox">
+        <Textbox.Content className="textbox__content --center">
           <h1 className="textbox__content-heading --h1 --heading">
             The Best Streaming Experience
           </h1>
@@ -105,14 +157,14 @@ const HeroSection = () => {
             can also create your own watchlists, so you can easily find the
             content you want to watch.
           </p>
-        </div>
-        <a href="#" className="textbox__button btnmain">
+        </Textbox.Content>
+        <StyledButton className="btn btnmain">
           <div className="textbox__button-icon icon">
             <img srcSet="./assets/images/start-btn-icon.png 2x" />
           </div>
           <span className="textbox__button-text">Start Watching Now</span>
-        </a>
-      </div>
+        </StyledButton>
+      </Textbox>
     </section>
   );
 };

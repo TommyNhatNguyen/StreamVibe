@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { FAQ } from "../../constants/general";
 import Accordion from "../Accordion";
+import Button from "../Button";
+import Textbox from "../Textbox";
 
 const FaqComponent = () => {
   const [isShow, setIsShow] = useState([]);
@@ -15,8 +17,8 @@ const FaqComponent = () => {
     <section className="faq --pd-b" id="faq">
       <div className="container">
         {/* Textbox group */}
-        <div className="faq__textboxgroup textbox --left">
-          <div className="textbox__content">
+        <Textbox className="textbox">
+          <Textbox.Content className="textbox__content">
             <h2 className="textbox__content-heading --h2 --heading">
               Frequently Asked Questions
             </h2>
@@ -24,13 +26,11 @@ const FaqComponent = () => {
               Got questions? We've got answers! Check out our FAQ section to
               find answers to the most common questions about StreamVibe.{" "}
             </p>
-          </div>
-          <a href="#" className="textbox__btn btnmain">
-            Ask a Question
-          </a>
-        </div>
+          </Textbox.Content>
+          <Button className="btn btnmain">Ask a Question</Button>
+        </Textbox>
         {/* Accordion */}
-        <div className="accordion-group">
+        <div className="faq__accordiongroup accordiongroup">
           <Accordion>
             {FAQ.slice(0, 4).map((content, index) => {
               const number = index + 1;

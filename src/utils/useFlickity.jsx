@@ -1,21 +1,23 @@
 function useFlickity(element) {
   if (element) {
-    const exploreCate = element?.querySelector(".explore__categroup");
+    const exploreGroup =
+      element?.querySelector(".explore__moviesgroup") ||
+      element?.querySelector(".explore__categroup");
     const prevButton = element?.querySelector(
-      ".textbox__btngroup-btncontrol.btncontrol.--arrow-left"
+      ".textbox__btngroup-btncontrol.--btncontrol.--arrow-left"
     );
     const nextButton = element?.querySelector(
-      ".textbox__btngroup-btncontrol.btncontrol.--arrow-right"
+      ".textbox__btngroup-btncontrol.--btncontrol.--arrow-right"
     );
-    const progressBar = element?.querySelector(".explore__progressbar span");
-    const flktyDots = element?.querySelector(".flickity-page-dots");
-    if (exploreCate) {
-      const flkty = new Flickity(exploreCate, {
+    const progressBar = element?.querySelector(".progressbar span");
+    if (exploreGroup) {
+      const flkty = new Flickity(exploreGroup, {
         // options
-        cellAlign: "left",
         contain: true,
+        cellAlign: "left",
         pageDots: false,
         prevNextButtons: false,
+        freeScroll: true,
       });
       prevButton?.addEventListener("click", () => {
         flkty.previous(true);
@@ -27,9 +29,7 @@ function useFlickity(element) {
         progress = Math.max(0, Math.min(1, progress));
         progressBar.style.width = progress * 100 + "%";
       });
-      if (flktyDots) {
-        prevButton?.insertAdjacentElement("afterend", flktyDots);
-      }
+
       return flkty;
     }
   }

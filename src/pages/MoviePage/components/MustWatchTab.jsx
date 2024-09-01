@@ -4,41 +4,57 @@ import useFlickity from "../../../utils/useFlickity";
 import ComponentLoading from "../../../components/ComponentLoading";
 import { Empty } from "antd";
 import { AntdWrapper } from "../../../components/StyledComponents/AntdWrapper";
+import Textbox from "../../../components/Textbox";
+import Button from "../../../components/Button";
+import { StyledMovieGroupWrapper } from "../../../components/StyledComponents/StyledMovieGroupWrapper";
+import MovieItem from "../../../components/MovieItem";
 
-const MustWatchTab = ({ moviesTopRated, loading, title = "" }) => {
+const MustWatchTab = ({ moviesTopRated, loading }) => {
   useEffect(() => {
     if (moviesTopRated?.length > 0 && !loading) {
-      const explores = document.querySelectorAll(
-        ".explore.--mustwatch.--toprated"
-      );
+      const explores = document.querySelectorAll(".explore.--mustwatch");
       explores.forEach((item) => {
         useFlickity(item);
       });
     }
   }, [moviesTopRated, loading]);
+  useEffect(() => {
+    let item = document?.querySelector(".moviesgroup__item");
+    const explore = document?.querySelector(".explore.--mustwatch");
+    if (item && moviesTopRated?.length > 0 && explore && !loading) {
+      useFlickity(explore);
+    }
+  }, [moviesTopRated, loading]);
   return (
-    <div
-      className="explore --mustwatch --toprated"
-      style={{ position: "relative" }}
-    >
+    <div className="explore --mustwatch">
       {/* Textbox group */}
-      <div className="explore__textboxgroup textbox --left">
-        <div className="textbox__content">
-          <h2 className="textbox__content-heading --h2 --heading">{title}</h2>
-        </div>
-        <ul className="textbox__btngroup">
-          <li className="textbox__btngroup-btncontrol btncontrol --arrow-left">
-            <img srcSet="/assets/images/arrow-left-icon.png 2x" />
-          </li>
-          <li className="textbox__btngroup-btncontrol btncontrol --arrow-right">
-            <img srcSet="/assets/images/arrow-left-icon.png 2x" />
-          </li>
-        </ul>
-      </div>
+      <Textbox className="textbox">
+        <Textbox.Content className="textbox__content">
+          <h2 className="textbox__content-heading --h2 --heading">
+            Must - Watch Movies 🤌
+          </h2>
+        </Textbox.Content>
+        <Textbox.ButtonControlGroup className="textbox__btngroup">
+          <Button
+            variant="control"
+            className="textbox__btngroup-btncontrol btn --btncontrol --arrow-left"
+          >
+            <img srcSet="./assets/images/arrow-left-icon.png 2x" />
+          </Button>
+          <Button
+            variant="control"
+            className="textbox__btngroup-btncontrol btn --btncontrol  --arrow-right"
+          >
+            <img srcSet="./assets/images/arrow-left-icon.png 2x" />
+          </Button>
+        </Textbox.ButtonControlGroup>
+      </Textbox>
       {/* Category group*/}
       {loading && <ComponentLoading />}
-      {moviesTopRated?.length > 0 && !loading ? (
-        <CategoryGroup classes="--mustwatch">
+      {/* Category group*/}
+      {loading && <ComponentLoading />}
+      {moviesTopRated?.length > 0 && !loading && (
+        <StyledMovieGroupWrapper className="explore__moviesgroup moviesgroup">
           {moviesTopRated?.map((movie, index) => {
             const {
               id,
@@ -48,8 +64,8 @@ const MustWatchTab = ({ moviesTopRated, loading, title = "" }) => {
             } = movie || {};
 
             return (
-              <CategoryGroup.ItemMustWatch
-                key={id + index + image}
+              <MovieItem
+                key={id + index}
                 voteAverage={voteAverage}
                 voteCount={voteCount}
                 image={image}
@@ -57,15 +73,11 @@ const MustWatchTab = ({ moviesTopRated, loading, title = "" }) => {
               />
             );
           })}
-        </CategoryGroup>
-      ) : (
-        <AntdWrapper>
-          <Empty description="Movies not found" />
-        </AntdWrapper>
+        </StyledMovieGroupWrapper>
       )}
       {/* Progress bar */}
       {moviesTopRated?.length > 0 && !loading && (
-        <div className="explore__progressbar">
+        <div className="explore__progressbar progressbar">
           <span></span>
         </div>
       )}
