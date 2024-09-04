@@ -51,6 +51,7 @@ export const MovieContextWrapper = ({ children }) => {
             title: movieTitle,
             overview: movieOverview,
             backdrop_path: movieBackdrop,
+            id: movieId,
           } = movie || {};
           const videos = response?.data?.results || [];
           setVideosByMovie((prev) => [
@@ -60,6 +61,7 @@ export const MovieContextWrapper = ({ children }) => {
               movieTitle,
               movieOverview,
               movieBackdrop,
+              movieId,
             },
           ]);
         });

@@ -32,6 +32,7 @@ const MovieDetailPage = () => {
       movieBackdrop: movieDetail?.backdrop_path || "",
       movieOverview: movieDetail?.overview || "",
       movieTitle: movieDetail?.title || "",
+      movieId: movieDetail?.id || "",
       videos: movieVideos || [],
     },
   ];

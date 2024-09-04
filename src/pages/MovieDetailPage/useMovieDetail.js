@@ -59,11 +59,13 @@ function useMovieDetail() {
     imdbLoading ||
     movieVideoLoading;
   useEffect(() => {
-    getMovieTranslationData(movieId);
-    getMovieDetail(movieId);
-    getMovieCredits(movieId);
-    getMovieReviews(movieId);
-    getMovieVideo(movieId);
+    if (movieId) {
+      getMovieTranslationData(movieId);
+      getMovieDetail(movieId);
+      getMovieCredits(movieId);
+      getMovieReviews(movieId);
+      getMovieVideo(movieId);
+    }
   }, [movieId]);
   useEffect(() => {
     if (imbdbId) getImdbDetail(imbdbId);

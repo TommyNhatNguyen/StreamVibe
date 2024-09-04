@@ -3,11 +3,14 @@ export const PATHS = {
   MOVIE: {
     INDEX: "/movie",
     DETAIL: "/movie" + "/:movieId",
+    PLAY: {
+      INDEX: "/moviedetail",
+      DETAIL: "/moviedetail" + "/:movieId",
+    },
   },
   SHOW: {
     INDEX: "/show",
     DETAIL: "/show" + "/:showId",
-    PLAY: "/showdetail" + "/:showId",
   },
   SUPPORT: "/support",
   SUBSCRIPTION: "/subscription",

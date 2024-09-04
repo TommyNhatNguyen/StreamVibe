@@ -503,7 +503,8 @@ const MovieContent = ({
                                           className={classNames(
                                             "bi bi-star-fill",
                                             {
-                                              active: index + 1 <= rating,
+                                              active:
+                                                index + 1 <= (rating * 5) / 10,
                                             }
                                           )}
                                         ></i>

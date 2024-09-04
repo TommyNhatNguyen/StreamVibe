@@ -178,8 +178,8 @@ const MovieItem = (
   ref
 ) => {
   const NUM_BASE = 5;
-  const formatedVoteCount = formatViews(voteCount, 1);
   const modifiedVoteAverage = Math.floor((NUM_BASE * voteAverage + 1) / 10);
+  const formatedVoteCount = formatViews(voteCount, 1);
   const imgPath = image
     ? ENV.IMAGE_URL + image || ""
     : IMAGE_NOTFOUND_PATH.poster;

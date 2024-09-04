@@ -145,7 +145,6 @@ const TopGenresTab = ({ moviesByGenres, genres, loading, ...props }) => {
               vote_count: voteCount,
               poster_path: image,
             } = movie || {};
-
             return (
               <MovieItem
                 key={id + index}

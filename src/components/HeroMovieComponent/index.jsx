@@ -9,6 +9,7 @@ import styled from "styled-components";
 import Textbox from "../Textbox";
 import Button from "../Button";
 import { breakpoints } from "../../constants/media";
+import { PATHS } from "../../constants/paths";
 
 const StyledTrailer = styled.div`
   height: 100vh;
@@ -118,8 +119,13 @@ const HeroMovieComponent = ({
             loop={true}
           >
             {videosByMovie?.map((item, index) => {
-              const { movieBackdrop, movieOverview, movieTitle, videos } =
-                item || {};
+              const {
+                movieBackdrop,
+                movieOverview,
+                movieTitle,
+                videos,
+                movieId,
+              } = item || {};
               const { key, id } =
                 videos?.filter((item) => item.type === "Trailer")?.[0] || {};
               const trailerPath = youtubePath(key);
@@ -164,7 +170,10 @@ const HeroMovieComponent = ({
                             </p>
                           </Textbox.Content>
                           <Textbox.ButtonControlGroup className="textbox__btngroup">
-                            <Button className="textbox__button btn btnmain">
+                            <Button
+                              to={PATHS.MOVIE.PLAY.INDEX + `/${movieId}`}
+                              className="textbox__button btn btnmain"
+                            >
                               <div className="textbox__button-icon icon">
                                 <img srcSet="/assets/images/start-btn-icon.png 2x" />
                               </div>
@@ -204,8 +213,13 @@ const HeroMovieComponent = ({
         ) : (
           <div>
             {videosByMovie?.map((item, index) => {
-              const { movieBackdrop, movieOverview, movieTitle, videos } =
-                item || {};
+              const {
+                movieBackdrop,
+                movieOverview,
+                movieTitle,
+                videos,
+                movieId,
+              } = item || {};
               const { key, id } =
                 videos?.filter((item) => item.type === "Trailer")?.[0] || {};
               const trailerPath = youtubePath(key);
@@ -250,7 +264,10 @@ const HeroMovieComponent = ({
                             </p>
                           </Textbox.Content>
                           <Textbox.ButtonControlGroup className="textbox__btngroup">
-                            <Button className="textbox__button btn btnmain">
+                            <Button
+                              to={PATHS.MOVIE.PLAY.INDEX + `/${movieId}`}
+                              className="textbox__button btn btnmain"
+                            >
                               <div className="textbox__button-icon icon">
                                 <img srcSet="/assets/images/start-btn-icon.png 2x" />
                               </div>
