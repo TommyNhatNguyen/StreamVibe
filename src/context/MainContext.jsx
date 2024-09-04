@@ -3,6 +3,7 @@ import { useLocation } from "react-router-dom";
 import { DEMO_ACCOUNT } from "../constants/keys";
 import { credentialsMethod } from "../utils/credentialsMethod";
 import { sessionMethod } from "../utils/sessionMethod";
+import scrollTop from "../utils/scrollTop";
 
 const MainContext = createContext({});
 
@@ -13,10 +14,7 @@ export const MainContextWrapper = ({ children }) => {
     setShowNavMenu((prev) => !prev);
   };
   useEffect(() => {
-    window.scrollTo({
-      top: 0,
-      behavior: "smooth",
-    });
+    scrollTop();
     setShowNavMenu(false);
   }, [pathname]);
 

@@ -116,7 +116,7 @@ const PricingComponent = () => {
     setSelectedOption(option);
   };
   return (
-    <section className="pricing --pd-b" id="pricing">
+    <section className="pricing --pd-tb" id="pricing">
       <div className="container">
         <Textbox className="textbox">
           <Textbox.Content className="textbox__content">

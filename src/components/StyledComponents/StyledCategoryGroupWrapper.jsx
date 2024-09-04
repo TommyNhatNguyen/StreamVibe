@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { breakpoints } from "../../constants/media";
 
-export const StyledCategoryGroupWrapper = styled.ul`
+export const StyledCategoryGroupWrapper = styled.div`
   .categroup__item {
     &:not(:last-child) {
       margin-right: 30px;

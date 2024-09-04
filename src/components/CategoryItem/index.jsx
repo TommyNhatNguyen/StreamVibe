@@ -6,7 +6,7 @@ import { IMAGE_NOTFOUND_PATH, PATHS } from "../../constants/paths";
 import { ENV } from "../../constants/environments";
 import { breakpoints } from "../../constants/media";
 
-const StyledCategoryItem = styled.li`
+const StyledCategoryItem = styled(Link)`
   height: 342px;
   aspect-ratio: 295.4 / 342;
   padding: 30px;
@@ -83,9 +83,10 @@ const StyledCategoryItemContentWrapper = styled.div`
 `;
 
 const CategoryItem = ({ images, name, id, classes, ...props }) => {
-  const moviePath = PATHS.MOVIE.INDEX + "/" + id;
+  const moviePath = PATHS.SHOW.INDEX + "/" + id;
   return (
     <StyledCategoryItem
+      to={moviePath}
       className={classNames("categroup__item", { classes })}
       {...props}
     >

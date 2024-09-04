@@ -51,8 +51,6 @@ const MustWatchTab = ({ moviesTopRated, loading, title = "" }) => {
       </Textbox>
       {/* Category group*/}
       {loading && <ComponentLoading />}
-      {/* Category group*/}
-      {loading && <ComponentLoading />}
       {moviesTopRated?.length > 0 && !loading && (
         <StyledMovieGroupWrapper className="explore__moviesgroup moviesgroup">
           {moviesTopRated?.map((movie, index) => {
@@ -62,7 +60,6 @@ const MustWatchTab = ({ moviesTopRated, loading, title = "" }) => {
               vote_count: voteCount,
               poster_path: image,
             } = movie || {};
-
             return (
               <MovieItem
                 key={id + index + image}

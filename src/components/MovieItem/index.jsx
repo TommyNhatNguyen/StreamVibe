@@ -1,5 +1,5 @@
 import classNames from "classnames";
-import React from "react";
+import React, { forwardRef } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { IMAGE_NOTFOUND_PATH, PATHS } from "../../constants/paths";
@@ -173,7 +173,7 @@ const StyledMovieItemContentWrapper = styled.div`
   }
 `;
 
-const MovieItem = ({ image, voteAverage, voteCount, id, ...props }) => {
+const MovieItem = ({ image, voteAverage, voteCount, id, ...props }, ref) => {
   const NUM_BASE = 5;
   const formatedVoteCount = formatViews(voteCount, 1);
   const modifiedVoteAverage = Math.floor((NUM_BASE * voteAverage + 1) / 10);
@@ -184,6 +184,7 @@ const MovieItem = ({ image, voteAverage, voteCount, id, ...props }) => {
   return (
     <StyledMovieItem
       className={classNames("moviesgroup__item", props?.classes)}
+      ref={ref}
       {...props}
     >
       <StyledMovieItemImageWrapper
@@ -310,4 +311,4 @@ export const MovieItemSearch = ({
   );
 };
 
-export default MovieItem;
+export default forwardRef(MovieItem);

@@ -137,6 +137,7 @@ export const MovieContextWrapper = ({ children }) => {
         apiLoading,
         searchMovies,
         searchMoviesLoading,
+        movieGenres,
         getMovieBySearch,
       }}
     >

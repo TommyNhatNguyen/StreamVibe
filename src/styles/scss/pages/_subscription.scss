@@ -1,7 +1,4 @@
 .subscription {
-    .pricing {
-        margin-top: calc(100px + var(--header-height));
-    }
     .plantable {
         &__table {
             margin-top: 80px;
@@ -114,7 +111,7 @@
             }
         }
     }
-    @include sm {
+    @include xs {
         .plantable {
             &__table {
                 display: none;

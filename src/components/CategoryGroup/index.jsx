@@ -8,9 +8,9 @@ import { Empty, Skeleton } from "antd";
 
 const CategoryGroup = ({ children, classes, ...props }) => {
   return (
-    <ul className={`explore__categroup categroup ${classes || ""}`} {...props}>
+    <div className={`explore__categroup categroup ${classes || ""}`} {...props}>
       {children}
-    </ul>
+    </div>
   );
 };
 

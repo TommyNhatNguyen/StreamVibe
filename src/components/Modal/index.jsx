@@ -190,11 +190,11 @@ const Modal = () => {
         {showModal === MODAL_TYPES.register && <RegisterForm />}
         <StyledCloseButton
           type="button"
-          class="close"
+          className="close"
           aria-label="Close"
           onClick={(e) => _onCloseModal(e)}
         >
-          <i class="bi bi-x"></i>
+          <i className="bi bi-x"></i>
         </StyledCloseButton>
       </div>
     </StyledModalWrapper>

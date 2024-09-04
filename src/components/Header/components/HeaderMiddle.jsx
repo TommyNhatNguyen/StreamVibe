@@ -318,7 +318,7 @@ const HeaderMiddle = () => {
                       id,
                       poster_path: image,
                       release_date: releaseDate,
-                      original_title: title,
+                      title,
                       overview,
                     } = movie || {};
                     const formatReleaseDate = formatDate(releaseDate || 0);

@@ -5,10 +5,12 @@
     .heromovie {
         margin-top: 46px;
         margin-bottom: 184px;
-    }
-    /*----------------------*/
-    // MOVIE
-    /*----------------------*/
-    .movie {
+        @mixin lg {
+            margin-top: 40px;
+            margin-bottom: 80px;
+        }
+        @mixin xs {
+            margin-bottom: 80px;
+        }
     }
 }
