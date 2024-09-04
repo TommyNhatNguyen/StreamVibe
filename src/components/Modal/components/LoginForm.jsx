@@ -1,7 +1,7 @@
 import React from "react";
 import Input from "../../Input";
 import { useForm } from "react-hook-form";
-import { MESSAGE } from "../../../utils/message";
+import { MESSAGE, notAvaiableMessage } from "../../../utils/message";
 import { REGEX, loginValidate } from "../../../utils/validate";
 import { useAuthContext } from "../../../context/AuthContext";
 import { message } from "antd";
@@ -66,13 +66,31 @@ const LoginForm = () => {
         <span>Login with socials</span>
       </div>
       <div className="modal__wrapper-socials">
-        <a href="#" target="_blank" className="google" id="google">
+        <a
+          href="#"
+          target="_blank"
+          className="google"
+          id="google"
+          onClick={(e) => {
+            e.preventDefault();
+            notAvaiableMessage();
+          }}
+        >
           <div className="icon">
             <img srcSet="/assets/images/google-icon.png 2x" alt="google" />
           </div>
           Google
         </a>
-        <a href="#" target="_blank" className="facebook" id="facebook">
+        <a
+          href="#"
+          target="_blank"
+          className="facebook"
+          id="facebook"
+          onClick={(e) => {
+            e.preventDefault();
+            notAvaiableMessage();
+          }}
+        >
           <div className="icon">
             <img srcSet="/assets/images/facebook-icon.png 2x" alt="facebook" />
           </div>

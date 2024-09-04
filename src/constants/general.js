@@ -107,3 +107,7 @@ export const PRICE_PLANS_TABLE = {
 export const youtubePath = (key) => {
   return `https://www.youtube.com/embed/${key}?autoplay=1&mute=1&controls=0&loop=1&modestbranding&playlist=${key}&showinfo=0`;
 };
+
+export const youtubePathSound = (key) => {
+  return `https://www.youtube.com/embed/${key}?autoplay=1&mute=0&controls=0&loop=1&modestbranding&playlist=${key}&showinfo=0`;
+};

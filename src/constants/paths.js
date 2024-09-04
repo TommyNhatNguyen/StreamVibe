@@ -7,6 +7,7 @@ export const PATHS = {
   SHOW: {
     INDEX: "/show",
     DETAIL: "/show" + "/:showId",
+    PLAY: "/showdetail" + "/:showId",
   },
   SUPPORT: "/support",
   SUBSCRIPTION: "/subscription",

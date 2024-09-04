@@ -3,6 +3,7 @@ import styled from "styled-components";
 import Textbox from "../Textbox";
 import Button from "../Button";
 import { breakpoints } from "../../constants/media";
+import { notAvaiableMessage } from "../../utils/message";
 
 const StyledTrialWrapper = styled.div`
   height: 313px;
@@ -85,7 +86,9 @@ const TrialComponent = () => {
                 to sign up for a free trial of StreamVibe.
               </p>
             </Textbox.Content>
-            <Button className="btn btnmain">Start a Free Trail</Button>
+            <Button className="btn btnmain" onClick={notAvaiableMessage}>
+              Start a Free Trail
+            </Button>
           </Textbox>
         </StyledTrialWrapper>
       </div>

@@ -173,7 +173,10 @@ const StyledMovieItemContentWrapper = styled.div`
   }
 `;
 
-const MovieItem = ({ image, voteAverage, voteCount, id, ...props }, ref) => {
+const MovieItem = (
+  { image, voteAverage, voteCount, id, title, ...props },
+  ref
+) => {
   const NUM_BASE = 5;
   const formatedVoteCount = formatViews(voteCount, 1);
   const modifiedVoteAverage = Math.floor((NUM_BASE * voteAverage + 1) / 10);
@@ -193,6 +196,7 @@ const MovieItem = ({ image, voteAverage, voteCount, id, ...props }, ref) => {
       >
         <img src={imgPath} />
       </StyledMovieItemImageWrapper>
+      {title && <h5 className="--h5 moviesgroup__item-title">{title}</h5>}
       <StyledMovieItemContentWrapper className="moviesgroup__item-content --rating">
         <div className="info">
           <div className="info__icon">

@@ -47,6 +47,11 @@ const ExploreSection = () => {
           </Textbox.ButtonControlGroup>
         </Textbox>
         <StyledCategoryGroupWrapper className="explore__categroup categroup">
+          <CategoryItem
+            name="All"
+            images={["/assets/images/home/hero-banner.jpg"]}
+            id={moviesByGenres?.[0]?.id}
+          />
           {moviesByGenres?.map((item, index) => {
             const { id, name, movies } = item || {};
             const images = movies

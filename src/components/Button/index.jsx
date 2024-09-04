@@ -1,8 +1,9 @@
 import styled from "styled-components";
 import React from "react";
 import { breakpoints } from "../../constants/media";
+import { Link } from "react-router-dom";
 
-export const StyledButton = styled.a`
+export const StyledButton = styled(Link)`
   display: flex;
   align-items: center;
   justify-content: center;

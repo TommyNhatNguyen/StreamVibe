@@ -9,7 +9,7 @@ import Button from "../../../components/Button";
 import { StyledCategoryGroupWrapper } from "../../../components/StyledComponents/StyledCategoryGroupWrapper";
 import CategoryItem from "../../../components/CategoryItem";
 
-const GenresTab = ({ moviesByGenres, loading }) => {
+const GenresTab = ({ moviesByGenres, loading, ...props }) => {
   useEffect(() => {
     if (moviesByGenres?.length > 0 && !loading) {
       const explores = document.querySelector(".explore.--genres");
@@ -17,7 +17,11 @@ const GenresTab = ({ moviesByGenres, loading }) => {
     }
   }, [moviesByGenres, loading]);
   return (
-    <div className="explore --genres" style={{ position: "relative" }}>
+    <div
+      className="explore --genres"
+      style={{ position: "relative" }}
+      {...props}
+    >
       {/* Textbox group */}
       <Textbox className="textbox">
         <Textbox.Content className="textbox__content">
@@ -43,6 +47,11 @@ const GenresTab = ({ moviesByGenres, loading }) => {
       {loading && <ComponentLoading />}
       {moviesByGenres?.length > 0 && !loading ? (
         <StyledCategoryGroupWrapper className="explore__categroup categroup">
+          <CategoryItem
+            name="All"
+            images={["/assets/images/home/hero-banner.jpg"]}
+            id={moviesByGenres?.[0]?.id}
+          />
           {moviesByGenres?.map((item, index) => {
             const { id, name, movies } = item || {};
             const images = movies

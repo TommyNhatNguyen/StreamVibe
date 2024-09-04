@@ -480,7 +480,6 @@ textarea {
   padding: 6px 10px;
 }
 .rating__val {
-  margin-bottom: 8px;
   display: flex;
   align-items: center;
   gap: 2px;

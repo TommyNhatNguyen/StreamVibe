@@ -5,6 +5,7 @@ import Textbox from "../Textbox";
 import Button from "../Button";
 import styled from "styled-components";
 import { breakpoints } from "../../constants/media";
+import { notAvaiableMessage } from "../../utils/message";
 
 const PRICING_OPTIONS = Object.keys(PRICE_PLANS);
 
@@ -166,10 +167,19 @@ const PricingComponent = () => {
                     <span>/{type}</span>
                   </div>
                   <div className="plancard__btngroup">
-                    <Button variant="second" href="#" className="btn btnsecond">
+                    <Button
+                      variant="second"
+                      href="#"
+                      className="btn btnsecond"
+                      onClick={notAvaiableMessage}
+                    >
                       Start Free Trial
                     </Button>
-                    <Button href="#" className="btn btnmain">
+                    <Button
+                      href="#"
+                      className="btn btnmain"
+                      onClick={notAvaiableMessage}
+                    >
                       Choose Plan
                     </Button>
                   </div>

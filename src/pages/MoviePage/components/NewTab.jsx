@@ -10,7 +10,7 @@ import Button from "../../../components/Button";
 import { MovieItemSmall } from "../../../components/MovieItem";
 import { StyledMovieGroupWrapper } from "../../../components/StyledComponents/StyledMovieGroupWrapper";
 
-const NewTab = ({ moviesNowPlaying, loading }) => {
+const NewTab = ({ moviesNowPlaying, loading, ...props }) => {
   useEffect(() => {
     let item = document?.querySelector(".moviesgroup__item");
     const explore = document?.querySelector(".explore.--new");
@@ -19,7 +19,7 @@ const NewTab = ({ moviesNowPlaying, loading }) => {
     }
   }, [moviesNowPlaying, loading]);
   return (
-    <div className="explore --new">
+    <div className="explore --new" {...props}>
       {/* Textbox group */}
       {/* Textbox group */}
       <Textbox className="textbox">

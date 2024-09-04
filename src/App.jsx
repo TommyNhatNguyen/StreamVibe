@@ -40,6 +40,7 @@ function App() {
             <Route path={PATHS.MOVIE.INDEX} element={<MoviePage />} />
             <Route path={PATHS.MOVIE.DETAIL} element={<MovieDetailPage />} />
             <Route path={PATHS.SHOW.DETAIL} element={<ShowPage />} />
+            <Route path={PATHS.SHOW.PLAY} element={<ShowDetailPage />} />
             <Route path={PATHS.SUPPORT} element={<SupportPage />} />
             <Route path={PATHS.SUBSCRIPTION} element={<SubscriptionPage />} />
             <Route path="*" element={<NotFoundPage />} />

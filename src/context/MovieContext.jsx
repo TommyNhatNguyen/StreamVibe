@@ -36,7 +36,6 @@ export const MovieContextWrapper = ({ children }) => {
   const moviesNowPlaying = movieNowPlayingData?.results || [];
   const moviesTopRated = movieTopRatedData?.results || [];
   const movieGenres = movieGenresData?.genres || [];
-
   const getVideosByMovie = async () => {
     setVideosByMovieLoading(true);
     try {
@@ -49,7 +48,7 @@ export const MovieContextWrapper = ({ children }) => {
         res.forEach((response, index) => {
           const movie = moviesTrending?.[index] || [];
           const {
-            original_title: movieTitle,
+            title: movieTitle,
             overview: movieOverview,
             backdrop_path: movieBackdrop,
           } = movie || {};

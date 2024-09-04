@@ -1,7 +1,7 @@
-import React from "react";
+import React, { useCallback, useEffect, useRef } from "react";
 import LazyLoad from "react-lazy-load";
 import { ENV } from "../../constants/environments";
-import { youtubePath } from "../../constants/general";
+import { youtubePath, youtubePathSound } from "../../constants/general";
 import { TrailerVideoWrapper } from "../StyledComponents/TrailerVideoWrapper";
 import OwlCarousel from "react-owl-carousel";
 import ComponentLoading from "../ComponentLoading";
@@ -105,7 +105,7 @@ const HeroMovieComponent = ({
   ...props
 }) => {
   return (
-    <section className={`heromovie ${sectionClassname && ""}`}>
+    <section className={`heromovie ${sectionClassname && ""}`} {...props}>
       {videosByMovie?.length > 0 &&
         (scrolling ? (
           <OwlCarousel
@@ -120,7 +120,8 @@ const HeroMovieComponent = ({
             {videosByMovie?.map((item, index) => {
               const { movieBackdrop, movieOverview, movieTitle, videos } =
                 item || {};
-              const { key, id } = videos?.[0] || {};
+              const { key, id } =
+                videos?.filter((item) => item.type === "Trailer")?.[0] || {};
               const trailerPath = youtubePath(key);
               const imgPath =
                 (movieBackdrop && ENV.IMAGE_URL + movieBackdrop) || "";
@@ -187,15 +188,6 @@ const HeroMovieComponent = ({
                               >
                                 <img
                                   srcSet="/assets/images/like-icon.png 2x"
-                                  alt="start button"
-                                />
-                              </Button>
-                              <Button
-                                variant="control"
-                                className="textbox__button btn --btncontrol"
-                              >
-                                <img
-                                  srcSet="/assets/images/volume-icon.png 2x"
                                   alt="start button"
                                 />
                               </Button>
@@ -214,7 +206,8 @@ const HeroMovieComponent = ({
             {videosByMovie?.map((item, index) => {
               const { movieBackdrop, movieOverview, movieTitle, videos } =
                 item || {};
-              const { key, id } = videos?.[0] || {};
+              const { key, id } =
+                videos?.filter((item) => item.type === "Trailer")?.[0] || {};
               const trailerPath = youtubePath(key);
               const imgPath =
                 (movieBackdrop && ENV.IMAGE_URL + movieBackdrop) || "";
@@ -281,15 +274,6 @@ const HeroMovieComponent = ({
                               >
                                 <img
                                   srcSet="/assets/images/like-icon.png 2x"
-                                  alt="start button"
-                                />
-                              </Button>
-                              <Button
-                                variant="control"
-                                className="textbox__button btn --btncontrol"
-                              >
-                                <img
-                                  srcSet="/assets/images/volume-icon.png 2x"
                                   alt="start button"
                                 />
                               </Button>

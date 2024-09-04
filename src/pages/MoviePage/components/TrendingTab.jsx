@@ -10,7 +10,7 @@ import { StyledMovieGroupWrapper } from "../../../components/StyledComponents/St
 import Textbox from "../../../components/Textbox";
 import Button from "../../../components/Button";
 
-const TrendingTab = ({ moviesTrending, loading }) => {
+const TrendingTab = ({ moviesTrending, loading, ...props }) => {
   useEffect(() => {
     let item = document?.querySelector(".moviesgroup__item");
     const explore = document?.querySelector(".explore.--trending");
@@ -19,7 +19,11 @@ const TrendingTab = ({ moviesTrending, loading }) => {
     }
   }, [moviesTrending, loading]);
   return (
-    <div className="explore --trending" style={{ position: "relative" }}>
+    <div
+      className="explore --trending"
+      style={{ position: "relative" }}
+      {...props}
+    >
       {/* Textbox group */}
       <Textbox className="textbox">
         <Textbox.Content className="textbox__content">

@@ -17,72 +17,94 @@ import { AntdWrapper } from "../../components/StyledComponents/AntdWrapper";
 
 const StyledShowAllWrapper = styled.div`
   display: grid;
-  grid-template-columns: minmax(max-content, 1fr) 5fr;
+  grid-template-columns: minmax(max-content, 1fr) 6fr;
   gap: 10px;
-  .showall__filter {
-    height: fit-content;
-    padding: 20px;
-    border-radius: 8px;
-    border: 1px solid var(--black-cl-3);
-    position: sticky;
-    top: 20px;
-    &-group {
-      .label {
-        margin-bottom: 10px;
-      }
-      .checkboxgroup {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        .ant-checkbox-wrapper {
-          align-items: center;
-          .ant-checkbox {
-            .ant-checkbox-inner {
-              background-color: var(--black-cl-3);
-              border: 1px solid var(--white-cl);
-            }
-          }
-          span {
-            color: var(--gray-cl);
-            font-family: var(--ff-regular);
-            text-wrap: nowrap;
-          }
+  .showall-left {
+    .showall__filter {
+      position: sticky;
+      top: 20px;
+      height: fit-content;
+      padding: 20px;
+      border-radius: 8px;
+      border: 1px solid var(--black-cl-3);
+      background-color: var(--black-cl);
+      box-shadow: 2px 2px 3px var(--black-cl-3);
+      z-index: 10;
+      &-group {
+        .label {
+          margin-bottom: 10px;
         }
-      }
-      .ant-picker {
-        background-color: var(--black-cl-3);
-        border: 1px solid var(--white-cl);
-        .ant-picker-input {
-          input {
-            color: var(--gray-cl);
-            font-family: var(--ff-regular);
-            &::placeholder {
+        .checkboxgroup {
+          display: grid;
+          grid-template-columns: repeat(2, 1fr);
+          .ant-checkbox-wrapper {
+            align-items: center;
+            .ant-checkbox {
+              .ant-checkbox-inner {
+                background-color: var(--black-cl-3);
+                border: 1px solid var(--white-cl);
+              }
+            }
+            span {
               color: var(--gray-cl);
               font-family: var(--ff-regular);
+              text-wrap: nowrap;
             }
           }
-          .ant-picker-clear,
-          .ant-picker-suffix {
-            svg {
-              fill: var(--white-cl);
+        }
+        .ant-picker {
+          background-color: var(--black-cl-3);
+          border: 1px solid var(--white-cl);
+          .ant-picker-input {
+            input {
+              color: var(--gray-cl);
+              font-family: var(--ff-regular);
+              &::placeholder {
+                color: var(--gray-cl);
+                font-family: var(--ff-regular);
+              }
             }
+            .ant-picker-clear,
+            .ant-picker-suffix {
+              svg {
+                fill: var(--white-cl);
+              }
+            }
+          }
+        }
+        &.--year {
+          margin-top: 20px;
+          display: flex;
+          align-items: center;
+          .label {
+            margin-bottom: initial;
+            margin-right: 10px;
           }
         }
       }
-      &.--year {
-        margin-top: 20px;
-        display: flex;
-        align-items: center;
-        .label {
-          margin-bottom: initial;
-          margin-right: 10px;
-        }
+      .btnclearall {
+        margin-top: 10px;
+        border: 1px solid var(--white-cl);
+        font-size: 14px;
+        height: 32px;
       }
     }
-    .btnclearall {
-      margin-top: 10px;
-      border: 1px solid var(--white-cl);
-      font-size: 14px;
-      height: 32px;
+    .showall__trending {
+      height: fit-content;
+      padding: 20px;
+      border-radius: 8px;
+      border: 1px solid var(--black-cl-3);
+      margin: 20px auto 0 auto;
+      width: 100%;
+      max-width: min-content;
+      &-title {
+        margin-bottom: 10px;
+        text-align: center;
+      }
+      &-list {
+        margin: auto;
+        max-width: fit-content;
+      }
     }
   }
 `;
@@ -134,6 +156,47 @@ const StyledShowAllListWrapper = styled.div`
   }
 `;
 
+const StyledMovieItem = styled(MovieItem)`
+  .moviesgroup__item-content {
+    display: none;
+  }
+  .moviesgroup__item-title {
+    width: 100%;
+    text-align: center;
+    margin-top: 10px;
+    font-family: var(--ff-semibold);
+    font-size: var(--fs-h5);
+    display: -webkit-inline-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    text-overflow: ellipsis;
+    overflow: hidden;
+  }
+  &:hover {
+    transform: scale(0.95);
+  }
+  &:not(:last-child) {
+    margin-bottom: 10px;
+  }
+  max-width: 100%;
+`;
+
+const StyledMovieItemLeft = styled(StyledMovieItem)`
+  list-style-type: none;
+  position: relative;
+  height: fit-content;
+  aspect-ratio: initial;
+  max-width: 100%;
+  margin: auto;
+  .moviesgroup__item-content {
+    display: flex;
+    margin-top: 10px;
+  }
+  .moviesgroup__item-img {
+    margin: auto;
+  }
+`;
+
 const SORTING_BY = [
   {
     id: "none",
@@ -167,7 +230,7 @@ const SORTING_BY = [
 ];
 
 const ShowPage = () => {
-  const { movieGenres } = useMovieContext();
+  const { movieGenres, moviesTrending } = useMovieContext();
   const { showId } = useParams();
   const [query, setQuery] = useState({
     include_adult: "true",
@@ -266,36 +329,62 @@ const ShowPage = () => {
           />
         </StyledShowAllSort>
         <StyledShowAllWrapper className="showall-wrapper">
-          <div className="showall__filter">
-            <div className="showall__filter-group">
-              <p className="label">Filter by Genre: </p>
-              <div className="checkboxgroup">
-                {movieGenres?.map((item, index) => {
-                  const { id, name } = item || {};
+          <div className="showall-left">
+            <div className="showall__filter">
+              <div className="showall__filter-group">
+                <p className="label">Filter by Genre: </p>
+                <div className="checkboxgroup">
+                  {movieGenres?.map((item, index) => {
+                    const { id, name } = item || {};
+                    return (
+                      <Checkbox
+                        key={id || index}
+                        value={id}
+                        onChange={() => _onFilterGenres(id)}
+                        checked={query?.with_genres?.includes(id)}
+                      >
+                        {name || ""}
+                      </Checkbox>
+                    );
+                  })}
+                </div>
+              </div>
+              <div className="showall__filter-group --year">
+                <p className="label">Filter by Year: </p>
+                <DatePicker onChange={_onChangeYear} picker="year" />
+              </div>
+              <Button
+                onClick={_onReset}
+                variant="control"
+                className="btn btncontrol btnclearall"
+              >
+                Clear All
+              </Button>
+            </div>
+            <div className="showall__trending">
+              <h5 className="--h5 showall__trending-title">Trending now </h5>
+              <div className="showall__trending-list">
+                {moviesTrending?.map((movie, index) => {
+                  const {
+                    id,
+                    vote_average: voteAverage,
+                    vote_count: voteCount,
+                    poster_path: image,
+                    title,
+                  } = movie || {};
                   return (
-                    <Checkbox
-                      key={id || index}
-                      value={id}
-                      onChange={() => _onFilterGenres(id)}
-                      checked={query?.with_genres?.includes(id)}
-                    >
-                      {name || ""}
-                    </Checkbox>
+                    <StyledMovieItemLeft
+                      key={id + index + image}
+                      voteAverage={voteAverage}
+                      voteCount={voteCount}
+                      image={image}
+                      title={title}
+                      id={id}
+                    />
                   );
                 })}
               </div>
             </div>
-            <div className="showall__filter-group --year">
-              <p className="label">Filter by Year: </p>
-              <DatePicker onChange={_onChangeYear} picker="year" />
-            </div>
-            <Button
-              onClick={_onReset}
-              variant="control"
-              className="btn btncontrol btnclearall"
-            >
-              Clear All
-            </Button>
           </div>
           <StyledShowAllListWrapper className="showall__list">
             {data?.length > 0 && hasMore && (
@@ -306,25 +395,28 @@ const ShowPage = () => {
                     vote_average: voteAverage,
                     vote_count: voteCount,
                     poster_path: image,
+                    title,
                   } = movie || {};
                   if (data?.length === index + 1) {
                     return (
-                      <MovieItem
+                      <StyledMovieItem
                         key={id + index + image}
                         voteAverage={voteAverage}
                         voteCount={voteCount}
                         image={image}
+                        title={title}
                         id={id}
                         ref={ref}
                       />
                     );
                   } else {
                     return (
-                      <MovieItem
+                      <StyledMovieItem
                         key={id + index + image}
                         voteAverage={voteAverage}
                         voteCount={voteCount}
                         image={image}
+                        title={title}
                         id={id}
                       />
                     );

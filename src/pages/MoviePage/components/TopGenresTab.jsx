@@ -60,7 +60,7 @@ const StyledTabs = styled.ul`
   }
 `;
 
-const TopGenresTab = ({ moviesByGenres, genres, loading }) => {
+const TopGenresTab = ({ moviesByGenres, genres, loading, ...props }) => {
   const [selectedGenre, setSelectedGenre] = useState(genres?.[0]?.id);
   const [genreLoading, setGenreLoading] = useState(false);
   const renderMovies = useMemo(() => {
@@ -88,7 +88,7 @@ const TopGenresTab = ({ moviesByGenres, genres, loading }) => {
     }
   }, [moviesByGenres, selectedGenre, loading]);
   return (
-    <div className="explore --toprated">
+    <div className="explore --toprated" {...props}>
       {/* Textbox group */}
       <Textbox className="textbox">
         <Textbox.Content className="textbox__content">

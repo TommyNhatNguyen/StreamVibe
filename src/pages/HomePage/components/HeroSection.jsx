@@ -3,6 +3,8 @@ import Textbox from "../../../components/Textbox";
 import Button from "../../../components/Button";
 import styled from "styled-components";
 import { breakpoints } from "../../../constants/media";
+import { Link } from "react-router-dom";
+import { PATHS } from "../../../constants/paths";
 
 const StyledBackDrop = styled.div`
   height: 100%;
@@ -158,7 +160,7 @@ const HeroSection = () => {
             content you want to watch.
           </p>
         </Textbox.Content>
-        <StyledButton className="btn btnmain">
+        <StyledButton to={PATHS.MOVIE.INDEX} className="btn btnmain">
           <div className="textbox__button-icon icon">
             <img srcSet="./assets/images/start-btn-icon.png 2x" />
           </div>

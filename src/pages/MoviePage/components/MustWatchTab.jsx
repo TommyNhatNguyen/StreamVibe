@@ -9,7 +9,7 @@ import Button from "../../../components/Button";
 import { StyledMovieGroupWrapper } from "../../../components/StyledComponents/StyledMovieGroupWrapper";
 import MovieItem from "../../../components/MovieItem";
 
-const MustWatchTab = ({ moviesTopRated, loading, title = "" }) => {
+const MustWatchTab = ({ moviesTopRated, loading, title = "", ...props }) => {
   useEffect(() => {
     if (moviesTopRated?.length > 0 && !loading) {
       const explores = document.querySelectorAll(".explore.--mustwatch");
@@ -26,7 +26,7 @@ const MustWatchTab = ({ moviesTopRated, loading, title = "" }) => {
     }
   }, [moviesTopRated, loading]);
   return (
-    <div className="explore --mustwatch">
+    <div className="explore --mustwatch" {...props}>
       {/* Textbox group */}
       <Textbox className="textbox">
         <Textbox.Content className="textbox__content">

@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 import { PATHS } from "../../../constants/paths";
 import { Link, NavLink, useLocation } from "react-router-dom";
 import { useMainContext } from "../../../context/MainContext";
-import { Input } from "antd";
+import { Empty, Input } from "antd";
 import { InputWrapper } from "../../StyledComponents/InputWrapper";
 import styled from "styled-components";
 import CategoryGroup from "../../CategoryGroup";
@@ -333,6 +333,9 @@ const HeaderMiddle = () => {
                       />
                     );
                   })}
+                {searchMovies?.length < 1 && !searchMoviesLoading && (
+                  <Empty description="Movies not found" />
+                )}
               </ul>
             )}
           </StyledHeaderSearchWrapper>

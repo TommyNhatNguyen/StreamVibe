@@ -32,9 +32,6 @@ const SearchComponent = ({ ...props }) => {
       <AutoComplete
         popupMatchSelectWidth={252}
         style={{ width: 300 }}
-        // options={options}
-        // onSelect={onSelect}
-        // onSearch={handleSearch}
         size="large"
         {...props}
       >

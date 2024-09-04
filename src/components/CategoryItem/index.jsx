@@ -18,6 +18,7 @@ const StyledCategoryItem = styled(Link)`
   &:hover {
     transform: scale(1.1);
   }
+
   @media (max-width: ${breakpoints.desktop}) {
     height: 282px;
     aspect-ratio: 239.8 / 282;
@@ -61,6 +62,12 @@ const StyledCategoryItemImageWrapper = styled.div`
     border-radius: 10px;
     overflow: hidden;
   }
+  &.--single {
+    display: block;
+    div {
+      height: 100%;
+    }
+  }
   @media (max-width: ${breakpoints.desktop}) {
     height: 210px;
     aspect-ratio: 191.8 / 210;
@@ -90,25 +97,33 @@ const CategoryItem = ({ images, name, id, classes, ...props }) => {
       className={classNames("categroup__item", { classes })}
       {...props}
     >
-      <StyledCategoryItemImageWrapper className="categroup__item-img">
-        {images?.map((image, index) => {
-          const imgPath = image
-            ? ENV.IMAGE_URL + image || ""
-            : IMAGE_NOTFOUND_PATH.poster;
-          return (
-            <Link to={moviePath} key={image || index}>
-              <img src={imgPath} className="--midimg" />
-            </Link>
-          );
+      <StyledCategoryItemImageWrapper
+        className={classNames("categroup__item-img", {
+          "--single": images?.length === 1,
         })}
+      >
+        {images?.length === 1 && (
+          <div>
+            <img src={images[0]} className="--midimg" />
+          </div>
+        )}
+        {images?.length > 1 &&
+          images?.map((image, index) => {
+            const imgPath = image
+              ? ENV.IMAGE_URL + image || ""
+              : IMAGE_NOTFOUND_PATH.poster;
+            return (
+              <span key={image || index}>
+                <img src={imgPath} className="--midimg" />
+              </span>
+            );
+          })}
       </StyledCategoryItemImageWrapper>
       <StyledCategoryItemContentWrapper className="categroup__item-content">
-        <Link to={moviePath} className="title">
-          {name || ""}
-        </Link>
-        <Link to={moviePath} className="btn --btncontrol --arrow-right">
+        <span className="title">{name || ""}</span>
+        <span className="btn --btncontrol --arrow-right">
           <img srcSet="./assets/images/arrow-left-icon.png 2x" />
-        </Link>
+        </span>
       </StyledCategoryItemContentWrapper>
     </StyledCategoryItem>
   );

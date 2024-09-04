@@ -3,6 +3,7 @@ import { FAQ } from "../../constants/general";
 import Accordion from "../Accordion";
 import Button from "../Button";
 import Textbox from "../Textbox";
+import { PATHS } from "../../constants/paths";
 
 const FaqComponent = () => {
   const [isShow, setIsShow] = useState([]);
@@ -27,7 +28,9 @@ const FaqComponent = () => {
               find answers to the most common questions about StreamVibe.{" "}
             </p>
           </Textbox.Content>
-          <Button className="btn btnmain">Ask a Question</Button>
+          <Button to={PATHS.SUPPORT} className="btn btnmain">
+            Ask a Question
+          </Button>
         </Textbox>
         {/* Accordion */}
         <div className="faq__accordiongroup accordiongroup">

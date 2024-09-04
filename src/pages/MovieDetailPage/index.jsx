@@ -31,15 +31,17 @@ const MovieDetailPage = () => {
     {
       movieBackdrop: movieDetail?.backdrop_path || "",
       movieOverview: movieDetail?.overview || "",
-      movieTitle: movieDetail?.original_title || "",
+      movieTitle: movieDetail?.title || "",
       videos: movieVideos || [],
     },
   ];
   const movieRecommendations = movieRecommendationData?.results || [];
   const movieSimilar = movieSimilarData?.results || [];
   useEffect(() => {
-    getMovieRecommendation(movieId);
-    getMovieSimilar(movieId);
+    if (movieId) {
+      getMovieRecommendation(movieId);
+      getMovieSimilar(movieId);
+    }
   }, [movieId]);
   return (
     <main className="moviedetail">

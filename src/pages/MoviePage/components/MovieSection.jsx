@@ -56,15 +56,32 @@ const MovieSection = () => {
       <div className="container">
         <StyledMovieWrapper className="movie__wrapper">
           <div className="movie__wrapper-label">Movie</div>
-          <GenresTab moviesByGenres={moviesByGenres} loading={loading} />
+          <GenresTab
+            moviesByGenres={moviesByGenres}
+            loading={loading}
+            id="genres"
+          />
           <TopGenresTab
             moviesByGenres={moviesByGenres}
             genres={genres}
             loading={loading}
+            id="popular"
           />
-          <TrendingTab moviesTrending={moviesTrending} loading={loading} />
-          <NewTab moviesNowPlaying={moviesNowPlaying} loading={loading} />
-          <MustWatchTab moviesTopRated={moviesTopRated} loading={loading} />
+          <TrendingTab
+            moviesTrending={moviesTrending}
+            loading={loading}
+            id="trending"
+          />
+          <NewTab
+            moviesNowPlaying={moviesNowPlaying}
+            loading={loading}
+            id="new"
+          />
+          <MustWatchTab
+            moviesTopRated={moviesTopRated}
+            loading={loading}
+            id="mustwatch"
+          />
         </StyledMovieWrapper>
       </div>
     </section>

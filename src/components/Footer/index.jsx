@@ -1,8 +1,23 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { PATHS } from "../../constants/paths";
 
+const HOME_PATHS = [
+  { id: "explore", value: "Categories" },
+  { id: "experience", value: "Devices" },
+  { id: "pricing", value: "Pricing" },
+  { id: "faq", value: "FAQ" },
+];
+
+const MOVIE_PATHS = [
+  { id: "genres", value: "Gernes" },
+  { id: "trending", value: "Trending" },
+  { id: "new", value: "New Release" },
+  { id: "popular", value: "Popular" },
+];
+
 const Footer = () => {
+  const { pathname } = useLocation();
   return (
     <footer className="footer">
       <div className="container">
@@ -11,52 +26,53 @@ const Footer = () => {
           <li className="footer__top-item">
             <h5 className="--h5">Home</h5>
             <div className="navgroup">
-              <a href="#explore" className="navgroup__item">
-                Categories
-              </a>
-              <a href="#experience" className="navgroup__item">
-                Devices
-              </a>
-              <a href="#pricing" className="navgroup__item">
-                Pricing
-              </a>
-              <a href="#faq" className="navgroup__item">
-                Faq
-              </a>
+              {pathname === PATHS.HOME
+                ? HOME_PATHS.map((item, index) => {
+                    const { id, value } = item || {};
+                    return (
+                      <a key={id} href={`#${id}`} className="navgroup__item">
+                        {value}
+                      </a>
+                    );
+                  })
+                : HOME_PATHS.map((item, index) => {
+                    const { id, value } = item || {};
+                    return (
+                      <Link
+                        key={id || index}
+                        to={PATHS.HOME}
+                        className="navgroup__item"
+                      >
+                        {value}
+                      </Link>
+                    );
+                  })}
             </div>
           </li>
           <li className="footer__top-item">
             <h5 className="--h5">Movies</h5>
             <div className="navgroup">
-              <a href="#" className="navgroup__item">
-                Gernes
-              </a>
-              <a href="#" className="navgroup__item">
-                Trending
-              </a>
-              <a href="#" className="navgroup__item">
-                New Release
-              </a>
-              <a href="#" className="navgroup__item">
-                Popular
-              </a>
-            </div>
-          </li>
-          <li className="footer__top-item">
-            <h5 className="--h5">Shows</h5>
-            <div className="navgroup">
-              <a href="#" className="navgroup__item">
-                Gernes
-              </a>
-              <a href="#" className="navgroup__item">
-                Trending
-              </a>
-              <a href="#" className="navgroup__item">
-                New Release
-              </a>
-              <a href="#" className="navgroup__item">
-                Popular
-              </a>
+              {pathname === PATHS.MOVIE.INDEX
+                ? MOVIE_PATHS.map((item, index) => {
+                    const { id, value } = item;
+                    return (
+                      <a
+                        key={id || index}
+                        href={`#${id}`}
+                        className="navgroup__item"
+                      >
+                        {value}
+                      </a>
+                    );
+                  })
+                : MOVIE_PATHS.map((item, index) => {
+                    const { id, value } = item;
+                    return (
+                      <Link key={id || index} to={PATHS.MOVIE.INDEX}>
+                        {value}
+                      </Link>
+                    );
+                  })}
             </div>
           </li>
           <li className="footer__top-item">
@@ -73,9 +89,9 @@ const Footer = () => {
               <Link to={PATHS.SUBSCRIPTION} className="navgroup__item">
                 Plans
               </Link>
-              <a href="#" className="navgroup__item">
+              <Link to={PATHS.SUBSCRIPTION} className="navgroup__item">
                 Features
-              </a>
+              </Link>
             </div>
           </li>
           <li className="footer__top-item">
