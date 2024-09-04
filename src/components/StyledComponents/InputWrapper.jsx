@@ -2,6 +2,25 @@ import styled from "styled-components";
 import { breakpoints } from "../../constants/media";
 export const InputWrapper = styled.div`
   width: 100%;
+  &.search__input {
+    height: 61px;
+    .ant-input {
+      height: 100%;
+      border-radius: 12px;
+      color: var(--black-cl);
+      font-family: var(--ff-semibold);
+      font-size: var(--fs-h4);
+      &:focus,
+      &:hover {
+        border: 1px solid var(--red-cl);
+      }
+      &::placeholder {
+        color: var(--gray-cl);
+        font-family: var(--ff-semibold);
+        font-size: var(--fs-h4);
+      }
+    }
+  }
   .formgroup__label {
     color: var(--white-cl);
     font-family: var(--ff-semibold);

@@ -7,8 +7,10 @@ import Modal from "../components/Modal";
 import { Outlet } from "react-router-dom";
 import { MovieContextWrapper } from "../context/MovieContext";
 import { AuthContextWrapper } from "../context/AuthContext";
+import { createPortal } from "react-dom";
+import ButtonBackToTop from "../components/ButtonBackToTop";
 
-const MainLayout = ({ children }) => {
+const MainLayout = () => {
   return (
     <MainContextWrapper>
       <AuthContextWrapper>
@@ -17,8 +19,14 @@ const MainLayout = ({ children }) => {
             <Header />
             <Outlet />
             <Footer />
-            <MobileMenu />
-            <Modal />
+            {createPortal(
+              <>
+                <MobileMenu />
+                <Modal />
+                <ButtonBackToTop />
+              </>,
+              document.body
+            )}
           </div>
         </MovieContextWrapper>
       </AuthContextWrapper>

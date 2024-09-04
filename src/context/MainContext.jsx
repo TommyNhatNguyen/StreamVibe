@@ -11,15 +11,24 @@ export const MainContextWrapper = ({ children }) => {
   const { pathname } = useLocation();
   const [showNavMenu, setShowNavMenu] = useState(false);
   const handleShowNavMenu = () => {
-    setShowNavMenu((prev) => !prev);
+    setShowNavMenu(true);
+    document.body.classList.add("--disable-scroll");
+  };
+  const handleCloseMenu = (e) => {
+    e?.preventDefault();
+    setShowNavMenu(false);
+    document.body.classList.remove("--disable-scroll");
   };
   useEffect(() => {
     scrollTop();
-    setShowNavMenu(false);
+    handleCloseMenu();
+    window.addEventListener("resize", () => handleCloseMenu());
+    // return () => window.removeEventListener("resize");
   }, [pathname]);
-
   return (
-    <MainContext.Provider value={{ handleShowNavMenu, showNavMenu }}>
+    <MainContext.Provider
+      value={{ handleShowNavMenu, handleCloseMenu, showNavMenu }}
+    >
       {children}
     </MainContext.Provider>
   );

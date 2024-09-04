@@ -50,6 +50,7 @@ const StyledVideo = styled.div`
     width: 100%;
     height: 100%;
     overflow: hidden;
+    aspect-ratio: 16 / 9;
     img {
       object-fit: cover;
     }

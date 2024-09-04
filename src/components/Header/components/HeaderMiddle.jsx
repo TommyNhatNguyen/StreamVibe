@@ -13,6 +13,7 @@ import ComponentLoading from "../../ComponentLoading";
 import { formatDate } from "../../../utils/format";
 import { breakpoints } from "../../../constants/media";
 import { MovieItemSearch } from "../../MovieItem";
+import { StyledSearchResults } from "../../StyledComponents/StyledSearchResults";
 
 const StyledHeaderMiddleWrapper = styled.div`
   height: 70%;
@@ -157,54 +158,10 @@ const StyledHeaderSearchWrapper = styled.div`
   opacity: 0;
   pointer-events: none;
   z-index: 1000;
-  .search__results {
-    display: block;
-    position: relative;
-    min-height: 300px;
-    max-height: 1000px;
-    overflow-y: scroll;
-    background-color: var(--white-cl);
-    border-radius: 12px;
-    margin-top: 12px;
-    padding: 12px;
-    &::-webkit-scrollbar {
-      width: 5px;
-    }
-    &::-webkit-scrollbar-track {
-      background: var(--white-cl);
-    }
-    &::-webkit-scrollbar-thumb {
-      background: var(--black-cl);
-    }
-    a {
-      &:not(:last-child) {
-        margin-bottom: 12px;
-      }
-    }
-  }
   &.active {
     visibility: 1;
     opacity: 1;
     pointer-events: initial;
-  }
-  .search__input {
-    height: 61px;
-    .ant-input {
-      height: 100%;
-      border-radius: 12px;
-      color: var(--black-cl);
-      font-family: var(--ff-semibold);
-      font-size: var(--fs-h4);
-      &:focus,
-      &:hover {
-        border: 1px solid var(--red-cl);
-      }
-      &::placeholder {
-        color: var(--gray-cl);
-        font-family: var(--ff-semibold);
-        font-size: var(--fs-h4);
-      }
-    }
   }
 `;
 
@@ -222,6 +179,7 @@ const HeaderMiddle = () => {
     e.stopPropagation();
     handleShowNavMenu();
   };
+
   const _onShowSearch = (e) => {
     e.preventDefault();
     e.stopPropagation();
@@ -309,7 +267,7 @@ const HeaderMiddle = () => {
               />
             </InputWrapper>
             {debouncedSearchValue && (
-              <ul className="search__results">
+              <StyledSearchResults className="search__results">
                 {searchMoviesLoading && <ComponentLoading $bgTransparent />}
                 {!searchMoviesLoading &&
                   searchMovies?.length > 0 &&
@@ -336,7 +294,7 @@ const HeaderMiddle = () => {
                 {searchMovies?.length < 1 && !searchMoviesLoading && (
                   <Empty description="Movies not found" />
                 )}
-              </ul>
+              </StyledSearchResults>
             )}
           </StyledHeaderSearchWrapper>
         </div>

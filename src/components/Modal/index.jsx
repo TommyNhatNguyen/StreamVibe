@@ -20,12 +20,14 @@ const StyledModalWrapper = styled.div`
   padding: var(--pd-container);
   background-color: initial;
   transition: var(--transition-duration);
+  z-index: 10000;
   &.active {
     background-color: rgba(38, 38, 38, 0.8);
+    pointer-events: initial;
     .modal__wrapper {
+      pointer-events: initial;
       opacity: 1;
       visibility: 1;
-      pointer-events: initial;
     }
   }
   .modal__wrapper {

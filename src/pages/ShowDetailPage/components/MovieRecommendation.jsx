@@ -17,7 +17,7 @@ const StyledMovieWrapper = styled.div`
 
 const MovieRecommendation = ({ movieRecommendations, loading }) => {
   return (
-    <section className="recommendation --pd-b">
+    <section className="recommendation --pd-tb">
       <div className="container">
         <StyledMovieWrapper className="movie__wrapper">
           <MustWatchTab
