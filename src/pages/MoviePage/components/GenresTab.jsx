@@ -1,7 +1,6 @@
 import React, { useEffect } from "react";
-import CategoryGroup from "../../../components/CategoryGroup";
 import useFlickity from "../../../utils/useFlickity";
-import { Empty, Skeleton } from "antd";
+import { Empty } from "antd";
 import ComponentLoading from "../../../components/ComponentLoading";
 import { AntdWrapper } from "../../../components/StyledComponents/AntdWrapper";
 import Textbox from "../../../components/Textbox";

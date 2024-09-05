@@ -3,7 +3,6 @@ import Textbox from "../../../components/Textbox";
 import Button from "../../../components/Button";
 import styled from "styled-components";
 import { breakpoints } from "../../../constants/media";
-import { Link } from "react-router-dom";
 import { PATHS } from "../../../constants/paths";
 
 const StyledBackDrop = styled.div`

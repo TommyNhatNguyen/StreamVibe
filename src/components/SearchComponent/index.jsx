@@ -1,5 +1,5 @@
 import { Empty, Input } from "antd";
-import React, { forwardRef, useState } from "react";
+import React, { useState } from "react";
 import { InputWrapper } from "../StyledComponents/InputWrapper";
 import { MovieItemSearch } from "../MovieItem";
 import ComponentLoading from "../ComponentLoading";

@@ -1,10 +1,7 @@
-import React, { Fragment, useEffect } from "react";
-import useFlickity from "../../../utils/useFlickity";
-import { faCircleChevronRight } from "@fortawesome/free-solid-svg-icons";
+import React, { useEffect } from "react";
 import { ENV } from "../../../constants/environments";
 import { youtubePath } from "../../../constants/general";
 import LazyLoad from "react-lazy-load";
-import styled from "styled-components";
 import { TrailerVideoWrapper } from "../../../components/StyledComponents/TrailerVideoWrapper";
 
 const HeroSection = ({ videosByMovie }) => {

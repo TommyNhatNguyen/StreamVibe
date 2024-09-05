@@ -1,11 +1,11 @@
-import React, { useEffect, useMemo } from "react";
+import React, { useMemo } from "react";
 import GenresTab from "./GenresTab";
 import TopGenresTab from "./TopGenresTab";
 import TrendingTab from "./TrendingTab";
 import NewTab from "./NewTab";
-import MustWatchTab from "./MustWatchTab";
 import { useMovieContext } from "../../../context/MovieContext";
 import styled from "styled-components";
+import MustWatchTab from "../../../components/MustWatchTab";
 
 const StyledMovieWrapper = styled.div`
   padding: 40px;

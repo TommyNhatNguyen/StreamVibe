@@ -8,8 +8,9 @@ import styled from "styled-components";
 import { breakpoints } from "../../constants/media";
 import { useMovieContext } from "../../context/MovieContext";
 import { Checkbox, DatePicker, Empty, Select } from "antd";
-import { useLocation, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { AntdWrapper } from "../../components/StyledComponents/AntdWrapper";
+import { SORTING_BY } from "../../constants/general";
 
 const StyledShowAllWrapper = styled.div`
   display: grid;
@@ -213,38 +214,6 @@ const StyledMovieItemLeft = styled(StyledMovieItem)`
     margin: auto;
   }
 `;
-
-const SORTING_BY = [
-  {
-    id: "none",
-    value: "",
-    label: "----",
-  },
-  {
-    id: "popularity_asc",
-    value: "popularity.asc",
-    label: "Popularity (Low to High)",
-  },
-  {
-    id: "popularity_desc",
-    value: "popularity.desc",
-    label: "Popularity (High to Low)",
-  },
-  { id: "revenue_asc", value: "revenue.asc", label: "Revenue (Low to High)" },
-  { id: "revenue_desc", value: "revenue.desc", label: "Revenue (High to Low)" },
-  {
-    id: "primary_release_date_asc",
-    value: "primary_release_date.asc",
-    label: "Date (Old to New)",
-  },
-  {
-    id: "primary_release_date_desc",
-    value: "primary_release_date.desc",
-    label: "Date (New to Old)",
-  },
-  { id: "title_asc", value: "title.asc", label: "Title (A - Z)" },
-  { id: "title_desc", value: "title.desc", label: "Title (Z - A)" },
-];
 
 const ShowPage = () => {
   const { movieGenres, moviesTrending } = useMovieContext();

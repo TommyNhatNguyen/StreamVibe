@@ -1,5 +1,3 @@
-import { DEMO_ACCOUNT } from "./keys";
-
 export const STORAGE = {
   requestToken: "requestToken",
   sessionId: "sessionId",

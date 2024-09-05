@@ -1,13 +1,10 @@
-import React, { useEffect } from "react";
-import CategoryGroup from "../../../components/CategoryGroup";
-import useFlickity from "../../../utils/useFlickity";
-import ComponentLoading from "../../../components/ComponentLoading";
-import { Empty } from "antd";
-import { AntdWrapper } from "../../../components/StyledComponents/AntdWrapper";
-import Textbox from "../../../components/Textbox";
-import Button from "../../../components/Button";
-import { StyledMovieGroupWrapper } from "../../../components/StyledComponents/StyledMovieGroupWrapper";
-import MovieItem from "../../../components/MovieItem";
+import { useEffect } from "react";
+import useFlickity from "../../utils/useFlickity";
+import Textbox from "../Textbox";
+import Button from "../Button";
+import ComponentLoading from "../ComponentLoading";
+import { StyledMovieGroupWrapper } from "../StyledComponents/StyledMovieGroupWrapper";
+import MovieItem from "../MovieItem";
 
 const MustWatchTab = ({ moviesTopRated, loading, title = "", ...props }) => {
   useEffect(() => {

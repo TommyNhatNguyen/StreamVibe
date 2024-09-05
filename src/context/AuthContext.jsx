@@ -3,7 +3,6 @@ import { message } from "antd";
 import { sessionMethod } from "../utils/sessionMethod";
 import { credentialsMethod } from "../utils/credentialsMethod";
 import { DEMO_ACCOUNT } from "../constants/keys";
-import axios from "axios";
 import { authService } from "../services/authService";
 import queryString from "query-string";
 import { tempCredentialsMethod } from "../utils/tempCredentialMethod";

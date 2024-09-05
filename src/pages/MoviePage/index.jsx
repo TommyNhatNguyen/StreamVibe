@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import MovieSection from "./components/MovieSection";
 import { useMovieContext } from "../../context/MovieContext";
 import HeroMovieComponent from "../../components/HeroMovieComponent";

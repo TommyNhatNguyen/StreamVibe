@@ -1,6 +1,5 @@
 import classNames from "classnames";
-import React, { useEffect, useMemo, useRef, useState } from "react";
-import CategoryGroup from "../../../components/CategoryGroup";
+import React, { useEffect, useMemo, useState } from "react";
 import useFlickity from "../../../utils/useFlickity";
 import styled from "styled-components";
 import { AntdWrapper } from "../../../components/StyledComponents/AntdWrapper";

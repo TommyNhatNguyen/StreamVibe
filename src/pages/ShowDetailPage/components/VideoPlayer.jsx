@@ -4,7 +4,6 @@ import { ENV } from "../../../constants/environments";
 import { IMAGE_NOTFOUND_PATH, PATHS } from "../../../constants/paths";
 import BreadCrumb from "../../../components/BreadCrumb";
 import classNames from "classnames";
-import { formatViews } from "../../../utils/format";
 import ComponentLoading from "../../../components/ComponentLoading";
 
 const StyledVideoWrapper = styled.div`

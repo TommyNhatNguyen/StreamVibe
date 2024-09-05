@@ -49,7 +49,7 @@ function useShowDetail() {
     voteCount: formatedVoteCount,
   };
   const movieRecommendationProps = {
-    movieRecommendations,
+    movies: movieRecommendations,
     loading: movieRecommendationLoading,
   };
   return { videoPlayerProps, reviewProps, movieRecommendationProps };

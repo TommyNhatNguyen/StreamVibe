@@ -4,13 +4,8 @@ import { IMAGE_NOTFOUND_PATH, PATHS } from "../../../constants/paths";
 import { ENV } from "../../../constants/environments";
 import { Link } from "react-router-dom";
 import { formatDate } from "../../../utils/format";
-import styled from "styled-components";
-import { breakpoints } from "../../../constants/media";
 import { useDispatch, useSelector } from "react-redux";
-import {
-  getFavoritesMovies,
-  removeFavoritesMovies,
-} from "../../../store/reducer/favoritesReducer";
+import { removeFavoritesMovies } from "../../../store/reducer/favoritesReducer";
 import ComponentLoading from "../../../components/ComponentLoading";
 import { Empty } from "antd";
 import { StyledInfoRow } from "./StyledInfoRow";

@@ -1,7 +1,7 @@
 import React from "react";
-import MustWatchTab from "../../MoviePage/components/MustWatchTab";
 import styled from "styled-components";
-import { breakpoints } from "../../../constants/media";
+import { breakpoints } from "../../constants/media";
+import MustWatchTab from "../MustWatchTab";
 
 const StyledMovieWrapper = styled.div`
   .explore__categroup {
@@ -15,14 +15,14 @@ const StyledMovieWrapper = styled.div`
   }
 `;
 
-const MovieRecommendation = ({ movieRecommendations, loading }) => {
+const MovieRecommendation = ({ movies, loading }) => {
   return (
-    <section className="recommendation --pd-tb">
+    <section className="recommendation --pd-b">
       <div className="container">
         <StyledMovieWrapper className="movie__wrapper">
           <MustWatchTab
             title="You might love these 🤯"
-            moviesTopRated={movieRecommendations}
+            moviesTopRated={movies}
             loading={loading}
           />
         </StyledMovieWrapper>

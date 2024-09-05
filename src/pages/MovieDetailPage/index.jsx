@@ -1,35 +1,20 @@
-import React, { useEffect } from "react";
-import { TrailerVideoWrapper } from "../../components/StyledComponents/TrailerVideoWrapper";
-import LazyLoad from "react-lazy-load";
-import { youtubePath } from "../../constants/general";
+import React from "react";
 import MovieContent from "./components/MovieContent";
 import TrialComponent from "../../components/TrialComponent";
 import useMovieDetail from "./useMovieDetail";
 import HeroMovieComponent from "../../components/HeroMovieComponent";
-import MustWatchTab from "../MoviePage/components/MustWatchTab";
-import MovieRecommendation from "./components/MovieRecommendation";
-import MovieSimilar from "./components/MovieSimilar";
-import useMutation from "../../hooks/useMutation";
-import { movieService } from "../../services/movieService";
-import { useDispatch, useSelector } from "react-redux";
-import { addFavoritesMovies } from "../../store/reducer/favoritesReducer";
-import { addWatchList } from "../../store/reducer/watchlistReducer";
+import MovieSimilar from "../../components/MovieSimilar";
+import MovieRecommendation from "../../components/MovieRecommendation";
 
 const MovieDetailPage = () => {
-  const { movieContentProps, movieHeroProps } = useMovieDetail();
-  const { movieVideos, loading } = movieHeroProps || {};
+  const {
+    movieContentProps,
+    movieHeroProps,
+    movieRecommendationProps,
+    movieSimilarProps,
+  } = useMovieDetail();
+  const { movieVideos } = movieHeroProps || {};
   const { movieDetail } = movieContentProps || {};
-  const { id: movieId } = movieDetail || {};
-  const {
-    data: movieRecommendationData,
-    loading: movieRecommendationLoading,
-    execute: getMovieRecommendation,
-  } = useMutation((movieId) => movieService.getMovieRecommnedations(movieId));
-  const {
-    data: movieSimilarData,
-    loading: movieSimilarLoading,
-    execute: getMovieSimilar,
-  } = useMutation((movieId) => movieService.getMovieSimilar(movieId));
   const modifiedMovieHeroProps = [
     {
       movieBackdrop: movieDetail?.backdrop_path || "",
@@ -39,40 +24,16 @@ const MovieDetailPage = () => {
       videos: movieVideos || [],
     },
   ];
-  const movieRecommendations = movieRecommendationData?.results || [];
-  const movieSimilar = movieSimilarData?.results || [];
-  useEffect(() => {
-    if (movieId) {
-      getMovieRecommendation(movieId);
-      getMovieSimilar(movieId);
-    }
-  }, [movieId]);
-  const dispatch = useDispatch();
-  const { favorites } = useSelector((state) => state.favorites);
-  const { watchlist } = useSelector((state) => state.watchlist);
-  const handleAddtoFavorite = (movieId) => {
-    dispatch(addFavoritesMovies({ movieId: movieId }));
-  };
-  const handleAddtoWatchlist = (movieId) => {
-    dispatch(addWatchList({ movieId: movieId }));
-  };
   return (
     <main className="moviedetail">
       <HeroMovieComponent
         videosByMovie={modifiedMovieHeroProps}
-        loading={loading}
         scrolling={false}
-        favorites={favorites}
-        handleAddtoFavorite={handleAddtoFavorite}
-        handleAddtoWatchlist={handleAddtoWatchlist}
-        watchlist={watchlist}
+        {...movieHeroProps}
       />
       <MovieContent {...movieContentProps} />
-      <MovieRecommendation
-        movies={movieRecommendations}
-        loading={movieRecommendationLoading}
-      />
-      <MovieSimilar movies={movieSimilar} loading={movieSimilarLoading} />
+      <MovieRecommendation {...movieRecommendationProps} />
+      <MovieSimilar {...movieSimilarProps} />
       <TrialComponent />
     </main>
   );

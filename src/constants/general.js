@@ -104,6 +104,52 @@ export const PRICE_PLANS_TABLE = {
   ],
 };
 
+export const HOME_PATHS = [
+  { id: "explore", value: "Categories" },
+  { id: "experience", value: "Devices" },
+  { id: "pricing", value: "Pricing" },
+  { id: "faq", value: "FAQ" },
+];
+
+export const MOVIE_PATHS = [
+  { id: "genres", value: "Gernes" },
+  { id: "trending", value: "Trending" },
+  { id: "new", value: "New Release" },
+  { id: "popular", value: "Popular" },
+];
+
+export const SORTING_BY = [
+  {
+    id: "none",
+    value: "",
+    label: "----",
+  },
+  {
+    id: "popularity_asc",
+    value: "popularity.asc",
+    label: "Popularity (Low to High)",
+  },
+  {
+    id: "popularity_desc",
+    value: "popularity.desc",
+    label: "Popularity (High to Low)",
+  },
+  { id: "revenue_asc", value: "revenue.asc", label: "Revenue (Low to High)" },
+  { id: "revenue_desc", value: "revenue.desc", label: "Revenue (High to Low)" },
+  {
+    id: "primary_release_date_asc",
+    value: "primary_release_date.asc",
+    label: "Date (Old to New)",
+  },
+  {
+    id: "primary_release_date_desc",
+    value: "primary_release_date.desc",
+    label: "Date (New to Old)",
+  },
+  { id: "title_asc", value: "title.asc", label: "Title (A - Z)" },
+  { id: "title_desc", value: "title.desc", label: "Title (Z - A)" },
+];
+
 export const youtubePath = (key) => {
   return `https://www.youtube.com/embed/${key}?autoplay=1&mute=1&controls=0&loop=1&modestbranding&playlist=${key}&showinfo=0`;
 };

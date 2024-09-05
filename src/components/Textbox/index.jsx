@@ -73,8 +73,6 @@ export const StyledButtonControlGroup = styled.div`
   }
 `;
 
-export const StyledTabs = styled.ul``;
-
 const Textbox = ({ variant = "left", children, ...props }) => {
   let renderTextbox;
   switch (variant) {

@@ -1,6 +1,5 @@
 import React from "react";
 import Textbox from "../../../components/Textbox";
-import Button from "../../../components/Button";
 import styled from "styled-components";
 import classNames from "classnames";
 import { formatDate } from "../../../utils/format";

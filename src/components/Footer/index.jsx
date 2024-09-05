@@ -2,20 +2,7 @@ import React from "react";
 import { Link, useLocation } from "react-router-dom";
 import { PATHS } from "../../constants/paths";
 import { notAvaiableMessage } from "../../utils/message";
-
-const HOME_PATHS = [
-  { id: "explore", value: "Categories" },
-  { id: "experience", value: "Devices" },
-  { id: "pricing", value: "Pricing" },
-  { id: "faq", value: "FAQ" },
-];
-
-const MOVIE_PATHS = [
-  { id: "genres", value: "Gernes" },
-  { id: "trending", value: "Trending" },
-  { id: "new", value: "New Release" },
-  { id: "popular", value: "Popular" },
-];
+import { HOME_PATHS, MOVIE_PATHS } from "../../constants/general";
 
 const Footer = () => {
   const { pathname } = useLocation();
@@ -31,7 +18,11 @@ const Footer = () => {
                 ? HOME_PATHS.map((item, index) => {
                     const { id, value } = item || {};
                     return (
-                      <a key={id} href={`#${id}`} className="navgroup__item">
+                      <a
+                        key={id || index}
+                        href={`#${id}`}
+                        className="navgroup__item"
+                      >
                         {value}
                       </a>
                     );

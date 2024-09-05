@@ -1,9 +1,8 @@
-import React, { useEffect, useRef } from "react";
+import React from "react";
 import VideoPlayer from "./components/VideoPlayer";
-import MovieRecommendation from "./components/MovieRecommendation";
 import Reviews from "./components/Reviews";
-import { useLocation, useParams } from "react-router-dom";
 import useShowDetail from "./useShowDetail";
+import MovieRecommendation from "../../components/MovieRecommendation";
 
 const ShowDetailPage = () => {
   const { videoPlayerProps, reviewProps, movieRecommendationProps } =

@@ -1,5 +1,5 @@
 import classNames from "classnames";
-import React, { useState } from "react";
+import React from "react";
 import styled from "styled-components";
 import { breakpoints } from "../../constants/media";
 

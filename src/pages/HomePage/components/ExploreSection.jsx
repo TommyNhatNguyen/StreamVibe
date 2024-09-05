@@ -1,8 +1,6 @@
 import React, { useEffect } from "react";
 import useFlickity from "../../../utils/useFlickity";
 import { useMovieContext } from "../../../context/MovieContext";
-import styled from "styled-components";
-import { breakpoints } from "../../../constants/media";
 import Textbox from "../../../components/Textbox";
 import CategoryItem from "../../../components/CategoryItem";
 import Button from "../../../components/Button";

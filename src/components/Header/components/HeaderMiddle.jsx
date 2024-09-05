@@ -1,14 +1,10 @@
-import React, { useEffect, useRef, useState } from "react";
+import React from "react";
 import { PATHS } from "../../../constants/paths";
-import { Link, NavLink, useLocation } from "react-router-dom";
-import { useMainContext } from "../../../context/MainContext";
+import { Link, NavLink } from "react-router-dom";
 import { Empty, Input } from "antd";
 import { InputWrapper } from "../../StyledComponents/InputWrapper";
 import styled from "styled-components";
-import CategoryGroup from "../../CategoryGroup";
 import classNames from "classnames";
-import { useMovieContext } from "../../../context/MovieContext";
-import useDebounce from "../../../hooks/useDebounce";
 import ComponentLoading from "../../ComponentLoading";
 import { formatDate } from "../../../utils/format";
 import { breakpoints } from "../../../constants/media";
@@ -184,15 +180,17 @@ const StyledHeaderSearchWrapper = styled.div`
   }
 `;
 
-const HeaderMiddle = () => {
-  const searchInput = useRef();
-  const { pathname } = useLocation();
-  const [showSearch, setShowSearch] = useState(false);
-  const [searchValue, setSearchValue] = useState("");
-  const { handleShowNavMenu } = useMainContext();
-  const { searchMovies, getMovieBySearch, searchMoviesLoading } =
-    useMovieContext();
-
+const HeaderMiddle = ({
+  handleShowNavMenu,
+  handleShowSearch,
+  handleSearchChange,
+  showSearch,
+  debouncedSearchValue,
+  searchMovies,
+  searchMoviesLoading,
+  searchValue,
+  searchInput,
+}) => {
   const _onShowNavMenu = (e) => {
     e.preventDefault();
     e.stopPropagation();
@@ -202,27 +200,12 @@ const HeaderMiddle = () => {
   const _onShowSearch = (e) => {
     e.preventDefault();
     e.stopPropagation();
-    setShowSearch((prev) => !prev);
-    searchInput.current.focus();
-    document.body.addEventListener("click", () => setShowSearch(false));
+    handleShowSearch();
   };
 
   const _onChange = (searchValue) => {
-    setSearchValue(searchValue);
+    handleSearchChange(searchValue);
   };
-
-  useEffect(() => {
-    setShowSearch(false);
-    setSearchValue("");
-  }, [pathname]);
-
-  const debouncedSearchValue = useDebounce(searchValue, 500);
-  useEffect(() => {
-    if (debouncedSearchValue) {
-      getMovieBySearch(debouncedSearchValue);
-    }
-  }, [debouncedSearchValue]);
-
   return (
     <StyledHeaderMiddleWrapper className="header__middle">
       <div className="container">

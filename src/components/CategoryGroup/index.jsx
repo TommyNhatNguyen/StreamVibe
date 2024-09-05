@@ -1,10 +1,9 @@
 import React from "react";
 import { ENV } from "../../constants/environments";
-import { formatDate, formatViews } from "../../utils/format";
+import { formatViews } from "../../utils/format";
 import classNames from "classnames";
 import { Link } from "react-router-dom";
 import { IMAGE_NOTFOUND_PATH, PATHS } from "../../constants/paths";
-import { Empty, Skeleton } from "antd";
 
 const CategoryGroup = ({ children, classes, ...props }) => {
   return (

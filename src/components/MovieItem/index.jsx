@@ -7,7 +7,7 @@ import { ENV } from "../../constants/environments";
 import { breakpoints } from "../../constants/media";
 import { formatDate, formatViews } from "../../utils/format";
 
-const StyledMovieItem = styled.li`
+const StyledMovieItem = styled(Link)`
   height: 500px;
   aspect-ratio: 359.5 / 500;
   padding: 20px;
@@ -89,7 +89,7 @@ const StyledMovieItemLink = styled(Link)`
   }
 `;
 
-const StyledMovieItemImageWrapper = styled(Link)`
+const StyledMovieItemImageWrapper = styled.div`
   display: flex;
   height: 404px;
   aspect-ratio: 319.25 / 404;
@@ -189,11 +189,9 @@ const MovieItem = (
       className={classNames("moviesgroup__item", props?.classes)}
       ref={ref}
       {...props}
+      to={moviePath}
     >
-      <StyledMovieItemImageWrapper
-        className="moviesgroup__item-img"
-        to={moviePath}
-      >
+      <StyledMovieItemImageWrapper className="moviesgroup__item-img">
         <img src={imgPath} />
       </StyledMovieItemImageWrapper>
       {title && <h5 className="--h5 moviesgroup__item-title">{title}</h5>}
@@ -243,12 +241,10 @@ export const MovieItemSmall = ({
   return (
     <StyledMovieItemSmall
       className={classNames("moviesgroup__item", props?.classes)}
+      to={moviePath}
       {...props}
     >
-      <StyleMovieItemImageWrapperSmall
-        className="moviesgroup__item-img"
-        to={moviePath}
-      >
+      <StyleMovieItemImageWrapperSmall className="moviesgroup__item-img">
         <img src={imgPath || ""} />
       </StyleMovieItemImageWrapperSmall>
       <StyledMovieItemContentWrapper className="categroup__item-content --trending">

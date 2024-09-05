@@ -1,5 +1,4 @@
-import React, { useState } from "react";
-import { useAuthContext } from "../../../context/AuthContext";
+import React from "react";
 import { MODAL_TYPES } from "../../../constants/modal";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
@@ -118,19 +117,26 @@ const StyledDropdownWrapper = styled.div`
   }
 `;
 
-const HeaderTop = () => {
-  const [showDropdown, setShowDropDown] = useState(false);
+const HeaderTop = ({
+  handleShowModal,
+  isLogin,
+  currentUser,
+  handleLogout,
+  handleShowDropDown,
+  showDropdown,
+}) => {
   const _onShowDropDown = (e) => {
     e.preventDefault();
     e.stopPropagation();
-    setShowDropDown((prev) => !prev);
-    document.body.addEventListener("click", () => setShowDropDown(false));
+    handleShowDropDown();
   };
-  const { handleShowModal, isLogin, currentUser, handleLogout } =
-    useAuthContext();
   const _onShowModal = (e, modalType) => {
     e.preventDefault();
     handleShowModal(modalType);
+  };
+  const _onLogout = (e) => {
+    e.preventDefault();
+    handleLogout();
   };
   return (
     <StyledHeaderTopWrapper className="header__top">
@@ -202,7 +208,7 @@ const HeaderTop = () => {
                     </Link>
                   </li>
                   <li>
-                    <a href="#" className="item logout" onClick={handleLogout}>
+                    <a href="#" className="item logout" onClick={_onLogout}>
                       <i className="bi bi-box-arrow-right"></i>
                       <span>Logout</span>
                     </a>

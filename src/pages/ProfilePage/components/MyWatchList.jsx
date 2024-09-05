@@ -4,15 +4,13 @@ import { IMAGE_NOTFOUND_PATH, PATHS } from "../../../constants/paths";
 import { ENV } from "../../../constants/environments";
 import { Link } from "react-router-dom";
 import { formatDate } from "../../../utils/format";
-import styled from "styled-components";
-import { breakpoints } from "../../../constants/media";
 import { useDispatch, useSelector } from "react-redux";
-
 import ComponentLoading from "../../../components/ComponentLoading";
 import { Empty } from "antd";
 import { StyledInfoRow } from "./StyledInfoRow";
 import { StyledMovieItemHorizontal } from "./StyledMovieItemHorizontal";
 import { removeWatchList } from "../../../store/reducer/watchlistReducer";
+
 const MyWatchList = () => {
   const dispatch = useDispatch();
   const { watchlist, loading } = useSelector((state) => state.watchlist);

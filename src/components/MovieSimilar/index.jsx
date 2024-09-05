@@ -1,7 +1,7 @@
 import React from "react";
-import MustWatchTab from "../../MoviePage/components/MustWatchTab";
 import styled from "styled-components";
-import { breakpoints } from "../../../constants/media";
+import MustWatchTab from "../MustWatchTab";
+import { breakpoints } from "../../constants/media";
 
 const StyledMovieWrapper = styled.div`
   .explore__categroup {
@@ -14,14 +14,13 @@ const StyledMovieWrapper = styled.div`
     margin-top: 20px;
   }
 `;
-
-const MovieRecommendation = ({ movies, loading }) => {
+const MovieSimilar = ({ movies, loading }) => {
   return (
-    <section className="recommendation --pd-b">
+    <section className="similar --pd-b">
       <div className="container">
         <StyledMovieWrapper className="movie__wrapper">
           <MustWatchTab
-            title="You might love these 🤯"
+            title="Similar movies 🍿"
             moviesTopRated={movies}
             loading={loading}
           />
@@ -31,4 +30,4 @@ const MovieRecommendation = ({ movies, loading }) => {
   );
 };
 
-export default MovieRecommendation;
+export default MovieSimilar;

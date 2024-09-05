@@ -3,11 +3,7 @@ import Input from "../../Input";
 import { Controller, useForm } from "react-hook-form";
 import Checkbox from "../../Checkbox";
 import { MESSAGE, notAvaiableMessage } from "../../../utils/message";
-import {
-  REGEX,
-  loginValidate,
-  registerValidate,
-} from "../../../utils/validate";
+import { REGEX, registerValidate } from "../../../utils/validate";
 import { message } from "antd";
 import { useAuthContext } from "../../../context/AuthContext";
 import Button from "../../Button";

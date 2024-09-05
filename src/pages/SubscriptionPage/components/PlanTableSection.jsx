@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { PRICE_PLANS, PRICE_PLANS_TABLE } from "../../../constants/general";
+import { PRICE_PLANS_TABLE } from "../../../constants/general";
 
 const PlanTableSection = () => {
   const [selectedPlan, setSelectedPlan] = useState("standard");

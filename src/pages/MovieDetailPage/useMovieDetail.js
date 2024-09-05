@@ -3,6 +3,9 @@ import useMutation from "../../hooks/useMutation";
 import { movieService } from "../../services/movieService";
 import { useEffect } from "react";
 import { externalService } from "../../services/externalService";
+import { useDispatch, useSelector } from "react-redux";
+import { addFavoritesMovies } from "../../store/reducer/favoritesReducer";
+import { addWatchList } from "../../store/reducer/watchlistReducer";
 
 function useMovieDetail() {
   const { movieId } = useParams();
@@ -31,6 +34,16 @@ function useMovieDetail() {
     data: movieVideoData,
     loading: movieVideoLoading,
   } = useMutation((query) => movieService.getVideos(query));
+  const {
+    data: movieRecommendationData,
+    loading: movieRecommendationLoading,
+    execute: getMovieRecommendation,
+  } = useMutation((movieId) => movieService.getMovieRecommnedations(movieId));
+  const {
+    data: movieSimilarData,
+    loading: movieSimilarLoading,
+    execute: getMovieSimilar,
+  } = useMutation((movieId) => movieService.getMovieSimilar(movieId));
 
   const {
     execute: getImdbDetail,
@@ -42,6 +55,9 @@ function useMovieDetail() {
   const { cast: movieCast, crew: movieCrew } = movieCreditsData || {};
   const movieReviews = movieReviewsData?.results || [];
   const movieVideos = movieVideoData?.results || [];
+  const movieRecommendations = movieRecommendationData?.results || [];
+  const movieSimilar = movieSimilarData?.results || [];
+
   const movieDirector = movieCrew?.find(
     (item) => item?.known_for_department === "Directing"
   );
@@ -65,12 +81,31 @@ function useMovieDetail() {
       getMovieCredits(movieId);
       getMovieReviews(movieId);
       getMovieVideo(movieId);
+      getMovieRecommendation(movieId);
+      getMovieSimilar(movieId);
     }
   }, [movieId]);
   useEffect(() => {
     if (imbdbId) getImdbDetail(imbdbId);
   }, [movieDetail]);
-  const movieHeroProps = { movieVideos, loading: movieVideoLoading };
+  const dispatch = useDispatch();
+  const { favorites } = useSelector((state) => state.favorites);
+  const { watchlist } = useSelector((state) => state.watchlist);
+  const handleAddtoFavorite = (movieId) => {
+    dispatch(addFavoritesMovies({ movieId: movieId }));
+  };
+  const handleAddtoWatchlist = (movieId) => {
+    dispatch(addWatchList({ movieId: movieId }));
+  };
+
+  const movieHeroProps = {
+    movieVideos,
+    loading: movieVideoLoading,
+    favorites,
+    watchlist,
+    handleAddtoFavorite,
+    handleAddtoWatchlist,
+  };
   const movieContentProps = {
     translations,
     movieDetail,
@@ -81,6 +116,19 @@ function useMovieDetail() {
     movieDetailByImdb,
     apiLoading,
   };
-  return { movieContentProps, movieHeroProps };
+  const movieRecommendationProps = {
+    movies: movieRecommendations,
+    loading: movieRecommendationLoading,
+  };
+  const movieSimilarProps = {
+    movies: movieSimilar,
+    loading: movieSimilarLoading,
+  };
+  return {
+    movieContentProps,
+    movieHeroProps,
+    movieRecommendationProps,
+    movieSimilarProps,
+  };
 }
 export default useMovieDetail;

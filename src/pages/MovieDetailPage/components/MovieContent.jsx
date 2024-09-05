@@ -10,8 +10,6 @@ import { Empty } from "antd";
 import { AntdWrapper } from "../../../components/StyledComponents/AntdWrapper";
 import { breakpoints } from "../../../constants/media";
 import styled from "styled-components";
-import Button from "../../../components/Button";
-import Textbox from "../../../components/Textbox";
 
 export const MovieContentWrapper = styled.div`
   display: grid;

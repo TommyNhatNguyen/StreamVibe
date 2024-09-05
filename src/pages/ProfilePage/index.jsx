@@ -1,8 +1,5 @@
 import React from "react";
-import MyWatchList from "./components/MyWatchList";
-import MyRating from "./components/MyRating";
-import MyFavorites from "./components/MyFavorites";
-import { Link, NavLink, Outlet, useLocation } from "react-router-dom";
+import { NavLink, Outlet, useLocation } from "react-router-dom";
 import BreadCrumb from "../../components/BreadCrumb";
 import { PATHS } from "../../constants/paths";
 import styled from "styled-components";

@@ -1,7 +1,7 @@
-import React, { useCallback, useEffect, useRef, useState } from "react";
+import React, { useEffect, useState } from "react";
 import LazyLoad from "react-lazy-load";
 import { ENV } from "../../constants/environments";
-import { youtubePath, youtubePathSound } from "../../constants/general";
+import { youtubePath } from "../../constants/general";
 import { TrailerVideoWrapper } from "../StyledComponents/TrailerVideoWrapper";
 import OwlCarousel from "react-owl-carousel";
 import ComponentLoading from "../ComponentLoading";
@@ -10,9 +10,7 @@ import Textbox from "../Textbox";
 import Button from "../Button";
 import { breakpoints } from "../../constants/media";
 import { PATHS } from "../../constants/paths";
-import { useDispatch, useSelector } from "react-redux";
 import classNames from "classnames";
-import { addFavoritesMovies } from "../../store/reducer/favoritesReducer";
 
 const StyledTrailer = styled.div`
   height: 100vh;

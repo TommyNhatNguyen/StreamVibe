@@ -1,7 +1,7 @@
 import React from "react";
-import MustWatchTab from "../../MoviePage/components/MustWatchTab";
 import styled from "styled-components";
 import { breakpoints } from "../../../constants/media";
+import MustWatchTab from "../../../components/MustWatchTab";
 
 const StyledMovieWrapper = styled.div`
   .explore__categroup {

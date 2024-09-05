@@ -1,10 +1,8 @@
 import React, { useEffect } from "react";
 import useFlickity from "../../../utils/useFlickity";
-import CategoryGroup from "../../../components/CategoryGroup";
 import { AntdWrapper } from "../../../components/StyledComponents/AntdWrapper";
 import ComponentLoading from "../../../components/ComponentLoading";
 import { Empty } from "antd";
-import { StyledCategoryGroupWrapper } from "../../../components/StyledComponents/StyledCategoryGroupWrapper";
 import { MovieItemSmall } from "../../../components/MovieItem";
 import { StyledMovieGroupWrapper } from "../../../components/StyledComponents/StyledMovieGroupWrapper";
 import Textbox from "../../../components/Textbox";
