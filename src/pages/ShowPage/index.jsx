@@ -107,6 +107,26 @@ const StyledShowAllWrapper = styled.div`
       }
     }
   }
+  @media (max-width: ${breakpoints.tablet}) {
+    grid-template-columns: initial;
+    grid-template-rows: max-content 1fr;
+    .showall-left {
+      .showall__filter {
+        position: initial;
+        &-group {
+          .checkboxgroup {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            grid-template-columns: initial;
+          }
+        }
+      }
+      .showall__trending {
+        display: none;
+      }
+    }
+  }
 `;
 
 const StyledShowAllSort = styled.div`
@@ -148,6 +168,7 @@ const StyledShowAllListWrapper = styled.div`
       gap: 10px;
     }
   }
+
   @media (max-width: ${breakpoints.mobile}) {
     .showall__list-moviesgroup {
       grid-template-columns: repeat(auto-fill, minmax(231px, 1fr));
