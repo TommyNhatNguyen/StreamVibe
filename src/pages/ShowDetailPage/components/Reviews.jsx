@@ -110,12 +110,6 @@ const Reviews = ({ movieReviews, loading }) => {
             <Textbox.Content>
               <h3 className="--h3">Reviews</h3>
             </Textbox.Content>
-            <Button variant="second" href="#" className="btn btnsecond">
-              <div className="icon">
-                <img src="/assets/images/plus-icon.png" alt="plus icon" />
-              </div>
-              Add Your Review
-            </Button>
           </Textbox>
           <StyledReviewsList className="reviews__list">
             {loading && <ComponentLoading />}

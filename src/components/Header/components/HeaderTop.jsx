@@ -202,12 +202,6 @@ const HeaderTop = () => {
                     </Link>
                   </li>
                   <li>
-                    <Link to={PATHS.PROFILE.RATING} className="item">
-                      <i className="bi bi-star"></i>
-                      <span>My ratings</span>
-                    </Link>
-                  </li>
-                  <li>
                     <a href="#" className="item logout" onClick={handleLogout}>
                       <i className="bi bi-box-arrow-right"></i>
                       <span>Logout</span>

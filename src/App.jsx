@@ -54,7 +54,6 @@ function App() {
               <Route index element={<MyWatchList />} />
               <Route path={PATHS.PROFILE.WATCHLIST} element={<MyWatchList />} />
               <Route path={PATHS.PROFILE.FAVORITES} element={<MyFavorites />} />
-              <Route path={PATHS.PROFILE.RATING} element={<MyRating />} />
             </Route>
             <Route path="*" element={<NotFoundPage />} />
           </Route>

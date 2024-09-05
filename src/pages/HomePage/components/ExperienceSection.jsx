@@ -22,6 +22,7 @@ const StyledCardsWrapper = styled.ul`
 const StyledCard = styled.li`
   width: 100%;
   aspect-ratio: 512.33 / 283;
+  height: 283px;
   padding: 50px;
   border: 1px solid var(--black-cl-3);
   background-color: var(--black-cl);
@@ -64,6 +65,7 @@ const StyledCard = styled.li`
   }
   @media (max-width: ${breakpoints.desktop}) {
     aspect-ratio: 413 / 230;
+    height: 230px;
     padding: 40px;
     .titlegroup {
       margin-bottom: 14px;

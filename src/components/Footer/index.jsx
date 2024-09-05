@@ -1,6 +1,7 @@
 import React from "react";
 import { Link, useLocation } from "react-router-dom";
 import { PATHS } from "../../constants/paths";
+import { notAvaiableMessage } from "../../utils/message";
 
 const HOME_PATHS = [
   { id: "explore", value: "Categories" },
@@ -112,12 +113,18 @@ const Footer = () => {
         {/* Bottom */}
         <div className="footer__bottom">
           <p className="footer__bottom-copyright">
-            @2023 streamvib, All Rights Reserved
+            @2024 Tommy Nguyen, All Rights Reserved
           </p>
           <div className="footer__bottom-policy">
-            <a href="#">Terms of Use</a>
-            <a href="#">Privacy Policy</a>
-            <a href="#">Cookie Policy</a>
+            <a href="#" onClick={(e) => notAvaiableMessage()}>
+              Terms of Use
+            </a>
+            <a href="#" onClick={(e) => notAvaiableMessage()}>
+              Privacy Policy
+            </a>
+            <a href="#" onClick={(e) => notAvaiableMessage()}>
+              Cookie Policy
+            </a>
           </div>
         </div>
       </div>

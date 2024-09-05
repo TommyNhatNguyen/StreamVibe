@@ -32,7 +32,10 @@ const StyledModalWrapper = styled.div`
   }
   .modal__wrapper {
     position: relative;
+    height: 100%;
     min-height: 500px;
+    max-height: 670px;
+    overflow-y: scroll;
     max-width: 565px;
     width: 100%;
     background-color: var(--white-cl);

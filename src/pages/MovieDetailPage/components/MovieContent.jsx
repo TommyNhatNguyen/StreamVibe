@@ -296,7 +296,7 @@ export const MovieContentWrapper = styled.div`
       }
     }
   }
-  @media (max-width: ${breakpoints.mobile}) {
+  @media (max-width: ${breakpoints.ipad12pro}) {
     grid-template-columns: 1fr;
     .moviecontent__content {
       .moviecontent__content-row {
@@ -450,15 +450,6 @@ const MovieContent = ({
                 <div className="moviecontent__content-row">
                   <div className="title-wrapper">
                     <p className="title">Reviews</p>
-                    <Button variant="second" href="#" className="btn btnsecond">
-                      <div className="icon">
-                        <img
-                          src="/assets/images/plus-icon.png"
-                          alt="plus icon"
-                        />
-                      </div>
-                      Add Your Review
-                    </Button>
                   </div>
                   {movieReviews?.length > 0 && !apiLoading ? (
                     <OwlCarousel

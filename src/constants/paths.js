@@ -15,7 +15,6 @@ export const PATHS = {
   PROFILE: {
     INDEX: "/profile",
     WATCHLIST: "/profile" + "/watchlist",
-    RATING: "/profile" + "/rating",
     FAVORITES: "/profile" + "/favorites",
   },
   SUPPORT: "/support",

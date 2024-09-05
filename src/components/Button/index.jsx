@@ -16,6 +16,7 @@ export const StyledButton = styled(Link)`
   border-radius: 8px;
   background-color: var(--red-cl);
   transition: var(--transition-duration);
+  text-wrap: nowrap;
   cursor: pointer;
   &.--disabled {
     pointer-events: none;

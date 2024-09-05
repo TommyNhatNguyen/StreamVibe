@@ -108,6 +108,8 @@ const HeroMovieComponent = ({
   scrolling = true,
   handleAddtoFavorite,
   favorites,
+  watchlist,
+  handleAddtoWatchlist,
   ...props
 }) => {
   const [_, setForceUpdate] = useState(true);
@@ -115,9 +117,13 @@ const HeroMovieComponent = ({
     e.preventDefault();
     handleAddtoFavorite(movieId);
   };
+  const _onAddToWatchlist = (e, movieId) => {
+    e.preventDefault();
+    handleAddtoWatchlist(movieId);
+  };
   useEffect(() => {
     setForceUpdate((prev) => !prev);
-  }, [favorites]);
+  }, [favorites, watchlist]);
   return (
     <section className={`heromovie ${sectionClassname && ""}`} {...props}>
       {videosByMovie?.length > 0 &&
@@ -214,7 +220,15 @@ const HeroMovieComponent = ({
                               </Button>
                               <Button
                                 variant="control"
-                                className="textbox__button btn --btncontrol"
+                                className={classNames(
+                                  "textbox__button btn --btncontrol",
+                                  {
+                                    "--disabled": watchlist?.find(
+                                      (item) => item?.id === movieId
+                                    ),
+                                  }
+                                )}
+                                onClick={(e) => _onAddToWatchlist(e, movieId)}
                               >
                                 <img
                                   srcSet="/assets/images/like-icon.png 2x"
@@ -316,7 +330,15 @@ const HeroMovieComponent = ({
                               </Button>
                               <Button
                                 variant="control"
-                                className="textbox__button btn --btncontrol"
+                                className={classNames(
+                                  "textbox__button btn --btncontrol",
+                                  {
+                                    "--disabled": watchlist?.find(
+                                      (item) => item?.id === movieId
+                                    ),
+                                  }
+                                )}
+                                onClick={(e) => _onAddToWatchlist(e, movieId)}
                               >
                                 <img
                                   srcSet="/assets/images/like-icon.png 2x"

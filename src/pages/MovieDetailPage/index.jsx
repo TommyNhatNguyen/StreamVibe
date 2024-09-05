@@ -13,6 +13,7 @@ import useMutation from "../../hooks/useMutation";
 import { movieService } from "../../services/movieService";
 import { useDispatch, useSelector } from "react-redux";
 import { addFavoritesMovies } from "../../store/reducer/favoritesReducer";
+import { addWatchList } from "../../store/reducer/watchlistReducer";
 
 const MovieDetailPage = () => {
   const { movieContentProps, movieHeroProps } = useMovieDetail();
@@ -48,8 +49,12 @@ const MovieDetailPage = () => {
   }, [movieId]);
   const dispatch = useDispatch();
   const { favorites } = useSelector((state) => state.favorites);
+  const { watchlist } = useSelector((state) => state.watchlist);
   const handleAddtoFavorite = (movieId) => {
     dispatch(addFavoritesMovies({ movieId: movieId }));
+  };
+  const handleAddtoWatchlist = (movieId) => {
+    dispatch(addWatchList({ movieId: movieId }));
   };
   return (
     <main className="moviedetail">
@@ -59,6 +64,8 @@ const MovieDetailPage = () => {
         scrolling={false}
         favorites={favorites}
         handleAddtoFavorite={handleAddtoFavorite}
+        handleAddtoWatchlist={handleAddtoWatchlist}
+        watchlist={watchlist}
       />
       <MovieContent {...movieContentProps} />
       <MovieRecommendation

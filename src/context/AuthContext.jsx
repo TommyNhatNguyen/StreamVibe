@@ -12,6 +12,10 @@ import {
   getFavoritesMovies,
   handleResetFavoritesMovies,
 } from "../store/reducer/favoritesReducer";
+import {
+  getWatchList,
+  handleResetWatchList,
+} from "../store/reducer/watchlistReducer";
 
 export const AuthContext = createContext({});
 
@@ -43,6 +47,7 @@ export const AuthContextWrapper = ({ children }) => {
         handleShowModal("");
         message.success("Login success");
         dispatch(getFavoritesMovies());
+        dispatch(getWatchList());
         return;
       }
       setIsLogin(false);
@@ -96,8 +101,8 @@ export const AuthContextWrapper = ({ children }) => {
       console.log(error);
       setIsLogin(false);
     } finally {
-      console.log("first");
       dispatch(handleResetFavoritesMovies());
+      dispatch(handleResetWatchList());
     }
   };
   useEffect(() => {

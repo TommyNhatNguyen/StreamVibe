@@ -53,7 +53,7 @@ const StyledMobileMenu = styled.div`
             transform: translateX(-60px);
             &::before {
               content: ">>>>";
-              transform: translateX(-10vw);
+              transform: translateX(-50vw);
               transition: var(--transition-duration);
             }
             &:hover {

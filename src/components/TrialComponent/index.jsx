@@ -13,6 +13,8 @@ const StyledTrialWrapper = styled.div`
   background-size: cover;
   background-attachment: fixed;
   position: relative;
+  border-radius: 10px;
+  overflow: hidden;
   &::before {
     content: "";
     position: absolute;

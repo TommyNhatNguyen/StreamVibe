@@ -55,7 +55,7 @@ const MovieSection = () => {
     <section className="movie">
       <div className="container">
         <StyledMovieWrapper className="movie__wrapper">
-          <div className="movie__wrapper-label">Movie</div>
+          {!loading && <div className="movie__wrapper-label">Movies</div>}
           <GenresTab
             moviesByGenres={moviesByGenres}
             loading={loading}

@@ -101,9 +101,6 @@ const ProfilePage = () => {
               <li className="tabs__item">
                 <NavLink to={PATHS.PROFILE.WATCHLIST}>Watchlist</NavLink>
               </li>
-              <li className="tabs__item">
-                <NavLink to={PATHS.PROFILE.RATING}>Rating</NavLink>
-              </li>
             </ul>
             <div className="info">
               <Outlet />

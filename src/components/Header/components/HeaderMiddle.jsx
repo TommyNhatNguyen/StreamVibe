@@ -72,8 +72,12 @@ const StyledHeaderMiddleWrapper = styled.div`
     }
     .cta {
       &__icon {
+        display: block;
         height: 34px;
         aspect-ratio: 1 / 1;
+        img {
+          object-fit: contain;
+        }
       }
     }
     .hamburger {
@@ -101,10 +105,24 @@ const StyledHeaderMiddleWrapper = styled.div`
       }
     }
   }
+  @media (max-width: ${breakpoints.ipad12pro}) {
+    .header__middle-wrapper {
+      .logo {
+        max-height: 35px;
+      }
+      .nav {
+        left: 57%;
+        &__item {
+          a {
+            padding: 8px 16px;
+          }
+        }
+      }
+    }
+  }
   @media (max-width: ${breakpoints.tablet}) {
     .header__middle-wrapper {
       .nav {
-        left: 57%;
         &__item {
           a {
             padding: 3px 7px;
@@ -113,7 +131,7 @@ const StyledHeaderMiddleWrapper = styled.div`
       }
     }
   }
-  @media (max-width: ${breakpoints.mobile}) {
+  @media (max-width: ${breakpoints.ipad9pro}) {
     .header__middle-wrapper {
       .logo {
         max-height: 35px;

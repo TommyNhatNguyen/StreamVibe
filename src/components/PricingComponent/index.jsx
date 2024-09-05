@@ -43,20 +43,16 @@ const StyledButtonGroup = styled(Textbox.ButtonControlGroup)`
 `;
 
 const StyledPricingPlan = styled.div`
-  height: 425px;
   margin-top: 80px;
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  align-items: center;
+  grid-template-columns: repeat(auto-fill, minmax(390px, 1fr));
   justify-content: space-between;
   gap: 30px;
   @media (max-width: ${breakpoints.desktop}) {
-    height: 345px;
     margin-top: 60px;
     gap: 20px;
   }
   @media (max-width: ${breakpoints.mobile}) {
-    height: initial;
     margin-top: 40px;
     gap: 20px;
     grid-template-columns: 1fr;
@@ -91,6 +87,7 @@ const StyledPricingCard = styled.div`
   }
   @media (max-width: ${breakpoints.desktop}) {
     aspect-ratio: 413.3/345;
+    max-height: 345px;
     padding: 40px;
     border-radius: 10px;
     .plancard__price {
@@ -101,8 +98,8 @@ const StyledPricingCard = styled.div`
     }
   }
   @media (max-width: ${breakpoints.mobile}) {
-    max-height: 275px;
     aspect-ratio: 358 / 275;
+    max-height: 275px;
     padding: 24px;
     .plancard__price {
       margin: 30px 0;
