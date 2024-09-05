@@ -10,15 +10,20 @@ export const StyledButton = styled(Link)`
   max-width: fit-content;
   height: 64px;
   padding: 18px 24px;
+  gap: 6px;
   color: var(--white-cl);
   border: 1px solid var(--red-cl);
   border-radius: 8px;
   background-color: var(--red-cl);
   transition: var(--transition-duration);
   cursor: pointer;
+  &.--disabled {
+    pointer-events: none;
+    background-color: var(--black-cl-3);
+  }
   &:hover {
-    color: var(--black-cl);
-    background-color: var(--white-cl);
+    background-color: var(--black-cl);
+    border: 1px solid var(--white-cl);
   }
   @media (max-width: ${breakpoints.desktop}) {
     height: 52px;

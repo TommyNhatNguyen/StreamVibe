@@ -134,6 +134,7 @@ const StyledHeaderMiddleWrapper = styled.div`
         border-radius: 6px;
         background-color: var(--black-cl-2);
         border: 1px solid var(--black-cl-3);
+        cursor: pointer;
         span {
           display: block;
           width: 100%;

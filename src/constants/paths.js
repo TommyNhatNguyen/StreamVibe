@@ -12,6 +12,12 @@ export const PATHS = {
     INDEX: "/show",
     DETAIL: "/show" + "/:showId",
   },
+  PROFILE: {
+    INDEX: "/profile",
+    WATCHLIST: "/profile" + "/watchlist",
+    RATING: "/profile" + "/rating",
+    FAVORITES: "/profile" + "/favorites",
+  },
   SUPPORT: "/support",
   SUBSCRIPTION: "/subscription",
 };

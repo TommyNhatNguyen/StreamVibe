@@ -1,11 +1,7 @@
-import React, { useCallback, useEffect, useRef, useState } from "react";
-import useQuery from "../../hooks/useQuery";
+import React, { useState } from "react";
 import { discoverService } from "../../services/discoverService";
-import useMutation from "../../hooks/useMutation";
 import useInfiniteScroll from "../../hooks/useInfiniteScroll";
-import Textbox from "../../components/Textbox";
 import ComponentLoading from "../../components/ComponentLoading";
-import { StyledMovieGroupWrapper } from "../../components/StyledComponents/StyledMovieGroupWrapper";
 import MovieItem from "../../components/MovieItem";
 import Button from "../../components/Button";
 import styled from "styled-components";

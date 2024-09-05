@@ -19,6 +19,10 @@ import { PATHS } from "./constants/paths";
 import ShowPage from "./pages/ShowPage";
 import ShowDetailPage from "./pages/ShowDetailPage";
 import PageLoading from "./components/PageLoading";
+import ProfilePage from "./pages/ProfilePage";
+import MyWatchList from "./pages/ProfilePage/components/MyWatchList";
+import MyFavorites from "./pages/ProfilePage/components/MyFavorites";
+import MyRating from "./pages/ProfilePage/components/MyRating";
 // import SupportPage from "./pages/SupportPage";
 // import SubscriptionPage from "./pages/SubscriptionPage";
 // import NotFoundPage from "./pages/NotFoundPage";
@@ -46,6 +50,12 @@ function App() {
             />
             <Route path={PATHS.SUPPORT} element={<SupportPage />} />
             <Route path={PATHS.SUBSCRIPTION} element={<SubscriptionPage />} />
+            <Route path={PATHS.PROFILE.INDEX} element={<ProfilePage />}>
+              <Route index element={<MyWatchList />} />
+              <Route path={PATHS.PROFILE.WATCHLIST} element={<MyWatchList />} />
+              <Route path={PATHS.PROFILE.FAVORITES} element={<MyFavorites />} />
+              <Route path={PATHS.PROFILE.RATING} element={<MyRating />} />
+            </Route>
             <Route path="*" element={<NotFoundPage />} />
           </Route>
         </Routes>

@@ -1,7 +1,7 @@
 export const API_KEY =
   "eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJjNDI2MTQ0NmIyN2ExYmRmMDkzNTBlZDVmY2U4ZjA2ZCIsIm5iZiI6MTcyNDA3NzkwNS45Nzc3NDMsInN1YiI6IjY2YzM1NTk1ZmIxMDhkOWVmZGFkOTljZiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.f2Zeaf1qv2PIxtg6BNpRcmP35Y-5bX5AsbZlBvj2vK0";
 
-const ACCOUNT_ID = "21453493";
+export const ACCOUNT_ID = "21453493";
 
 export const DEMO_ACCOUNT = {
   email: "demo@gmail.com",

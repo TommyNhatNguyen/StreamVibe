@@ -12,9 +12,9 @@ const StyledBreadCrumb = styled.div`
   }
 `;
 
-const BreadCrumb = ({ children, ...props }) => {
+const BreadCrumb = ({ children, classes, ...props }) => {
   return (
-    <StyledBreadCrumb className="breadcrumb" {...props}>
+    <StyledBreadCrumb className={classNames("breadcrumb", classes)} {...props}>
       {children}
     </StyledBreadCrumb>
   );

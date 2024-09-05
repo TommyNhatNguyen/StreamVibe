@@ -11,6 +11,8 @@ import MovieRecommendation from "./components/MovieRecommendation";
 import MovieSimilar from "./components/MovieSimilar";
 import useMutation from "../../hooks/useMutation";
 import { movieService } from "../../services/movieService";
+import { useDispatch, useSelector } from "react-redux";
+import { addFavoritesMovies } from "../../store/reducer/favoritesReducer";
 
 const MovieDetailPage = () => {
   const { movieContentProps, movieHeroProps } = useMovieDetail();
@@ -44,12 +46,19 @@ const MovieDetailPage = () => {
       getMovieSimilar(movieId);
     }
   }, [movieId]);
+  const dispatch = useDispatch();
+  const { favorites } = useSelector((state) => state.favorites);
+  const handleAddtoFavorite = (movieId) => {
+    dispatch(addFavoritesMovies({ movieId: movieId }));
+  };
   return (
     <main className="moviedetail">
       <HeroMovieComponent
         videosByMovie={modifiedMovieHeroProps}
         loading={loading}
         scrolling={false}
+        favorites={favorites}
+        handleAddtoFavorite={handleAddtoFavorite}
       />
       <MovieContent {...movieContentProps} />
       <MovieRecommendation

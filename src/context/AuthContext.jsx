@@ -7,10 +7,16 @@ import axios from "axios";
 import { authService } from "../services/authService";
 import queryString from "query-string";
 import { tempCredentialsMethod } from "../utils/tempCredentialMethod";
+import { useDispatch } from "react-redux";
+import {
+  getFavoritesMovies,
+  handleResetFavoritesMovies,
+} from "../store/reducer/favoritesReducer";
 
 export const AuthContext = createContext({});
 
 export const AuthContextWrapper = ({ children }) => {
+  const dispatch = useDispatch();
   const requestToken = queryString.parse(window.location.search).request_token;
   const [showModal, setShowModal] = useState("");
   const [isLogin, setIsLogin] = useState(false);
@@ -36,6 +42,7 @@ export const AuthContextWrapper = ({ children }) => {
         setIsLogin(true);
         handleShowModal("");
         message.success("Login success");
+        dispatch(getFavoritesMovies());
         return;
       }
       setIsLogin(false);
@@ -62,7 +69,6 @@ export const AuthContextWrapper = ({ children }) => {
     try {
       const res = await authService.createSession(requestToken);
       if (res?.data) {
-        console.log(res?.data);
         setCredentials?.(res?.data?.session_id);
         message.success("Register success");
         tempCredentialsMethod.delete();
@@ -89,6 +95,9 @@ export const AuthContextWrapper = ({ children }) => {
     } catch (error) {
       console.log(error);
       setIsLogin(false);
+    } finally {
+      console.log("first");
+      dispatch(handleResetFavoritesMovies());
     }
   };
   useEffect(() => {

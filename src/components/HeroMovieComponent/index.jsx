@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useRef } from "react";
+import React, { useCallback, useEffect, useRef, useState } from "react";
 import LazyLoad from "react-lazy-load";
 import { ENV } from "../../constants/environments";
 import { youtubePath, youtubePathSound } from "../../constants/general";
@@ -10,6 +10,9 @@ import Textbox from "../Textbox";
 import Button from "../Button";
 import { breakpoints } from "../../constants/media";
 import { PATHS } from "../../constants/paths";
+import { useDispatch, useSelector } from "react-redux";
+import classNames from "classnames";
+import { addFavoritesMovies } from "../../store/reducer/favoritesReducer";
 
 const StyledTrailer = styled.div`
   height: 100vh;
@@ -103,8 +106,18 @@ const HeroMovieComponent = ({
   sectionClassname,
   loading,
   scrolling = true,
+  handleAddtoFavorite,
+  favorites,
   ...props
 }) => {
+  const [_, setForceUpdate] = useState(true);
+  const _onAddToFavorite = (e, movieId) => {
+    e.preventDefault();
+    handleAddtoFavorite(movieId);
+  };
+  useEffect(() => {
+    setForceUpdate((prev) => !prev);
+  }, [favorites]);
   return (
     <section className={`heromovie ${sectionClassname && ""}`} {...props}>
       {videosByMovie?.length > 0 &&
@@ -184,7 +197,15 @@ const HeroMovieComponent = ({
                             <Textbox.ButtonControlGroup className="textbox__btngroup textbox__btngroup-inner">
                               <Button
                                 variant="control"
-                                className="textbox__button btn --btncontrol"
+                                className={classNames(
+                                  "textbox__button btn --btncontrol",
+                                  {
+                                    "--disabled": favorites?.find(
+                                      (item) => item?.id === movieId
+                                    ),
+                                  }
+                                )}
+                                onClick={(e) => _onAddToFavorite(e, movieId)}
                               >
                                 <img
                                   srcSet="/assets/images/plus-icon.png 2x"
@@ -278,7 +299,15 @@ const HeroMovieComponent = ({
                             <Textbox.ButtonControlGroup className="textbox__btngroup textbox__btngroup-inner">
                               <Button
                                 variant="control"
-                                className="textbox__button btn --btncontrol"
+                                className={classNames(
+                                  "textbox__button btn --btncontrol",
+                                  {
+                                    "--disabled": favorites?.find(
+                                      (item) => item?.id === movieId
+                                    ),
+                                  }
+                                )}
+                                onClick={(e) => _onAddToFavorite(e, movieId)}
                               >
                                 <img
                                   srcSet="/assets/images/plus-icon.png 2x"

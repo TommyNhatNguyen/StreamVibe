@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { useAuthContext } from "../../../context/AuthContext";
 import { MODAL_TYPES } from "../../../constants/modal";
 import styled from "styled-components";
+import { Link } from "react-router-dom";
+import { PATHS } from "../../../constants/paths";
 
 const StyledHeaderTopWrapper = styled.div`
   height: 30%;
@@ -174,32 +176,36 @@ const HeaderTop = () => {
                   showDropdown ? "active" : ""
                 }`}
               >
-                <a className="avatar">
+                <Link to={PATHS.PROFILE.INDEX} className="avatar">
                   <div className="avatar__img">
                     <img src="/assets/images/default-avatar.jpg" alt="avatar" />
                   </div>
                   <div className="avatar__info">
                     <h5 className="--h5">{currentUser}</h5>
                   </div>
-                </a>
+                </Link>
                 <ul className="dropdown-menu">
                   <li>
-                    <a href="#" className="item">
+                    <Link to={PATHS.PROFILE.FAVORITES} className="item">
                       <i className="bi bi-bookmark-star"></i>
                       <span>My favorites</span>
-                    </a>
+                    </Link>
                   </li>
                   <li>
-                    <a href="#" className="item">
+                    <Link
+                      to={PATHS.PROFILE.WATCHLIST}
+                      href="#"
+                      className="item"
+                    >
                       <i className="bi bi-list"></i>
                       <span>My watchlist</span>
-                    </a>
+                    </Link>
                   </li>
                   <li>
-                    <a href="#" className="item">
+                    <Link to={PATHS.PROFILE.RATING} className="item">
                       <i className="bi bi-star"></i>
                       <span>My ratings</span>
-                    </a>
+                    </Link>
                   </li>
                   <li>
                     <a href="#" className="item logout" onClick={handleLogout}>
