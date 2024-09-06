@@ -177,12 +177,6 @@ const StyledModalWrapper = styled.div`
     }
   }
 
-  @media (orientation: landscape) {
-    .modal__wrapper {
-      height: 100%;
-      overflow-y: scroll;
-    }
-  }
   @media (max-width: ${breakpoints.mobile}) {
     .modal__wrapper {
       padding .modal__wrapper-tabs {
