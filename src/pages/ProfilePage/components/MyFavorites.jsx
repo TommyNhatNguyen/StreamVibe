@@ -68,7 +68,10 @@ const MyFavorites = () => {
                       className="btn btnmain btnplaynow"
                     >
                       <div className="textbox__button-icon icon">
-                        <img srcSet="/assets/images/start-btn-icon.png 2x" />
+                        <img
+                          srcSet="/assets/images/start-btn-icon.png 2x"
+                          alt="start button"
+                        />
                       </div>
                       <span className="textbox__button-text">Play Now</span>
                     </Button>

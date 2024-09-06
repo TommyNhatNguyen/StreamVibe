@@ -161,7 +161,10 @@ const HeroSection = () => {
         </Textbox.Content>
         <StyledButton to={PATHS.MOVIE.INDEX} className="btn btnmain">
           <div className="textbox__button-icon icon">
-            <img srcSet="./assets/images/start-btn-icon.png 2x" />
+            <img
+              srcSet="./assets/images/start-btn-icon.png 2x"
+              alt="start button"
+            />
           </div>
           <span className="textbox__button-text">Start Watching Now</span>
         </StyledButton>

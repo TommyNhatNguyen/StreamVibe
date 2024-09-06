@@ -104,7 +104,7 @@ const CategoryItem = ({ images, name, id, classes, ...props }) => {
       >
         {images?.length === 1 && (
           <div>
-            <img src={images[0]} className="--midimg" />
+            <img src={images[0]} className="--midimg" alt="movie image" />
           </div>
         )}
         {images?.length > 1 &&
@@ -114,7 +114,7 @@ const CategoryItem = ({ images, name, id, classes, ...props }) => {
               : IMAGE_NOTFOUND_PATH.poster;
             return (
               <span key={image || index}>
-                <img src={imgPath} className="--midimg" />
+                <img src={imgPath} className="--midimg" alt="movie image" />
               </span>
             );
           })}
@@ -122,7 +122,7 @@ const CategoryItem = ({ images, name, id, classes, ...props }) => {
       <StyledCategoryItemContentWrapper className="categroup__item-content">
         <span className="title">{name || ""}</span>
         <span className="btn --btncontrol --arrow-right">
-          <img srcSet="./assets/images/arrow-left-icon.png 2x" />
+          <img srcSet="./assets/images/arrow-left-icon.png 2x" alt="icon" />
         </span>
       </StyledCategoryItemContentWrapper>
     </StyledCategoryItem>

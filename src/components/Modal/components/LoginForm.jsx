@@ -51,19 +51,15 @@ const LoginForm = () => {
               required: MESSAGE.required,
             })}
             error={errors.password?.message}
+            password
           />
-          <Button
-            as="button"
-            variant="second"
-            type="submit"
-            className="btn btnsubmit"
-          >
+          <Button as="button" type="submit" className="btn btnmain btnsubmit">
             Login
           </Button>
         </form>
       </div>
       <div className="modal__wrapper-break">
-        <span>Login with socials</span>
+        <span>Or continue with</span>
       </div>
       <div className="modal__wrapper-socials">
         <a

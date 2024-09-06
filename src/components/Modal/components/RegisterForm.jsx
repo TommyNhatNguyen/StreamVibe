@@ -53,6 +53,7 @@ const RegisterForm = () => {
               required: MESSAGE.required,
             })}
             error={errors.password?.message}
+            password
           />
           <Controller
             control={control}
@@ -69,18 +70,13 @@ const RegisterForm = () => {
               );
             }}
           />
-          <Button
-            as="button"
-            variant="second"
-            type="submit"
-            className="btnsubmit"
-          >
+          <Button as="button" type="submit" className="btn btnmain btnsubmit">
             Register
           </Button>
         </form>
       </div>
       <div className="modal__wrapper-break">
-        <span>Login with socials</span>
+        <span>Or continue with</span>
       </div>
       <div className="modal__wrapper-socials">
         <a

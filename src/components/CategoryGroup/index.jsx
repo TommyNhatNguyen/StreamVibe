@@ -24,7 +24,7 @@ CategoryGroup.Item = ({ images, name, id }) => {
           const moviePath = PATHS.MOVIE.INDEX + "/" + id;
           return (
             <Link to={moviePath} key={image || index}>
-              <img src={imgPath} />
+              <img src={imgPath} alt="movie image" />
             </Link>
           );
         })}
@@ -32,7 +32,10 @@ CategoryGroup.Item = ({ images, name, id }) => {
       <div className="categroup__item-content">
         <span>{name || ""}</span>
         <a className="btncontrol --arrow-right">
-          <img srcSet="./assets/images/arrow-left-icon.png 2x" />
+          <img
+            srcSet="./assets/images/arrow-left-icon.png 2x"
+            alt="arrow icon"
+          />
         </a>
       </div>
     </li>
@@ -48,7 +51,7 @@ CategoryGroup.ItemSearch = ({ id, image, releaseDate, title, overview }) => {
     <Link to={moviePath} className="categroup__item --search --horizontal">
       <div href="#" className="categroup__item-img --single --no-filter">
         <Link to={moviePath}>
-          <img src={imgPath || ""} />
+          <img src={imgPath || ""} alt="movie image" />
         </Link>
       </div>
       <div className="categroup__item-content">
@@ -74,7 +77,7 @@ CategoryGroup.ItemMustWatch = ({ image, voteAverage, voteCount, id }) => {
     <li className="categroup__item --mustwatch">
       <div className="categroup__item-img --single --no-filter">
         <Link to={moviePath}>
-          <img src={imgPath} />
+          <img src={imgPath} alt="movie image" />
         </Link>
       </div>
       <div className="categroup__item-content">
@@ -116,7 +119,7 @@ CategoryGroup.ItemTrending = ({ image, popularity, id }) => {
     <li className="categroup__item --trending">
       <div className="categroup__item-img --single --no-filter">
         <Link to={moviePath}>
-          <img src={imgPath || ""} />
+          <img src={imgPath || ""} alt="movie image" />
         </Link>
       </div>
       <div className="categroup__item-content">
@@ -146,7 +149,7 @@ CategoryGroup.ItemNewRelease = ({ image, releaseDate, id }) => {
     <li className="categroup__item --trending">
       <div className="categroup__item-img --single --no-filter">
         <Link to={moviePath}>
-          <img src={imgPath || ""} />
+          <img src={imgPath || ""} alt="movie image" />
         </Link>
       </div>
       <div className="categroup__item-content --center">

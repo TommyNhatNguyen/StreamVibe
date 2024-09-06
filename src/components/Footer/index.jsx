@@ -90,13 +90,22 @@ const Footer = () => {
             <h5 className="--h5">Connect With Us</h5>
             <div className="socials">
               <a href="#" target="_blank" className="socials__item">
-                <img srcSet="/assets/images/facebook-icon.png 2x" />
+                <img
+                  srcSet="/assets/images/facebook-icon.png 2x"
+                  alt="facebook icon"
+                />
               </a>
               <a href="#" target="_blank" className="socials__item">
-                <img srcSet="/assets/images/twitter-icon.png 2x" />
+                <img
+                  srcSet="/assets/images/twitter-icon.png 2x"
+                  alt="twitter icon"
+                />
               </a>
               <a href="#" target="_blank" className="socials__item">
-                <img srcSet="/assets/images/linkedin-icon.png 2x" />
+                <img
+                  srcSet="/assets/images/linkedin-icon.png 2x"
+                  alt="linkedin icon"
+                />
               </a>
             </div>
           </li>

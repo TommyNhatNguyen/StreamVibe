@@ -5,6 +5,7 @@ import LoginForm from "./components/LoginForm";
 import RegisterForm from "./components/RegisterForm";
 import { useAuthContext } from "../../context/AuthContext";
 import styled from "styled-components";
+import { breakpoints } from "../../constants/media";
 
 const StyledModalWrapper = styled.div`
   height: 100vh;
@@ -12,7 +13,6 @@ const StyledModalWrapper = styled.div`
   position: fixed;
   top: 0;
   left: 0;
-  width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -32,15 +32,15 @@ const StyledModalWrapper = styled.div`
   }
   .modal__wrapper {
     position: relative;
-    height: 100%;
+    height: fit-content;
     min-height: 500px;
-    max-height: 670px;
-    overflow-y: scroll;
-    max-width: 565px;
+    max-height: 800px;
+    max-width: 473px;
     width: 100%;
-    background-color: var(--white-cl);
-    padding: 50px;
-    border-radius: 8px;
+    background-color: rgba(41, 41, 41, 0.3);
+    backdrop-filter: blur(12px);
+    padding: 32px;
+    border-radius: 12px;
     opacity: 0;
     visibility: 0;
     pointer-events: none;
@@ -49,43 +49,75 @@ const StyledModalWrapper = styled.div`
       display: grid;
       grid-template-columns: repeat(2, 1fr);
       align-items: center;
-      height: 50px;
+      margin-top: 32px;
+      padding: 8px 10px;
+      border-radius: 10px;
+      border: 1px solid var(--black-cl-3);
+      background-color: var(--black-cl-4);
       a {
         display: flex;
         align-items: center;
         justify-content: center;
         height: 100%;
         width: 100%;
-        border-bottom: 1px solid var(--white-cl);
-        color: var(--black-cl);
-        font-family: var(--ff-semibold);
+        padding: 12px 24px;
+        border-radius: 10px;
+        color: var(--white-cl);
+        font-family: var(--ff-medium);
         transition: var(--transition-duration);
-        text-transform: uppercase;
+        text-transform: capitalize;
         &:hover,
         &.active {
-          border-bottom: 1px solid var(--black-cl-3);
+          background-color: var(--black-cl-5);
         }
       }
     }
     .modal-contentwrapper {
+      margin-top: 24px;
       .modal__wrapper-form {
-        margin-top: 20px;
         form {
           .formgroup {
-            margin-bottom: 20px;
+            margin-bottom: 24px;
             &__label {
-              color: var(--black-cl);
+              color: var(--white-cl);
+              font-family: var(--ff-medium);
+            }
+            &__input {
+              &::placeholder {
+                color: var(--gray-cl);
+              }
+            }
+            &.--checkbox {
+              .checkbox__group {
+                height: 21px;
+                width: 21px;
+                &-icon {
+                  z-index: 10;
+                  i {
+                    color: var(--black-cl);
+                  }
+                }
+                &::after {
+                  z-index: 0;
+                  background-color: var(--white-cl);
+                }
+              }
             }
           }
           .btnsubmit {
-            background-color: transparent;
-            color: var(--black-cl);
+            max-width: initial;
+            width: 100%;
+            font-family: var(--ff-semibold);
+            &:hover {
+              background-color: var(--red-light-cl);
+              border: 0;
+            }
           }
         }
       }
       .modal__wrapper-break {
-        margin-top: 20px;
-        margin-bottom: 20px;
+        margin-top: 32px;
+        margin-bottom: 32px;
         display: flex;
         align-items: center;
         justify-content: space-between;
@@ -95,10 +127,10 @@ const StyledModalWrapper = styled.div`
           background-color: var(--black-cl-3);
           width: 100%;
           height: 1px;
-          background: rgb(38, 38, 38);
+          background: var(--dark-gray-cl);
           background: linear-gradient(
             to right,
-            rgba(38, 38, 38, 1) 0%,
+            rgba(128, 128, 128, 1) 0%,
             rgba(0, 0, 0, 0) 100%
           );
         }
@@ -107,10 +139,10 @@ const StyledModalWrapper = styled.div`
           background-color: var(--black-cl-3);
           width: 100%;
           height: 1px;
-          background: rgb(38, 38, 38);
+          background: var(--dark-gray-cl);
           background: linear-gradient(
             to left,
-            rgba(38, 38, 38, 1) 0%,
+            rgba(128, 128, 128, 1) 0%,
             rgba(0, 0, 0, 0) 100%
           );
         }
@@ -119,7 +151,6 @@ const StyledModalWrapper = styled.div`
         }
       }
       .modal__wrapper-socials {
-        height: 50px;
         display: grid;
         grid-template-columns: repeat(2, 1fr);
         align-items: center;
@@ -128,14 +159,56 @@ const StyledModalWrapper = styled.div`
           display: flex;
           align-items: center;
           justify-content: center;
-          padding: 10px;
-          background-color: var(--black-cl-3);
+          padding: 16px 20px;
+          background-color: var(--black-cl);
+          border: 1px solid var(--black-cl-3);
           border-radius: 8px;
-          gap: 10px;
-          font-family: var(--ff-medium);
+          gap: 12px;
           color: var(--white-cl);
+          transition: var(--transition-duration);
           .icon {
             height: 24px;
+          }
+          &:hover {
+            background-color: var(--black-cl-5);
+          }
+        }
+      }
+    }
+  }
+
+  @media (orientation: landscape) {
+    .modal__wrapper {
+      height: 100%;
+      overflow-y: scroll;
+    }
+  }
+  @media (max-width: ${breakpoints.mobile}) {
+    .modal__wrapper {
+      padding .modal__wrapper-tabs {
+        a {
+          &:hover,
+          &.active {
+            background-color: var(--black-cl-5);
+          }
+        }
+      }
+      .modal-contentwrapper {
+        margin-top: 14px;
+        .modal__wrapper-form {
+          form {
+            .formgroup {
+              margin-bottom: 14px;
+            }
+          }
+        }
+        .modal__wrapper-break {
+          margin-top: 22px;
+          margin-bottom: 22px;
+        }
+        .modal__wrapper-socials {
+          a {
+            padding: 10px 18px;
           }
         }
       }
@@ -171,6 +244,10 @@ const Modal = () => {
       })}
     >
       <div className="modal__wrapper">
+        <div className="modal__wrapper-title">
+          <h2 className="--h2">Explore your movie life</h2>
+          <p className="paragraph">Choose one of the option to go</p>
+        </div>
         <div className="modal__wrapper-tabs">
           <a
             href="#"

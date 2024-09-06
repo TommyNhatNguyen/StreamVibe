@@ -34,13 +34,19 @@ const TrendingTab = ({ moviesTrending, loading, ...props }) => {
             variant="control"
             className="textbox__btngroup-btncontrol btn --btncontrol --arrow-left"
           >
-            <img srcSet="./assets/images/arrow-left-icon.png 2x" />
+            <img
+              srcSet="./assets/images/arrow-left-icon.png 2x"
+              alt="arrow icon"
+            />
           </Button>
           <Button
             variant="control"
             className="textbox__btngroup-btncontrol btn --btncontrol  --arrow-right"
           >
-            <img srcSet="./assets/images/arrow-left-icon.png 2x" />
+            <img
+              srcSet="./assets/images/arrow-left-icon.png 2x"
+              alt="arrow icon"
+            />
           </Button>
         </Textbox.ButtonControlGroup>
       </Textbox>

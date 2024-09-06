@@ -111,7 +111,10 @@ const ExperienceSection = () => {
           <StyledCard className="experience__cards-item active">
             <div className="titlegroup">
               <div className="titlegroup__icon">
-                <img srcSet="./assets/images/smartphone-icon.png 2x" />
+                <img
+                  srcSet="./assets/images/smartphone-icon.png 2x"
+                  alt="smartphone icon"
+                />
               </div>
               <h3 className="titlegroup__title --h3">Smartphones</h3>
             </div>
@@ -123,7 +126,10 @@ const ExperienceSection = () => {
           <StyledCard className="experience__cards-item">
             <div className="titlegroup">
               <div className="titlegroup__icon">
-                <img srcSet="./assets/images/tablet-icon.png 2x" />
+                <img
+                  srcSet="./assets/images/tablet-icon.png 2x"
+                  alt="tablet icon"
+                />
               </div>
               <h3 className="titlegroup__title --h3">Tablet</h3>
             </div>
@@ -135,7 +141,10 @@ const ExperienceSection = () => {
           <StyledCard className="experience__cards-item">
             <div className="titlegroup">
               <div className="titlegroup__icon">
-                <img srcSet="./assets/images/smarttv-icon.png 2x" />
+                <img
+                  srcSet="./assets/images/smarttv-icon.png 2x"
+                  alt="smarttv icon"
+                />
               </div>
               <h3 className="titlegroup__title --h3">Smart TV</h3>
             </div>
@@ -147,7 +156,10 @@ const ExperienceSection = () => {
           <StyledCard className="experience__cards-item">
             <div className="titlegroup">
               <div className="titlegroup__icon">
-                <img srcSet="./assets/images/laptop-icon.png 2x" />
+                <img
+                  srcSet="./assets/images/laptop-icon.png 2x"
+                  alt="laptop icon"
+                />
               </div>
               <h3 className="titlegroup__title --h3">Laptops</h3>
             </div>
@@ -171,7 +183,10 @@ const ExperienceSection = () => {
           <StyledCard className="experience__cards-item">
             <div className="titlegroup">
               <div className="titlegroup__icon">
-                <img srcSet="./assets/images/headset-icon.png 2x" />
+                <img
+                  srcSet="./assets/images/headset-icon.png 2x"
+                  alt="headset icon"
+                />
               </div>
               <h3 className="titlegroup__title --h3">VR Headsets </h3>
             </div>

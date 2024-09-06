@@ -2,6 +2,7 @@ import styled from "styled-components";
 import { breakpoints } from "../../constants/media";
 export const InputWrapper = styled.div`
   width: 100%;
+  position: relative;
   &.search__input {
     height: 61px;
     .ant-input {
@@ -54,6 +55,24 @@ export const InputWrapper = styled.div`
 
     &.--error {
       border-color: var(--red-cl);
+    }
+  }
+  .formgroup__icon {
+    &.password {
+      position: absolute;
+      right: 20px;
+      top: 62px;
+      height: 24px;
+      aspect-ratio: 1 /1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      .password__show,
+      .password__hide {
+        position: absolute;
+        left: 0;
+      }
     }
   }
   .input-error {

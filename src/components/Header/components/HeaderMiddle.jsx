@@ -220,7 +220,7 @@ const HeaderMiddle = ({
                 srcSet="/assets/images/logo-mobile.png 2x"
                 media="(max-width: 767.98px)"
               />
-              <img srcSet="/assets/images/logo-desktop.png 2x" alt="logo 2x" />
+              <img srcSet="/assets/images/logo-desktop.png 2x" alt="logo" />
             </picture>
           </Link>
           <ul className="nav">
@@ -246,7 +246,10 @@ const HeaderMiddle = ({
               id="search"
               onClick={(e) => _onShowSearch(e)}
             >
-              <img srcSet="/assets/images/search-icon.png 2x" />
+              <img
+                srcSet="/assets/images/search-icon.png 2x"
+                alt="search icon"
+              />
             </a>
           </div>
           <div className="hamburger" onClick={(e) => _onShowNavMenu(e)}>
