@@ -5,7 +5,7 @@
 
 **This website is built 100% by myself using free template on Figma, APIs from TMDB.**
 
-**Technologies**: ReactJs, Redux Toolkit, ContextAPI, react-router-dom, Axios, Yarn, Github, SASS/SCSSS, Ant Design, styled-components, useForm.
+**Technologies**: ReactJs, Redux Toolkit, ContextAPI, react-router-dom, Axios, Yarn, Github, SASS/SCSS, Ant Design, styled-components, useForm.
 
 **Features**: 
 - Routing.
