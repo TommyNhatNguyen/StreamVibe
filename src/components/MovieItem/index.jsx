@@ -101,7 +101,7 @@ const StyledMovieItemImageWrapper = styled.div`
   }
   @media (max-width: ${breakpoints.desktop}) {
     height: 324px;
-    aspect-ratio: 252.75 / 324px;
+    aspect-ratio: 252.75 / 324;
   }
   @media (max-width: ${breakpoints.mobile}) {
     height: 235px;
