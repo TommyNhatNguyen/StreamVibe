@@ -56,20 +56,21 @@ const ExploreSection = () => {
             images={["/assets/images/home/hero-banner.jpg"]}
             id={moviesByGenres?.[0]?.id}
           />
-          {moviesByGenres?.map((item, index) => {
-            const { id, name, movies } = item || {};
-            const images = movies
-              ?.slice(0, 4)
-              ?.map((item) => item?.poster_path || "");
-            return (
-              <CategoryItem
-                key={id + index + name}
-                name={name}
-                images={images}
-                id={id}
-              />
-            );
-          })}
+          {moviesByGenres?.length > 0 &&
+            moviesByGenres?.map((item, index) => {
+              const { id, name, movies } = item || {};
+              const images = movies
+                ?.slice(0, 4)
+                ?.map((item) => item?.poster_path || "");
+              return (
+                <CategoryItem
+                  key={id + index + name}
+                  name={name}
+                  images={images}
+                  id={id}
+                />
+              );
+            })}
         </StyledCategoryGroupWrapper>
         {/* Progress bar */}
         <div className="explore__progressbar progressbar">
