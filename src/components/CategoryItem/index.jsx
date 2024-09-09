@@ -13,6 +13,10 @@ const StyledCategoryItem = styled(Link)`
   border-radius: 12px;
   background-color: var(--black-cl-2);
   border: 1px solid var(--black-cl-3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
   cursor: pointer;
   transition: var(--transition-duration);
   &:hover {
@@ -69,7 +73,7 @@ const StyledCategoryItemImageWrapper = styled.div`
     }
   }
   @media (max-width: ${breakpoints.desktop}) {
-    max-height: 210px;
+    height: 210px;
     aspect-ratio: 191.8 / 210;
   }
   @media (max-width: ${breakpoints.mobile}) {
@@ -83,6 +87,7 @@ const StyledCategoryItemContentWrapper = styled.div`
   align-items: center;
   justify-content: space-between;
   gap: 5px;
+  width: 100%;
   .title {
     font-family: var(--ff-semibold);
     color: var(--white-cl);
