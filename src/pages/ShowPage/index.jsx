@@ -202,6 +202,7 @@ const StyledMovieItem = styled(MovieItem)`
 const StyledMovieItemLeft = styled(StyledMovieItem)`
   list-style-type: none;
   position: relative;
+  display: block;
   height: fit-content;
   aspect-ratio: initial;
   max-width: 100%;

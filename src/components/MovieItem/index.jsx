@@ -16,7 +16,7 @@ const StyledMovieItem = styled(Link)`
   border: 1px solid var(--black-cl-3);
   cursor: pointer;
   transition: var(--transition-duration);
-  /* min-height: 100%; */
+  min-height: 100%;
   &:hover {
     transform: scale(1.1);
   }
@@ -91,7 +91,7 @@ const StyledMovieItemLink = styled(Link)`
 
 const StyledMovieItemImageWrapper = styled.div`
   display: flex;
-  height: 404px;
+  /* max-height: 404px; */
   aspect-ratio: 319.25 / 404;
   border-radius: 12px;
   overflow: hidden;
@@ -100,24 +100,24 @@ const StyledMovieItemImageWrapper = styled.div`
     object-position: center;
   }
   @media (max-width: ${breakpoints.desktop}) {
-    height: 324px;
+    /* max-height: 324px; */
     aspect-ratio: 252.75 / 324;
   }
   @media (max-width: ${breakpoints.mobile}) {
-    height: 235px;
+    /* max-height: 235px; */
     aspect-ratio: 207 / 235;
   }
 `;
 
 const StyleMovieItemImageWrapperSmall = styled(StyledMovieItemImageWrapper)`
-  height: 281px;
+  /* height: 281px; */
   aspect-ratio: 243.6 / 281;
   @media (max-width: ${breakpoints.desktop}) {
-    height: 232px;
+    /* height: 232px; */
     aspect-ratio: 192 / 232;
   }
   @media (max-width: ${breakpoints.mobile}) {
-    height: 195px;
+    /* height: fit-content; */
     aspect-ratio: 157.6 / 195;
   }
 `;
@@ -149,6 +149,9 @@ const StyledMovieItemContentWrapper = styled.div`
     border: 1px solid var(--black-cl-3);
     border-radius: 51px;
     gap: 2px;
+    &__icon {
+      flex-shrink: 0;
+    }
     &.--center {
       justify-content: center;
       width: 100%;

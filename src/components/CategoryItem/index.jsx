@@ -7,7 +7,7 @@ import { ENV } from "../../constants/environments";
 import { breakpoints } from "../../constants/media";
 
 const StyledCategoryItem = styled(Link)`
-  height: 342px;
+  max-height: 342px;
   aspect-ratio: 295.4 / 342;
   padding: 30px;
   border-radius: 12px;
@@ -36,7 +36,7 @@ const StyledCategoryItemImageWrapper = styled.div`
   grid-template-columns: repeat(2, 1fr);
   grid-template-rows: repeat(2, 1fr);
   grid-gap: 5px;
-  height: 252px;
+  max-height: 252px;
   aspect-ratio: 235.4 / 252;
   overflow: hidden;
   position: relative;
@@ -69,7 +69,7 @@ const StyledCategoryItemImageWrapper = styled.div`
     }
   }
   @media (max-width: ${breakpoints.desktop}) {
-    height: 210px;
+    max-height: 210px;
     aspect-ratio: 191.8 / 210;
   }
   @media (max-width: ${breakpoints.mobile}) {

@@ -189,6 +189,7 @@ textarea {
     border-radius: 51px;
     border: 1px solid var(--black-cl-3);
     padding: 6px 10px;
+    flex-shrink: 1;
     &__val {
         display: flex;
         align-items: center;
