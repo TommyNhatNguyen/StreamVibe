@@ -20,15 +20,26 @@ const StyledTabs = styled.ul`
   flex-wrap: nowrap;
   height: 60px;
   padding-bottom: 10px;
+  &:hover {
+    &.tabs {
+      &::-webkit-scrollbar-thumb {
+        background: var(--gray-cl);
+      }
+    }
+  }
   &.tabs {
     &::-webkit-scrollbar {
-      height: 5px;
+      height: 8px;
     }
     &::-webkit-scrollbar-track {
       background: var(--black-cl);
+      opacity: 0;
+      visibility: 0;
     }
     &::-webkit-scrollbar-thumb {
-      background: var(--white-cl);
+      background: transparent;
+      transition: var(--transition-duration);
+      border-radius: 8px;
     }
   }
   .tabs__item {
