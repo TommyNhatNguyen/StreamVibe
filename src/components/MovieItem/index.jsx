@@ -8,6 +8,10 @@ import { breakpoints } from "../../constants/media";
 import { formatDate, formatViews } from "../../utils/format";
 
 const StyledMovieItem = styled(Link)`
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: flex-start;
   height: 500px;
   aspect-ratio: 359.5 / 500;
   padding: 20px;
@@ -16,7 +20,7 @@ const StyledMovieItem = styled(Link)`
   border: 1px solid var(--black-cl-3);
   cursor: pointer;
   transition: var(--transition-duration);
-  min-height: 100%;
+  overflow: hidden;
   &:hover {
     transform: scale(1.1);
   }
@@ -90,8 +94,7 @@ const StyledMovieItemLink = styled(Link)`
 `;
 
 const StyledMovieItemImageWrapper = styled.div`
-  display: flex;
-  /* max-height: 404px; */
+  height: 404px;
   aspect-ratio: 319.25 / 404;
   border-radius: 12px;
   overflow: hidden;
@@ -100,55 +103,46 @@ const StyledMovieItemImageWrapper = styled.div`
     object-position: center;
   }
   @media (max-width: ${breakpoints.desktop}) {
-    /* max-height: 324px; */
+    height: 324px;
     aspect-ratio: 252.75 / 324;
   }
   @media (max-width: ${breakpoints.mobile}) {
-    /* max-height: 235px; */
+    height: 235px;
     aspect-ratio: 207 / 235;
   }
 `;
 
 const StyleMovieItemImageWrapperSmall = styled(StyledMovieItemImageWrapper)`
-  /* height: 281px; */
+  height: 281px;
   aspect-ratio: 243.6 / 281;
   @media (max-width: ${breakpoints.desktop}) {
-    /* height: 232px; */
+    height: 232px;
     aspect-ratio: 192 / 232;
   }
   @media (max-width: ${breakpoints.mobile}) {
-    /* height: fit-content; */
+    height: 195px;
     aspect-ratio: 157.6 / 195;
   }
 `;
 
 const StyledMovieItemContentWrapper = styled.div`
-  &.--rating {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 5px;
-    height: 36px;
-    margin-top: 20px;
-  }
-  &.--trending {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 5px;
-    height: 36px;
-    margin-top: 20px;
-  }
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 5px;
+  height: 36px;
+  margin-top: 20px;
   .info {
     display: flex;
     align-items: center;
+    align-content: center;
     height: 100%;
-    width: fit-content;
     padding: 6px 10px 6px 6px;
     background-color: var(--black-cl);
     border: 1px solid var(--black-cl-3);
     border-radius: 51px;
-    gap: 2px;
+    gap: 5px;
     &__icon {
       flex-shrink: 0;
     }
@@ -157,9 +151,8 @@ const StyledMovieItemContentWrapper = styled.div`
       width: 100%;
     }
     &__content {
-      margin-top: 3px;
       font-family: var(--ff-medium);
-      font-size: var(--fs-tag-md);
+      font-size: var(--fs-movie-info);
       text-wrap: nowrap;
       &.--center {
         text-align: center;
@@ -172,6 +165,13 @@ const StyledMovieItemContentWrapper = styled.div`
     }
     &.--trending {
       height: 28px;
+    }
+  }
+  @media (max-width: ${breakpoints.mobile}) {
+    .info {
+      &__icon {
+        width: 15px;
+      }
     }
   }
 `;
@@ -303,13 +303,13 @@ export const MovieItemSearch = ({
       >
         <img src={imgPath} />
       </StyleMovieItemImageWrapperSmall>
-      <StyledMovieItemContentWrapper className="moviesgroup__item-content">
+      <div className="moviesgroup__item-content">
         <div className="info">
           <h5 className="--h5 info__title">{title || ""}</h5>
           <p className="info__para">{overview || ""}</p>
           <p className="info__date">{releaseDate || ""}</p>
         </div>
-      </StyledMovieItemContentWrapper>
+      </div>
     </StyledMovieItemLink>
   );
 };

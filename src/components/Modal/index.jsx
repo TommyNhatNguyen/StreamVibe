@@ -21,8 +21,9 @@ const StyledModalWrapper = styled.div`
   background-color: initial;
   transition: var(--transition-duration);
   z-index: 10000;
+  padding: var(--pd-container);
   &.active {
-    background-color: rgba(38, 38, 38, 0.8);
+    background-color: rgba(38, 38, 38, 0.6);
     pointer-events: initial;
     .modal__wrapper {
       pointer-events: initial;
@@ -37,8 +38,11 @@ const StyledModalWrapper = styled.div`
     max-height: 800px;
     max-width: 473px;
     width: 100%;
-    background-color: rgba(41, 41, 41, 0.3);
+    background-color: rgba(41, 41, 41, 0.8);
     backdrop-filter: blur(12px);
+    box-shadow: 10px 10px 5px 2px rgba(0, 0, 0, 0.1);
+    -webkit-box-shadow: 10px 10px 5px 2px rgba(0, 0, 0, 0.1);
+    -moz-box-shadow: 10px 10px 5px 2px rgba(0, 0, 0, 0.1);
     padding: 32px;
     border-radius: 12px;
     opacity: 0;
@@ -49,6 +53,7 @@ const StyledModalWrapper = styled.div`
       display: grid;
       grid-template-columns: repeat(2, 1fr);
       align-items: center;
+      gap: 8px;
       margin-top: 32px;
       padding: 8px 10px;
       border-radius: 10px;
@@ -179,33 +184,53 @@ const StyledModalWrapper = styled.div`
 
   @media (max-width: ${breakpoints.mobile}) {
     .modal__wrapper {
-      padding .modal__wrapper-tabs {
+      .modal__wrapper-title {
+        text-align: center;
+      }
+      .modal__wrapper-tabs {
+        margin-top: 24px;
+        padding: 4px 6px;
+        gap: 6px;
         a {
-          &:hover,
-          &.active {
-            background-color: var(--black-cl-5);
-          }
+          padding: 8px 10px;
         }
       }
       .modal-contentwrapper {
-        margin-top: 14px;
         .modal__wrapper-form {
           form {
             .formgroup {
-              margin-bottom: 14px;
+              &__label {
+                margin-bottom: 10px;
+              }
+              &__input {
+                height: 50px;
+              }
+              &__icon {
+                top: 45px;
+                right: 10px;
+              }
+              &.--checkbox {
+                .checkbox__group {
+                  height: 18px;
+                  width: 18px;
+                }
+              }
             }
           }
         }
         .modal__wrapper-break {
-          margin-top: 22px;
-          margin-bottom: 22px;
+          margin-top: 24px;
+          margin-bottom: 24px;
         }
         .modal__wrapper-socials {
-          a {
-            padding: 10px 18px;
-          }
+          grid-template-columns: 1fr;
         }
       }
+    }
+  }
+  @media ((max-width: ${breakpoints.mobile}) and (orientation: landscape)) {
+    &.active {
+      overflow-y: scroll;
     }
   }
 `;

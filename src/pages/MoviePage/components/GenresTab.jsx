@@ -7,14 +7,15 @@ import Textbox from "../../../components/Textbox";
 import Button from "../../../components/Button";
 import { StyledCategoryGroupWrapper } from "../../../components/StyledComponents/StyledCategoryGroupWrapper";
 import CategoryItem from "../../../components/CategoryItem";
+import { IMAGES_CATEGORIES } from "../../../constants/general";
 
-const GenresTab = ({ moviesByGenres, loading, ...props }) => {
+const GenresTab = ({ movieGenres, loading, ...props }) => {
   useEffect(() => {
-    if (moviesByGenres?.length > 0 && !loading) {
+    if (movieGenres?.length > 0 && !loading) {
       const explores = document.querySelector(".explore.--genres");
       useFlickity(explores);
     }
-  }, [moviesByGenres, loading]);
+  }, [movieGenres, loading]);
   return (
     <div
       className="explore --genres"
@@ -50,23 +51,23 @@ const GenresTab = ({ moviesByGenres, loading, ...props }) => {
         </Textbox.ButtonControlGroup>
       </Textbox>
       {loading && <ComponentLoading />}
-      {moviesByGenres?.length > 0 && !loading ? (
+      {movieGenres?.length > 0 && !loading ? (
         <StyledCategoryGroupWrapper className="explore__categroup categroup">
           <CategoryItem
             name="All"
-            images={["/assets/images/home/hero-banner.jpg"]}
-            id={moviesByGenres?.[0]?.id}
+            image={["/assets/images/home/hero-banner.jpg"]}
+            id={movieGenres?.[0]?.id}
           />
-          {moviesByGenres?.map((item, index) => {
-            const { id, name, movies } = item || {};
-            const images = movies
-              ?.slice(0, 4)
-              ?.map((item) => item?.poster_path || "");
+          {movieGenres?.map((item, index) => {
+            const { id, name } = item || {};
+            const image = IMAGES_CATEGORIES.find(
+              (item) => item.genre === name.toLowerCase()
+            ).imgPath;
             return (
               <CategoryItem
                 key={id + index + name}
                 name={name}
-                images={images}
+                image={image}
                 id={id}
               />
             );
@@ -78,7 +79,7 @@ const GenresTab = ({ moviesByGenres, loading, ...props }) => {
         </AntdWrapper>
       )}
       {/* Progress bar */}
-      {moviesByGenres?.length > 0 && !loading && (
+      {movieGenres?.length > 0 && !loading && (
         <div className="explore__progressbar progressbar">
           <span></span>
         </div>

@@ -196,23 +196,14 @@ const StyledMovieItem = styled(MovieItem)`
   &:not(:last-child) {
     margin-bottom: 10px;
   }
-  max-width: 100%;
 `;
 
 const StyledMovieItemLeft = styled(StyledMovieItem)`
   list-style-type: none;
   position: relative;
-  display: block;
-  height: fit-content;
-  aspect-ratio: initial;
-  max-width: 100%;
-  margin: auto;
   .moviesgroup__item-content {
     display: flex;
     margin-top: 10px;
-  }
-  .moviesgroup__item-img {
-    margin: auto;
   }
 `;
 

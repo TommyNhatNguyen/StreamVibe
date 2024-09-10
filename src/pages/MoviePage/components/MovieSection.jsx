@@ -38,6 +38,7 @@ const StyledMovieWrapper = styled.div`
 
 const MovieSection = () => {
   const {
+    movieGenres,
     moviesByGenres,
     moviesTrending,
     moviesNowPlaying,
@@ -56,11 +57,7 @@ const MovieSection = () => {
       <div className="container">
         <StyledMovieWrapper className="movie__wrapper">
           {!loading && <div className="movie__wrapper-label">Movies</div>}
-          <GenresTab
-            moviesByGenres={moviesByGenres}
-            loading={loading}
-            id="genres"
-          />
+          <GenresTab movieGenres={movieGenres} loading={loading} id="genres" />
           <TopGenresTab
             moviesByGenres={moviesByGenres}
             genres={genres}

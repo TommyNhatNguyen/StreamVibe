@@ -140,6 +140,7 @@ export const MovieContextWrapper = ({ children }) => {
         searchMoviesLoading,
         movieGenres,
         getMovieBySearch,
+        movieGenresLoading,
       }}
     >
       {children}

@@ -10,9 +10,9 @@ import MyWatchList from "./pages/ProfilePage/components/MyWatchList";
 import MyFavorites from "./pages/ProfilePage/components/MyFavorites";
 import NotFoundPage from "./pages/NotFoundPage";
 import PrivacyRoute from "./components/PrivateRoute";
+import MoviePage from "./pages/MoviePage";
 
 const HomePage = lazy(() => import("./pages/HomePage"));
-const MoviePage = lazy(() => import("./pages/MoviePage"));
 const MovieDetailPage = lazy(() => import("./pages/MovieDetailPage"));
 const SupportPage = lazy(() => import("./pages/SupportPage"));
 const SubscriptionPage = lazy(() => import("./pages/SubscriptionPage"));

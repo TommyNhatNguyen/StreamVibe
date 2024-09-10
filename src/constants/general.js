@@ -150,6 +150,28 @@ export const SORTING_BY = [
   { id: "title_desc", value: "title.desc", label: "Title (Z - A)" },
 ];
 
+export const IMAGES_CATEGORIES = [
+  { genre: "action", imgPath: "/assets/images/genres/action.jpg" },
+  { genre: "adventure", imgPath: "/assets/images/genres/adventure.jpg" },
+  { genre: "animation", imgPath: "/assets/images/genres/animation.jpg" },
+  { genre: "comedy", imgPath: "/assets/images/genres/comedy.jpg" },
+  { genre: "crime", imgPath: "/assets/images/genres/crime.jpg" },
+  { genre: "documentary", imgPath: "/assets/images/genres/documentary.jpg" },
+  { genre: "drama", imgPath: "/assets/images/genres/drama.jpg" },
+  { genre: "family", imgPath: "/assets/images/genres/family.jpg" },
+  { genre: "fantasy", imgPath: "/assets/images/genres/fantasy.jpg" },
+  { genre: "history", imgPath: "/assets/images/genres/history.jpg" },
+  { genre: "horror", imgPath: "/assets/images/genres/horror.jpg" },
+  { genre: "music", imgPath: "/assets/images/genres/music.jpg" },
+  { genre: "mystery", imgPath: "/assets/images/genres/mystery.jpg" },
+  { genre: "romance", imgPath: "/assets/images/genres/romance.jpg" },
+  { genre: "science fiction", imgPath: "/assets/images/genres/science.jpg" },
+  { genre: "thriller", imgPath: "/assets/images/genres/thriller.jpg" },
+  { genre: "tv movie", imgPath: "/assets/images/genres/tv.jpg" },
+  { genre: "western", imgPath: "/assets/images/genres/western.jpg" },
+  { genre: "war", imgPath: "/assets/images/genres/war.jpg" },
+];
+
 export const youtubePath = (key) => {
   return `https://www.youtube.com/embed/${key}?autoplay=1&mute=1&controls=0&loop=1&modestbranding&playlist=${key}&showinfo=0`;
 };

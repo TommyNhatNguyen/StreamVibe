@@ -202,6 +202,10 @@ textarea {
     }
     &__content {
         font-family: var(--ff-medium);
-        font-size: var(--fs-tag-md);
+        font-size: var(--fs-movie-info);
     }
+}
+
+.ant-message {
+    z-index: 10000;
 }

@@ -2,12 +2,11 @@ import classNames from "classnames";
 import React from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
-import { IMAGE_NOTFOUND_PATH, PATHS } from "../../constants/paths";
-import { ENV } from "../../constants/environments";
+import { PATHS } from "../../constants/paths";
 import { breakpoints } from "../../constants/media";
 
 const StyledCategoryItem = styled(Link)`
-  max-height: 342px;
+  height: 342px;
   aspect-ratio: 295.4 / 342;
   padding: 30px;
   border-radius: 12px;
@@ -17,6 +16,7 @@ const StyledCategoryItem = styled(Link)`
   align-items: center;
   justify-content: center;
   flex-direction: column;
+  overflow: hidden;
   cursor: pointer;
   transition: var(--transition-duration);
   &:hover {
@@ -36,11 +36,8 @@ const StyledCategoryItem = styled(Link)`
 `;
 
 const StyledCategoryItemImageWrapper = styled.div`
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  grid-template-rows: repeat(2, 1fr);
-  grid-gap: 5px;
-  max-height: 252px;
+  display: block;
+  height: 252px;
   aspect-ratio: 235.4 / 252;
   overflow: hidden;
   position: relative;
@@ -66,11 +63,8 @@ const StyledCategoryItemImageWrapper = styled.div`
     border-radius: 10px;
     overflow: hidden;
   }
-  &.--single {
-    display: block;
-    div {
-      height: 100%;
-    }
+  div {
+    height: 100%;
   }
   @media (max-width: ${breakpoints.desktop}) {
     height: 210px;
@@ -94,7 +88,7 @@ const StyledCategoryItemContentWrapper = styled.div`
   }
 `;
 
-const CategoryItem = ({ images, name, id, classes, ...props }) => {
+const CategoryItem = ({ image, name, id, classes, ...props }) => {
   const moviePath = PATHS.SHOW.INDEX + "/" + id;
   return (
     <StyledCategoryItem
@@ -102,27 +96,10 @@ const CategoryItem = ({ images, name, id, classes, ...props }) => {
       className={classNames("categroup__item", { classes })}
       {...props}
     >
-      <StyledCategoryItemImageWrapper
-        className={classNames("categroup__item-img", {
-          "--single": images?.length === 1,
-        })}
-      >
-        {images?.length === 1 && (
-          <div>
-            <img src={images[0]} className="--midimg" alt="movie image" />
-          </div>
-        )}
-        {images?.length > 1 &&
-          images?.map((image, index) => {
-            const imgPath = image
-              ? ENV.IMAGE_URL + image || ""
-              : IMAGE_NOTFOUND_PATH.poster;
-            return (
-              <span key={image || index}>
-                <img src={imgPath} className="--midimg" alt="movie image" />
-              </span>
-            );
-          })}
+      <StyledCategoryItemImageWrapper className="categroup__item-img">
+        <div>
+          <img src={image} className="--midimg" alt="movie image" />
+        </div>
       </StyledCategoryItemImageWrapper>
       <StyledCategoryItemContentWrapper className="categroup__item-content">
         <span className="title">{name || ""}</span>

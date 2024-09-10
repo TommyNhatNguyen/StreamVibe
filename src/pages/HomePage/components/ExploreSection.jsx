@@ -5,15 +5,17 @@ import Textbox from "../../../components/Textbox";
 import CategoryItem from "../../../components/CategoryItem";
 import Button from "../../../components/Button";
 import { StyledCategoryGroupWrapper } from "../../../components/StyledComponents/StyledCategoryGroupWrapper";
+import { IMAGES_CATEGORIES } from "../../../constants/general";
+import ComponentLoading from "../../../components/ComponentLoading";
 
 const ExploreSection = () => {
-  const { moviesByGenres } = useMovieContext();
+  const { movieGenres, movieGenresLoading } = useMovieContext();
   useEffect(() => {
     const explore = document.querySelector(".explore");
-    if (moviesByGenres?.length > 0) {
+    if (movieGenres?.length > 0) {
       useFlickity(explore);
     }
-  }, [moviesByGenres]);
+  }, [movieGenres]);
 
   return (
     <section className="explore --pd-tb" id="explore">
@@ -51,26 +53,30 @@ const ExploreSection = () => {
           </Textbox.ButtonControlGroup>
         </Textbox>
         <StyledCategoryGroupWrapper className="explore__categroup categroup">
-          <CategoryItem
-            name="All"
-            images={["/assets/images/home/hero-banner.jpg"]}
-            id={moviesByGenres?.[0]?.id}
-          />
-          {moviesByGenres?.length > 0 &&
-            moviesByGenres?.map((item, index) => {
-              const { id, name, movies } = item || {};
-              const images = movies
-                ?.slice(0, 4)
-                ?.map((item) => item?.poster_path || "");
-              return (
-                <CategoryItem
-                  key={id + index + name}
-                  name={name}
-                  images={images}
-                  id={id}
-                />
-              );
-            })}
+          {movieGenresLoading && <ComponentLoading />}
+          {movieGenres?.length > 0 && !movieGenresLoading && (
+            <>
+              <CategoryItem
+                name="All"
+                image={["/assets/images/home/hero-banner.jpg"]}
+                id={movieGenres?.[0]?.id}
+              />
+              {movieGenres?.map((item, index) => {
+                const { id, name } = item || {};
+                const image = IMAGES_CATEGORIES.find(
+                  (item) => item.genre === name.toLowerCase()
+                ).imgPath;
+                return (
+                  <CategoryItem
+                    key={id + index + name}
+                    name={name}
+                    image={image}
+                    id={id}
+                  />
+                );
+              })}
+            </>
+          )}
         </StyledCategoryGroupWrapper>
         {/* Progress bar */}
         <div className="explore__progressbar progressbar">
