@@ -82,9 +82,6 @@ const StyledHeaderMiddleWrapper = styled.div`
   }
   @media (max-width: ${breakpoints.desktop}) {
     .header__middle-wrapper {
-      .logo {
-        max-height: 50px;
-      }
       .nav {
         height: 61px;
         padding: 8px;
@@ -103,9 +100,6 @@ const StyledHeaderMiddleWrapper = styled.div`
   }
   @media (max-width: ${breakpoints.ipad12pro}) {
     .header__middle-wrapper {
-      .logo {
-        max-height: 35px;
-      }
       .nav {
         left: 57%;
         &__item {
@@ -129,9 +123,6 @@ const StyledHeaderMiddleWrapper = styled.div`
   }
   @media (max-width: ${breakpoints.ipad9pro}) {
     .header__middle-wrapper {
-      .logo {
-        max-height: 35px;
-      }
       .nav,
       .cta {
         display: none;

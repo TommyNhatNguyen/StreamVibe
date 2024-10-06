@@ -28,7 +28,7 @@ const StyledButtonBackToTop = styled.button`
     transform: translateY(-30px);
   }
   @media (max-width: 1920px) {
-    right: calc(var(--pd-container) + 10px);
+    right: var(--pd-container);
   }
 `;
 
