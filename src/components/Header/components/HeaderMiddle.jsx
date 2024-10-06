@@ -100,6 +100,9 @@ const StyledHeaderMiddleWrapper = styled.div`
   }
   @media (max-width: ${breakpoints.ipad12pro}) {
     .header__middle-wrapper {
+      .logo {
+        max-height: 50px;
+      }
       .nav {
         left: 57%;
         &__item {
