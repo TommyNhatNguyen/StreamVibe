@@ -98,8 +98,8 @@ const StyledPricingCard = styled.div`
     }
   }
   @media (max-width: ${breakpoints.mobile}) {
-    aspect-ratio: 358 / 275;
-    max-height: 275px;
+    aspect-ratio: initial;
+    max-height: 100%;
     padding: 24px;
     .plancard__price {
       margin: 30px 0;

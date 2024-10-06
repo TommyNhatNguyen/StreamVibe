@@ -2,6 +2,7 @@ html {
     font-size: 62.5%;
     background-color: var(--black-cl);
     scroll-behavior: smooth;
+
     @include customscroll(5px, var(--black-cl-3), var(--black-cl-2));
     body {
         width: 100%;

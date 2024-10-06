@@ -64,7 +64,14 @@
         &__bottom {
             flex-wrap: wrap;
             &-policy {
+                flex-wrap: wrap;
+                gap: 8px;
                 height: 21px;
+                a {
+                    &:not(:last-child) {
+                        padding-right: 10px;
+                    }
+                }
             }
         }
     }

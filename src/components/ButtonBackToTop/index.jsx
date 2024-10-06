@@ -8,7 +8,7 @@ const StyledButtonBackToTop = styled.button`
   border-radius: 12px;
   border: 3px solid var(--black-cl-3);
   height: 52px;
-  aspect-ratio: 1/1;
+  width: 52px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -28,7 +28,7 @@ const StyledButtonBackToTop = styled.button`
     transform: translateY(-30px);
   }
   @media (max-width: 1920px) {
-    right: var(--pd-container);
+    right: calc(var(--pd-container) + 10px);
   }
 `;
 
